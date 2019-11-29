@@ -3,6 +3,7 @@
  let n;
  let nw;
  let nl;
+ let body;
 
 
 //2Dbarcode
@@ -128,6 +129,8 @@ function windowResized(){
 
 function setup() {
 
+  body = select('body');
+
   l = document.documentElement.scrollLeft;
   t = document.documentElement.scrollTop;
   n = map(windowWidth*windowHeight,0,1280*720,0,1);
@@ -221,10 +224,10 @@ function setup() {
   minHh = selectAll('.minHh');
   minHS = select('#minHS');
   minSS = select('#minSS');
-  onoBack = select('#onoBack');
-  ono = select('#ono');
   AlphaSS = 0;
   ms = 20;
+  onoBack = select('#onoBack');
+  ono = select('#ono');
   os = 20;
   oSt = 1;
 
@@ -236,20 +239,10 @@ function setup() {
     minHh[i].style('font-size',28*n+'px');
   }
   minHS.style('font-size',18*n+'px');
-  minSS.style('font-size',16*n+'px')
+  minSS.style('font-size',12*n+'px')
   minSS.mouseOver(changeMinSS);
   minSS.mouseOut(BackMinSS);
 
-  oXMin = document.getElementById('ono').offsetLeft;
-  oYMin = document.getElementById('ono').offsetTop;
-  oXMax = document.getElementById('ono').offsetLeft*13/11;
-  oYMax = document.getElementById('ono').offsetTop;
-  oX = oXMax;
-  oY = oYMax;
-  ono.mouseClicked(onoBackClicked);
-  onoBack.position(oX,oY);
-  onoBack.style('border-top-width',6*n+'px');
-  onoBack.size(46*n,32*n);
 
   // leftLinks
   icons  = selectAll('i');
@@ -309,6 +302,19 @@ function setup() {
   resetSizePlan();
   repositionLeftAll();
 
+  body.style('display','block');
+
+  //get value of onoBarPosition after body displaied
+  oXMin = document.getElementById('ono').offsetLeft;
+  oYMin = document.getElementById('ono').offsetTop;
+  oXMax = document.getElementById('ono').offsetLeft*13/11;
+  oYMax = document.getElementById('ono').offsetTop;
+  oX = oXMin;
+  oY = oYMin;
+  ono.mouseClicked(onoBackClicked);
+  onoBack.position(oX,oY);
+  onoBack.style('border-top-width',6*n+'px');
+  onoBack.size(46*n,32*n);
 
 
 }
@@ -496,7 +502,7 @@ function display(){
         if (bs != 0 & bs != 20) {
           fill(random(230,255),random(230,255),random(0,95),random(30,45));
         }else{
-          fill(random(200,255),random(90,255),random(0,35),random(30,45));
+          fill(random(200,255),random(50,255),random(0,35),random(30,45));
         }
         noStroke();
         rect((i-1) * w, (j-1) * w, w*3 , w*3 );
@@ -566,7 +572,7 @@ function resetSizePlan(){
       minHh[i].style('font-size',28*n+'px');
     }
     minHS.style('font-size',18*n+'px');
-    minSS.style('font-size',16*n+'px');
+    minSS.style('font-size',12*n+'px');
     onoBack.size(46*n,32*n);
     onoBack.style('border-top-width',6*n+'px');
     oXMin = document.getElementById('ono').offsetLeft;
@@ -663,9 +669,10 @@ function repositionLeftAll(){
 
 
   //reposition rightAll
-  scrollY = map(document.getElementById('rightDivBig').scrollTop,0,document.getElementById('rightDivBig').scrollHeight-document.getElementById('rightDivBig').offsetHeight,0,windowHeight*18/20-scrollH);
+  scrollY = map(document.getElementById('rightDivBig').scrollTop,0,document.getElementById('rightDivBig').scrollHeight-document.getElementById('rightDivBig').offsetHeight,scrollH,windowHeight*18/20-scrollH);
   line.position(l+canvasW,t+windowHeight*1/20);
-  scrollbar.position(0,scrollY);
+  scrollbar1.size(scrollW,scrollY);
+  scrollbar2.size(scrollW,windowHeight*18/20-scrollY);
   rightDivBig.position(l+windowWidth*3/5+20,t+windowHeight*1/20);
 
 }

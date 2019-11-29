@@ -263,18 +263,34 @@ function rightDivGo(){
     scrollbarAlpha+=0.05;
   }else if (1<=scrollbarAlpha) {
     scrollbarAlpha = 1;
+  }
+  if (scrollW<3) {
+    scrollW+=0.2;
+  }else if (scrollW<=3) {
+    scrollW=3;
+  }
+  if (scrollbarAlpha>=1&scrollW>=2.5) {
     bs = 21;
   }
-  scrollbar.style('background-color','rgba(0,0,0,'+scrollbarAlpha+')');
+  scrollbar1.style('background-color','rgba(0,0,0,'+scrollbarAlpha+')');
+  scrollbar2.style('background-color','rgba(0,0,0,'+scrollbarAlpha+')');
 }
 function rightDivBack(){
-  if(0<scrollbarAlpha){
+  if(0.2<scrollbarAlpha){
     scrollbarAlpha-=0.05;
-  }else if (scrollbarAlpha<=0) {
-    scrollbarAlpha = 0;
-    bs = 20;
+  }else if (scrollbarAlpha<=0.2) {
+    scrollbarAlpha = 0.2;
   }
-  scrollbar.style('background-color','rgba(0,0,0,'+scrollbarAlpha+')');
+  if (scrollW>1.5) {
+    scrollW-=0.2;
+  }else if (scrollW<=1.5) {
+    scrollW=1.5;
+  }
+  if (scrollbarAlpha<=0.2&scrollW<=0) {
+    bs = 21;
+  }
+  scrollbar1.style('background-color','rgba(0,0,0,'+scrollbarAlpha+')');
+  scrollbar2.style('background-color','rgba(0,0,0,'+scrollbarAlpha+')');
 }
 
 

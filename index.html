@@ -8,8 +8,13 @@
  	<link rel="icon" href="image/logo-head.png" type="image/x-icon"/>
  	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 
-    <style>
 
+
+    <style>
+    	@font-face{
+     		font-family: 'pixelmix'; 
+     		src: url('font_my/Retro Gaming.ttf');
+		}
  		::-webkit-scrollbar{
 			display: none; /*chrome & safri*/
 			width: 0;
@@ -31,6 +36,7 @@
     		scrollbar-width: none; /* Firefox */
     	}
     	body{
+    		display: none;
     		width: 100%;
     		height:100%;
     		min-width: 900px;
@@ -88,10 +94,15 @@
     		cursor: pointer;
 			}
     	#minHS{
-			font-family:"Times New Roman", Times, serif;
+			font-family:Microsoft YaHei;
 			font-weight: bold;
 			font-weight: lighter;
 			margin:0;
+    	}
+    	#minSS{
+    		font-family: Microsoft YaHei;
+    		color: rgb(49,49,49);
+    		margin: 0px;
     	}
     	.linkInLogo{
     		font-family: Microsoft YaHei;
@@ -156,8 +167,6 @@
     <script src="rightDiv.js"></script>
     <script src="sketch.js"></script>
 
-    <!-- <img src="image/shisheng.png" style=" z-index: 0; width: 100.2px;height: 212.64px;position: absolute;right:380px; top: 120px;"> -->
-
     <div id="logoDIV">
     	<div id="positionMore" style="position: absolute;"> 	
     		<div class="more"></div>
@@ -188,7 +197,7 @@
 		</div>
 		<div class="minHh">LAB</div>
 		<p id="minHS"><span style="color: white;background-color: black;">DESIGN × PHILOSOPHY × ART</span><br>
-		<p id="minSS" style="color: rgb(49,49,49);margin: 0px;">Welcome to onoa!x. My name is SUN XIAOCHEN, I'm form China.This page is a playground of visiual things about digital media, design, art and even some of idea sharing. now I'm force on the relationship beteween design＆art＆philosophy. I'll put the things interesting and maybe some about my work on it. This years I'm also very interesting in coding, and I tried to make visualise creating uncontrollable and see how it bacame and feels.</p></p>
+		<p id="minSS" style="">Welcome to onoa!x. My name is SUN XIAOCHEN, I'm form China.This page is a playground of visiual things about digital media, design, art and even some of idea sharing. now I'm force on the relationship beteween design＆art＆philosophy. I'll put the things interesting and maybe some about my work on it. This years I'm also very interesting in coding, and I tried to make visualise creating uncontrollable and see how it bacame and feels.</p></p>
 			<a id="aboutSketch" href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life" style="text-decoration: none;font-family: Georgia;font-weight: lighter;">The background is a implementation of John Conway's "Game of Life"</a>
 	</div>
 
@@ -222,9 +231,9 @@
 
 	<div id="barBackground" style="position: fixed; z-index: 3;left: 0px;top: 0px;">
 	</div>
-	<p id="X" style="cursor:pointer;font-weight: bold;font-size: 36px;margin: 0px;z-index: 4;">✖</p>
-	<img id="QQbar" src="image/2D_qq.png" style="transform: translate(-50%,-50%); width: 190px;height: 190px;position: absoluteleft: 680px;top: 250px;z-index: 4">
-	<img id="Wecheatbar" src="image/2D_qqWecheat.png" style="transform: translate(-50%,-50%); width: 190px;height: 190px;position: absolute;left: 680px;top: 250px;z-index: 4">
+	<p id="X" style="cursor:pointer;font-weight: bold;font-size: 36px;margin: 0px;z-index: 4;">×</p>
+	<img id="QQbar" src="image/2D_qq.png" style="transform: translate(-50%,-50%); width: 190px;height: 190px;position: absoluteleft: 680px;top: 250px;z-index: 4;display: none;">
+	<img id="Wecheatbar" src="image/2D_qqWecheat.png" style="transform: translate(-50%,-50%); width: 190px;height: 190px;position: absolute;left: 680px;top: 250px;z-index: 4;display: none;">
 
 
 
@@ -240,8 +249,9 @@
     	onoaix.lab<br>
     </div>
 
-    <div id="line" style="z-index: 2; position: absolute; width: 20px;border-left: solid 10px rgba(200,200,200,0.5); ">
-    	<div id="scrollbar" style="z-index: 2; position: absolute;transform: translateX(-100%);"></div>
+    <div id="line" style="z-index: 2; position: absolute; width: 20px;background-color:rgba(230,230,230,0);">
+    		<div id="scrollbar1" style="z-index: 2; position: absolute;transform: translateX(-100%);right; float: left;"></div>
+    		<div id="scrollbar2" style="z-index: 2; position: absolute;transform: translateX(0%);float: left;bottom: 0px;"></div>
 	</div>
 
 

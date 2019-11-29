@@ -1,9 +1,11 @@
 let line;
 let lineW;
-let scrollbar;
+let scrollbar1;
+let scrollbar2;
 let bs;
 let scrollY;
 let scrollH;
+let scrollW;
 let scrollbarAlpha;
 
 let rightDivBig;
@@ -20,17 +22,24 @@ let oldSP
 
 function createScrollbar(){
 
-  scrollbarAlpha = 0;
+  scrollbarAlpha = 0.2;
   bs = 20;
   line = select('#line');
   line.style('height',t+windowHeight*18/20+'px');
   line.position(0,windowHeight*1/20);
-  scrollbar = select('#scrollbar');
+  scrollbar1 = select('#scrollbar1');
+  scrollbar2 = select('#scrollbar2');
   lineW = 20;
   scrollH = 10;
-  scrollbar.size(10,scrollH);
-  scrollY = map(document.getElementById('rightDivBig').scrollTop,0,document.getElementById('rightDivBig').scrollHeight-document.getElementById('rightDivBig').offsetHeight,0,windowHeight*18/20-scrollH);
-  scrollbar.position(0,scrollY);
+  scrollW = 1.5;
+  scrollY = map(document.getElementById('rightDivBig').scrollTop,0,document.getElementById('rightDivBig').scrollHeight-document.getElementById('rightDivBig').offsetHeight,scrollH,windowHeight*18/20-scrollH);
+  scrollbar1.size(scrollW,scrollY);
+  scrollbar2.size(scrollW,windowHeight*18/20-scrollH-scrollY);
+  scrollbar1.style('background-color','rgba(0,0,0,'+scrollbarAlpha+')');
+  scrollbar2.style('background-color','rgba(0,0,0,'+scrollbarAlpha+')');
+  
+
+  //scrollbar.position(0,scrollY);
 
 }
 
@@ -56,7 +65,7 @@ function createRightDivBig(){
     let oldSP = document.getElementById('rightDivBig').scrollTop;
 
 
-	let Head = createP('▓ RECENT PLAY EVENT');
+	let Head = createP('＋ RECENT PLAY EVENT');
 	Head.parent(rightDivBig);
 	Head.style('margin','30px 0px 40px 0px');
 	Head.style('font-size',19+'px');
