@@ -173,8 +173,9 @@ function HighLightLinkOfSketch(){
   //this.style('font-style','italic');
   aboutCode[i].style('border-bottom-width',1.8+'px');
   aboutCode[i].style('border-bottom-style','solid');
-  aboutCode[i].style('border-bottom-color','black');
-  aboutCode[i].style('color','black');
+  aboutCode[i].style('border-bottom-color','red');
+  //aboutCode[i].style('background-color','white');
+  aboutCode[i].style('color','red');
 
   //this.style('border-color','gray');
 }
@@ -184,6 +185,7 @@ function unHighLightLinkOfSketch(){
   aboutCode[i].style('border-bottom-width',1+'px');
   aboutCode[i].style('border-bottom-style','solid');
   aboutCode[i].style('border-bottom-color','gray');
+  //aboutCode[i].style('background-color','transparent');
   aboutCode[i].style('color','gray');
 }
 
