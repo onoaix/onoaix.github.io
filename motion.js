@@ -266,12 +266,12 @@ function rightDivGo(){
   }else if (1<=scrollbarAlpha) {
     scrollbarAlpha = 1;
   }
-  if (scrollW<3) {
-    scrollW+=0.2;
-  }else if (scrollW>=3) {
-    scrollW=3;
+  if (scrollW<5) {
+    scrollW+=0.3;
+  }else if (scrollW>=5) {
+    scrollW=5;
   }
-  if (scrollbarAlpha>=1&scrollW>=3) {
+  if (scrollbarAlpha>=1&scrollW>=5) {
     bs = 21;
   }
   scrollbar1.style('background-color','rgba(0,0,0,'+scrollbarAlpha+')');
