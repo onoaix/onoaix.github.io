@@ -499,8 +499,10 @@ function display(){
   for (let i = 2; i < columns-2; i++) {
     for (let j = 2; j < rows-2; j++) {
       if (board[i][j] == 1){
-        if (bs != 0 & bs != 20) {
+        if (bs == 1 || bs == 21) {
           fill(random(230,255),random(230,255),random(0,95),random(30,45));
+        }else if (s == 1 || s == 21) {
+          fill(random(230,255),random(80,135),random(0,35),random(30,45));
         }else{
           fill(random(200,255),random(50,255),random(0,35),random(30,45));
         }
