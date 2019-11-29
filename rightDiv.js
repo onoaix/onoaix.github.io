@@ -80,8 +80,8 @@ function createRightDivBig(){
 
 	createRightDiv('↑ PROTFOLIO<br>[xiaouo]','22222.png','#May 19/2019<br><br>this is my PROTFOLIO~');
 	createRightDiv('BE BORN','zokei_h.png','#November 26/2019<br><br>The contribution of 「ZOKEI EXHIBITION」 poster.');
-	createRightDiv('BOUNDLESS','boudless_h.png','#November 9/2017<br><br>❀UVインクジェット、ジェット、ジェット　ノミネート賞受賞<br>私達が常に「完璧」に達さなければならないという感情に満ちたときもありますが、しかし「不完璧」ということに向けて、その完璧を打ち破るインパクトはある「完璧」ではないでしょうか。３D技術で作られた動物形のモデルがそれぞれ絡まって、ある身体の部分が変形して、お互いに突き破ている。あるパーワで身体の中から体を切って、結んでいる様子はその感覚のインパクトを演出している。');
 	createRightDiv('INFLUENCE DESIGN','influence_design.png','#January 28/2019<br><br>❀2019年度東京造形大学ノミネート賞受賞<br>❀CGDA Visual Communication Design Award 2019 - Silver Award 受賞<br>ビジュアルディスプレィを介してユーザーがコンテンツの操作をする時の行為が期待通りの結果に向かっているか、間違った結果に向かっているかを、その結果に到達する前に直観できるようにアフォードするUIデザイン（マイクロインタラクション）の制作研究である。');
+	createRightDiv('BOUNDLESS','boudless_h.png','#November 9/2017<br><br>❀UVインクジェット、ジェット、ジェット　ノミネート賞受賞<br>私達が常に「完璧」に達さなければならないという感情に満ちたときもありますが、しかし「不完璧」ということに向けて、その完璧を打ち破るインパクトはある「完璧」ではないでしょうか。３D技術で作られた動物形のモデルがそれぞれ絡まって、ある身体の部分が変形して、お互いに突き破ている。あるパーワで身体の中から体を切って、結んでいる様子はその感覚のインパクトを演出している。');
 
 }
 
