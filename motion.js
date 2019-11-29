@@ -169,22 +169,22 @@ function linkSmaller(i){
 
 
 function HighLightLinkOfSketch(){
+  let i = aboutCode.indexOf(this);
   //this.style('font-style','italic');
-  this.style('border-bottom-width',1.8+'px');
-  this.style('border-bottom-style','solid');
-  this.style('border-bottom-style','solid');
-  this.style('border-bottom-color','red');
-  this.style('color','red');
+  aboutCode[i].style('border-bottom-width',1.8+'px');
+  aboutCode[i].style('border-bottom-style','solid');
+  aboutCode[i].style('border-bottom-color','black');
+  aboutCode[i].style('color','black');
 
   //this.style('border-color','gray');
 }
 function unHighLightLinkOfSketch(){
+  let i = aboutCode.indexOf(this);
   //this.style('font-style','normal');
-  this.style('border-bottom-width',1+'px');
-  this.style('border-bottom-style','solid');
-  this.style('border-bottom-style','solid');
-  this.style('border-bottom-color','gray');
-  this.style('color','gray');
+  aboutCode[i].style('border-bottom-width',1+'px');
+  aboutCode[i].style('border-bottom-style','solid');
+  aboutCode[i].style('border-bottom-color','gray');
+  aboutCode[i].style('color','gray');
 }
 
 
@@ -203,7 +203,7 @@ function minSSOver(){
   if(AlphaSS>=1){
     ms = 21;
   }
-  minSS.style('background-color','rgba(255,255,255,'+AlphaSS+')');
+  minSS.style('background-color','rgba(255,155,0,'+AlphaSS+')');
 }
 function minSSOut(){
   if(AlphaSS>0){
@@ -212,7 +212,7 @@ function minSSOut(){
   if(AlphaSS<=0){
     ms = 20;
   }
-  minSS.style('background-color','rgba(255,255,255,'+AlphaSS+')');
+  minSS.style('background-color','rgba(255,155,0,'+AlphaSS+')');
 }
 
 

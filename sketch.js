@@ -65,6 +65,9 @@ let oXMax;
 let oYMax;
 let oX;
 let oY;
+//about Sketch Link
+let aboutCode;
+
 
 //left Link
 let icons;
@@ -85,9 +88,6 @@ let maxYl;
 let vxl;
 let vyl;
 let Alpha;
-
-//about Sketch Link
-let aboutSketchLink;
 
 
 function preload(){}
@@ -232,14 +232,14 @@ function setup() {
   oSt = 1;
 
   aboutOnoaix.style('transform','translate(-50%,-50%)');
-  aboutOnoaix.position(l+canvasW/2,t+canvasH/2-canvasH/20);
+  aboutOnoaix.position(l+canvasW/2+canvasW/45,t+canvasH/2-canvasH/35);
   aboutOnoaix.style('width',canvasW/2+'px');
 
   for (let i = 0; i < minHh.length; i++) {
     minHh[i].style('font-size',28*n+'px');
   }
-  minHS.style('font-size',18*n+'px');
-  minSS.style('font-size',12*n+'px')
+  minHS.style('font-size',17*n+'px');
+  minSS.style('font-size',13*n+'px')
   minSS.mouseOver(changeMinSS);
   minSS.mouseOut(BackMinSS);
 
@@ -289,15 +289,16 @@ function setup() {
   X.mouseClicked(barBackgroundOut);
   X.position(l+canvasW/2+100,t+canvasH/2-109);
 
-  // aboutSketch
-  aboutSketchLink = select('#aboutSketch');
-  aboutSketchLink.style('color','gray');
-  aboutSketchLink.style('border-bottom-width',1+'px');
-  aboutSketchLink.style('border-bottom-style','solid');
-  aboutSketchLink.style('border-bottom-style','solid');
-  aboutSketchLink.style('border-bottom-color','gray');
-  aboutSketchLink.mouseOver(HighLightLinkOfSketch);
-  aboutSketchLink.mouseOut(unHighLightLinkOfSketch);
+  // aboutCode Link
+  aboutCode = selectAll('.aboutCode');
+  for (let i = 0; i < aboutCode.length; i++) {
+    aboutCode[i].style('border-bottom-width',1+'px');
+    aboutCode[i].style('border-bottom-style','solid');
+    aboutCode[i].style('color','gray');
+    aboutCode[i].style('border-bottom-color','gray');
+    aboutCode[i].mouseOver(HighLightLinkOfSketch);
+    aboutCode[i].mouseOut(unHighLightLinkOfSketch);
+  }
 
   resetSizePlan();
   repositionLeftAll();
@@ -573,8 +574,8 @@ function resetSizePlan(){
     for (let i = 0; i < minHh.length; i++) {
       minHh[i].style('font-size',28*n+'px');
     }
-    minHS.style('font-size',18*n+'px');
-    minSS.style('font-size',12*n+'px');
+    minHS.style('font-size',17*n+'px');
+    minSS.style('font-size',13*n+'px');
     onoBack.size(46*n,32*n);
     onoBack.style('border-top-width',6*n+'px');
     oXMin = document.getElementById('ono').offsetLeft;
@@ -588,7 +589,9 @@ function resetSizePlan(){
       oX = oXMax;
       oY = oYMax;
     }
-    aboutSketchLink.style('font-size',13*n+'px');
+    for (let i = 0; i < aboutCode.length; i++) {
+      aboutCode[i].style('font-size',13*n+'px');
+    }
 
 
 ////leftLink
@@ -662,7 +665,7 @@ function repositionLeftAll(){
   }
 
   //reposition aboutOnoaix
-  aboutOnoaix.position(l+canvasW/2,t+canvasH/2-canvasH/20);
+  aboutOnoaix.position(l+canvasW/2+canvasW/45,t+canvasH/2-canvasH/35);
   onoBack.position(oX,oY);
 
   QQbar.position(l+canvasW/2,t+canvasH/2);
