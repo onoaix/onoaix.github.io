@@ -266,10 +266,10 @@ function rightDivGo(){
   }
   if (scrollW<3) {
     scrollW+=0.2;
-  }else if (scrollW<=3) {
+  }else if (scrollW>=3) {
     scrollW=3;
   }
-  if (scrollbarAlpha>=1&scrollW>=2.5) {
+  if (scrollbarAlpha>=1&scrollW>=3) {
     bs = 21;
   }
   scrollbar1.style('background-color','rgba(0,0,0,'+scrollbarAlpha+')');
@@ -286,7 +286,7 @@ function rightDivBack(){
   }else if (scrollW<=1.5) {
     scrollW=1.5;
   }
-  if (scrollbarAlpha<=0.2&scrollW<=0) {
+  if (scrollbarAlpha<=0.2&scrollW<=1.5) {
     bs = 21;
   }
   scrollbar1.style('background-color','rgba(0,0,0,'+scrollbarAlpha+')');
