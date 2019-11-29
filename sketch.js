@@ -190,7 +190,7 @@ function setup() {
   logoY_v = (logoYmax-logoYmin)/9;
   logoX_v = (logoXmax-logoXmin)/9;
   positionMoreX = -35;
-  logoDivSHtml = ["Hello and Wellcome!<br> This is the homepage of onoaix.lab! It was build in 12th-november-2019. I'll put things interesting on it, Hope you like it~ )✧∀✧)欢迎欢迎~",
+  logoDivSHtml = ["Hello and Wellcome!<br> This is the homepage of onoaix.lab! It was build in 24th-november-2019. I'll put things interesting on it, Hope you like it~ )✧∀✧)欢迎欢迎~",
                   "Here is the Playground where I'll put visual things I was tried to play with, icluding some programming sketch, design or art.",
                   "This is a place I'll put things I've done which is looks like can be a opus or portfolio,and I'll put more and more on it if I still remember to update the it. Xp",
                   "more about me just like my name, my job even my photos.",
