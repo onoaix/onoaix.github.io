@@ -287,7 +287,7 @@ function rightDivBack(){
     scrollW=1.5;
   }
   if (scrollbarAlpha<=0.2&scrollW<=1.5) {
-    bs = 21;
+    bs = 20;
   }
   scrollbar1.style('background-color','rgba(0,0,0,'+scrollbarAlpha+')');
   scrollbar2.style('background-color','rgba(0,0,0,'+scrollbarAlpha+')');
