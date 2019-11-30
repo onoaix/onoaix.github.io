@@ -298,12 +298,12 @@ function rightDivOut(){
 }
 function rightDivGo(){
   if(scrollbarAlpha < 1){
-    scrollbarAlpha+=0.05;
+    scrollbarAlpha += 0.1;
   }else if (1 <= scrollbarAlpha) {
     scrollbarAlpha = 1;
   }
   if (scrollW < 4) {
-    scrollW += 0.7;
+    scrollW += 0.5;
   }else if (scrollW >= 4) {
     scrollW = 4;
   }
@@ -315,12 +315,12 @@ function rightDivGo(){
 }
 function rightDivBack(){
   if(0.2 < scrollbarAlpha){
-    scrollbarAlpha-=0.05;
+    scrollbarAlpha -= 0.1;
   }else if (scrollbarAlpha <= 0.2) {
     scrollbarAlpha = 0.2;
   }
   if (scrollW > 1.5) {
-    scrollW -= 0.7;
+    scrollW -= 0.5;
   }else if (scrollW <= 1.5) {
     scrollW = 1.5;
   }
