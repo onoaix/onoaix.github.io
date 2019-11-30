@@ -602,7 +602,7 @@ function resetSizePlan(){
     //resize rightAll;
     rightDivSW = windowWidth*2/5-40-40;
     rightDivSH = 190+rightDivSpadding*2;
-    if (windowWidth<=1200) {
+    if (windowWidth<=1250) {
       rightDivS1W = rightDivSW;
       for (let i = 0; i<rightDivSAll.length; i++){
         rightDivSAll[i].style('width',rightDivSW+'px');
