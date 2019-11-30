@@ -107,7 +107,7 @@ function windowResized(){
   else if (nl<=3/4) nl=3/4;
 
   //resize canves
-  canvasW = windowWidth*3/5;
+  canvasW = windowWidth*63/100-20;
   canvasH = windowHeight;
   canvas.resize(canvasW,canvasH);
   init();
@@ -139,12 +139,10 @@ function setup() {
 
 //▲  Set parameter
 
-  createRightDivBig();
-  createScrollbar();
 
   //canvas p5.js
   w = 12;
-  canvasW = windowWidth*3/5;
+  canvasW = windowWidth*63/100-20;
   canvasH = windowHeight;
   canvasX = l;
   canvasY = t;
@@ -153,6 +151,11 @@ function setup() {
   canvas.style('display','block');
   canvas.position(canvasX,canvasY);
   init();
+
+
+  //rightDivAll
+  createRightDivBig();
+  createScrollbar();
 
 
   // logoDIV
@@ -600,9 +603,15 @@ function resetSizePlan(){
 
 
     //resize rightAll;
-    rightDivSW = windowWidth*2/5-40-40;
+
+    rightDivBigW = windowWidth*37/100-20*3 ;
+    rightDivBigH = windowHeight*18/20 ;
+    rightDivBig.size(rightDivBigW,rightDivBigH);
+    line.size(lineW,rightDivBigH);
+
+    rightDivSW = rightDivBigW;
     rightDivSH = 190+rightDivSpadding*2;
-    if (windowWidth<=1250) {
+    if (windowWidth<=1350) {
       rightDivS1W = rightDivSW;
       for (let i = 0; i<rightDivSAll.length; i++){
         rightDivSAll[i].style('width',rightDivSW+'px');
@@ -625,8 +634,8 @@ function resetSizePlan(){
         rightDivSBAll[i].size(rightDivSW,rightDivSH-rightDivSpadding*2);
       }
     }
-    line.style('height',windowHeight*18/20+'px');
-    rightDivBig.size(windowWidth*2/5-40-40,windowHeight*18/20);
+    rscrollh = document.getElementById('rightDivBig').scrollHeight ;
+    roffseth = document.getElementById('rightDivBig').offsetHeight ;
 
   
 }
@@ -678,10 +687,24 @@ function repositionLeftAll(){
 
 
   //reposition rightAll
-  scrollY = map(document.getElementById('rightDivBig').scrollTop,0,document.getElementById('rightDivBig').scrollHeight-document.getElementById('rightDivBig').offsetHeight,scrollH,windowHeight*18/20-scrollH);
-  line.position(l+canvasW,t+windowHeight*1/20);
+  rightDivBigX = l+windowWidth*63/100;
+  rightDivBigY = t+windowHeight*1/20;
+  rightDivBig.position(rightDivBigX,rightDivBigY);
+
+  rl = document.getElementById('rightDivBig').scrollTop ;
+  //if (rl>30) {
+  //  Head.position(0,rl);
+  //  Head.style('background-color','black');
+  //  Head.style('color','white');
+  //}else{
+  //  Head.position(0,30);
+  //  Head.style('background-color','transparent');
+  //  Head.style('color','black');
+  //}
+
+  scrollY = map(rl,0,rscrollh-roffseth,scrollH,windowHeight*18/20-scrollH);
+  line.position(l+rightDivBigX-lineW,t+rightDivBigY);
   scrollbar1.size(scrollW,scrollY);
   scrollbar2.size(scrollW,windowHeight*18/20-scrollY);
-  rightDivBig.position(l+windowWidth*3/5+20,t+windowHeight*1/20);
 
 }
