@@ -112,17 +112,8 @@ function windowResized(){
   canvas.resize(canvasW,canvasH);
   init();
 
-  ////resize bar
-  barBackground.style('width',canvasW+'px');
-  barBackground.style('height',canvasH+'px');
-
-
-  //resize minH
-  aboutOnoaix.style('width',canvasW/2+'px');
-
-  //resize leftLink
+  //resizePlan
   resetSizePlan();
-
 
 }
 
@@ -242,7 +233,16 @@ function setup() {
   minSS.style('font-size',13*n+'px')
   minSS.mouseOver(changeMinSS);
   minSS.mouseOut(BackMinSS);
-
+  ono.mouseClicked(onoBackClicked);
+  oXMin = document.getElementById('ono').offsetLeft;
+  oYMin = document.getElementById('ono').offsetTop;
+  oXMax = document.getElementById('ono').offsetLeft*13/11;
+  oYMax = document.getElementById('ono').offsetTop;
+  oX = oXMin;
+  oY = oYMin;
+  onoBack.position(oX,oY);
+  onoBack.style('border-top-width',6*n+'px');
+  onoBack.size(46*n,32*n);
 
   // leftLinks
   icons  = selectAll('i');
@@ -300,23 +300,10 @@ function setup() {
     aboutCode[i].mouseOut(unHighLightLinkOfSketch);
   }
 
-  resetSizePlan();
-  repositionLeftAll();
-
   body.style('display','block');
 
-  //get value of onoBarPosition after body displaied
-  oXMin = document.getElementById('ono').offsetLeft;
-  oYMin = document.getElementById('ono').offsetTop;
-  oXMax = document.getElementById('ono').offsetLeft*13/11;
-  oYMax = document.getElementById('ono').offsetTop;
-  oX = oXMin;
-  oY = oYMin;
-  ono.mouseClicked(onoBackClicked);
-  onoBack.position(oX,oY);
-  onoBack.style('border-top-width',6*n+'px');
-  onoBack.size(46*n,32*n);
-
+  resetSizePlan();
+  repositionLeftAll();
 
 }
 
@@ -326,41 +313,50 @@ function draw() {
   t = document.documentElement.scrollTop;
   l = document.documentElement.scrollLeft;
 
+// logoGo
   if(s==1){
     logoBigger();
-  }
-  if(s==0){
+  }else if(s==0){
     logoSmaller();
   }
-  for (let i = 0; i < ss.length; i++) {
-    if(ss[i]==1){
-      linkBigger(i);
-    }
-    if(ss[i]==0){
-      linkSmaller(i);
-    }
-  }
+
+// minHGo
   if (ms==1) {
     minSSOver();
-  }
-  if (ms==0) {
+  }else if (ms==0) {
     minSSOut();
   }
-  if (bs==1) {
-    rightDivGo();
-  }
-  if (bs==0) {
-    rightDivBack();
-  }
-
   if (os==1) {
     onoBackGo();
-  }
-  if (os==0) {
+  }else if (os==0) {
     onoBackBack();
   }
 
-  //resize bar
+// leftLinkGo
+  for (let i = 0; i < ss.length; i++) {
+    if(ss[i]==1){
+      linkBigger(i);
+    }else if(ss[i]==0){
+      linkSmaller(i);
+    }
+  }
+
+//rightDivGo
+  if (bs==1) {
+    rightDivGo();
+  }else if (bs==0) {
+    rightDivBack();
+  }
+
+  for (let i = 0; i < rightDivSAll.length; i++) {
+    if (rightDivSS[i]==1){
+      rightDivSGo(i);
+    }else if (rightDivSS[i]==0) {
+      rightDivSBack(i);
+    }
+  }
+
+  //reposition
   repositionLeftAll();
 
 
@@ -571,6 +567,7 @@ function resetSizePlan(){
     else logoDivS.style('display','block');
 
 ////minH
+    aboutOnoaix.style('width',canvasW/2+'px');
     for (let i = 0; i < minHh.length; i++) {
       minHh[i].style('font-size',28*n+'px');
     }
@@ -578,17 +575,6 @@ function resetSizePlan(){
     minSS.style('font-size',13*n+'px');
     onoBack.size(46*n,32*n);
     onoBack.style('border-top-width',6*n+'px');
-    oXMin = document.getElementById('ono').offsetLeft;
-    oYMin = document.getElementById('ono').offsetTop;
-    oXMax = document.getElementById('ono').offsetLeft*13/11;
-    oYMax = document.getElementById('ono').offsetTop;
-    if (oSt==1) {
-      oX = oXMin;
-      oY = oYMin;
-    }else if (oSt==0) {
-      oX = oXMax;
-      oY = oYMax;
-    }
     for (let i = 0; i < aboutCode.length; i++) {
       aboutCode[i].style('font-size',13*n+'px');
     }
@@ -608,29 +594,35 @@ function resetSizePlan(){
       leftLink[i].style('height',yl[i]+'px');
       icons[i].style('font-size',iconSize[i]*n+'px');
     }
+    barBackground.style('width',canvasW+'px');
+    barBackground.style('height',canvasH+'px');
 
 
 
     //resize rightAll;
     rightDivSW = windowWidth*2/5-40-40;
-    rightDivSH = 190;
+    rightDivSH = 190+rightDivSpadding*2;
     if (windowWidth<=1200) {
       rightDivS1W = rightDivSW;
       for (let i = 0; i<rightDivSAll.length; i++){
         rightDivSAll[i].style('width',rightDivSW+'px');
         rightDivSAll[i].style('height','auto');
+        rightDivSAll[i].id('rightDivSAll['+i+']');
         rightDivS1All[i].size(rightDivS1W,rightDivSH);
-        rightDivS2All[i].style('width',rightDivS1W+'px');
+        rightDivS2All[i].style('width',rightDivS1W-20+'px');
         rightDivS2All[i].style('height','auto');
-        rightDivS2All[i].style('margin','0px');
+        rightDivS2All[i].style('margin','10px 10px 0px 10px');
+        rightDivSBAll[i].size(rightDivSW,rightDivSH);
+        rightDivSBAll[i].size(rightDivSW,document.getElementById('rightDivSAll['+i+']').offsetHeight-rightDivSpadding*2);
       }
     }else{
       rightDivS1W = rightDivSW*1/2;
       for (let i = 0; i<rightDivSAll.length; i++){
         rightDivSAll[i].size(rightDivSW,rightDivSH);
-        rightDivS1All[i].size(rightDivS1W,rightDivSH);
+        rightDivS1All[i].size(rightDivS1W,rightDivSH-rightDivSpadding*2);
         rightDivS2All[i].style('margin','0px 20px 0px 20px');
-        rightDivS2All[i].size(rightDivSW-rightDivS1W-40-10*n,rightDivSH);
+        rightDivS2All[i].size(rightDivSW-rightDivS1W-40-10*n,rightDivSH-rightDivSpadding*2);
+        rightDivSBAll[i].size(rightDivSW,rightDivSH-rightDivSpadding*2);
       }
     }
     line.style('height',windowHeight*18/20+'px');
@@ -664,8 +656,20 @@ function repositionLeftAll(){
     }
   }
 
-  //reposition aboutOnoaix
+  //reposition minH
   aboutOnoaix.position(l+canvasW/2+canvasW/45,t+canvasH/2-canvasH/35);
+
+  oXMin = document.getElementById('ono').offsetLeft;
+  oYMin = document.getElementById('ono').offsetTop;
+  oXMax = document.getElementById('ono').offsetLeft*13/11;
+  oYMax = document.getElementById('ono').offsetTop;
+  if (oSt==1&os!=1) {
+    oX = oXMin;
+    oY = oYMin;
+  }else if (oSt==0&os!=0) {
+    oX = oXMax;
+    oY = oYMax;
+  }
   onoBack.position(oX,oY);
 
   QQbar.position(l+canvasW/2,t+canvasH/2);

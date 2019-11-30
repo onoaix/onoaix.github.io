@@ -1,4 +1,4 @@
-
+//change LogoDiv
 
 function Over(){
   s = 1;
@@ -92,7 +92,104 @@ function unHighLightLinkOfLogo(){
 
 
 
+// change minH
 
+function changeMinSS(){
+  ms = 1;
+}
+function BackMinSS(){
+  ms = 0;
+}
+function minSSOver(){
+  if(AlphaSS<1){
+    AlphaSS+=1/30;
+  }
+  if(AlphaSS>=1){
+    ms = 21;
+  }
+  minSS.style('background-color','rgba(255,155,0,'+AlphaSS+')');
+}
+function minSSOut(){
+  if(AlphaSS>0){
+    AlphaSS-=1/30;
+  }
+  if(AlphaSS<=0){
+    ms = 20;
+  }
+  minSS.style('background-color','rgba(255,155,0,'+AlphaSS+')');
+}
+function onoBackClicked(){
+  if (oSt == 1) {
+    os = 1;
+    canvas.style('display','none');
+    onoBack.style('border-color','red');
+  }
+  if (oSt == 0) {
+    os = 0;
+    canvas.style('display','block');
+    onoBack.style('border-color','lawngreen');
+  }
+}
+function onoBackGo(){
+  if (oX < oXMax) {
+    oX += 2;
+  }else if (oX >= oXMax) {
+    oX = oXMax;
+  }
+  if (oY < oYMax) {
+    oY += 1;
+  }else if (oY >= oYMax) {
+    oY = oYMax;
+  }
+  if (oX>=oXMax & oY>=oYMax) {
+    os = 21;
+    oSt = 0;
+  }
+  onoBack.position(oX,oY);
+}
+function onoBackBack(){
+  if (oX > oXMin) {
+    oX -= 2;
+  }else if (oX <= oXMin) {
+    ox = oXMin;
+  }
+  if (oY > oYMin) {
+    oY -= 1;
+  }else if (oY<= oYMin) {
+    oY = oYMin;
+  }
+  if (oX <= oXMin & oY <= oYMin) {
+    os = 20;
+    oSt = 1;
+  }
+  onoBack.position(oX,oY);
+}
+function HighLightLinkOfSketch(){
+  let i = aboutCode.indexOf(this);
+  //this.style('font-style','italic');
+  aboutCode[i].style('border-bottom-width',1.8+'px');
+  aboutCode[i].style('border-bottom-style','solid');
+  aboutCode[i].style('border-bottom-color','red');
+  //aboutCode[i].style('background-color','white');
+  aboutCode[i].style('color','red');
+
+  //this.style('border-color','gray');
+}
+function unHighLightLinkOfSketch(){
+  let i = aboutCode.indexOf(this);
+  //this.style('font-style','normal');
+  aboutCode[i].style('border-bottom-width',1+'px');
+  aboutCode[i].style('border-bottom-style','solid');
+  aboutCode[i].style('border-bottom-color','gray');
+  //aboutCode[i].style('background-color','transparent');
+  aboutCode[i].style('color','gray');
+}
+
+
+
+
+
+// change LeftLinks
 
 function overSS(){
   let i = leftLink.indexOf(this);
@@ -164,60 +261,6 @@ function linkSmaller(i){
   leftLink[i].style('width',xl[i]+'px');
   leftLink[i].style('height',yl[i]+'px');
 }
-
-
-
-
-function HighLightLinkOfSketch(){
-  let i = aboutCode.indexOf(this);
-  //this.style('font-style','italic');
-  aboutCode[i].style('border-bottom-width',1.8+'px');
-  aboutCode[i].style('border-bottom-style','solid');
-  aboutCode[i].style('border-bottom-color','red');
-  //aboutCode[i].style('background-color','white');
-  aboutCode[i].style('color','red');
-
-  //this.style('border-color','gray');
-}
-function unHighLightLinkOfSketch(){
-  let i = aboutCode.indexOf(this);
-  //this.style('font-style','normal');
-  aboutCode[i].style('border-bottom-width',1+'px');
-  aboutCode[i].style('border-bottom-style','solid');
-  aboutCode[i].style('border-bottom-color','gray');
-  //aboutCode[i].style('background-color','transparent');
-  aboutCode[i].style('color','gray');
-}
-
-
-
-function changeMinSS(){
-  ms = 1;
-}
-function BackMinSS(){
-  ms = 0;
-}
-
-function minSSOver(){
-  if(AlphaSS<1){
-    AlphaSS+=1/30;
-  }
-  if(AlphaSS>=1){
-    ms = 21;
-  }
-  minSS.style('background-color','rgba(255,155,0,'+AlphaSS+')');
-}
-function minSSOut(){
-  if(AlphaSS>0){
-    AlphaSS-=1/30;
-  }
-  if(AlphaSS<=0){
-    ms = 20;
-  }
-  minSS.style('background-color','rgba(255,155,0,'+AlphaSS+')');
-}
-
-
 function barBackgroundOver(){
   let i = leftLink.indexOf(this);
   if (i == 0){
@@ -241,18 +284,11 @@ function barBackgroundOut(){
 
 }
 
-function rightDivSOver(){
-  //this.style('border','solid 2px black');
-  //this.style('width',296+'px');
-  //this.style('height',196+'px');
-}
-function rightDivSOut(){
-  //this.style('border','solid 0px black');
-  //this.style('width',300+'px');
-  //this.style('height',20+'px');
 
-}
 
+
+
+//change rightDiv
 
 function rightDivOver(){
   bs = 1;
@@ -261,15 +297,15 @@ function rightDivOut(){
   bs = 0;
 }
 function rightDivGo(){
-  if(scrollbarAlpha<1){
+  if(scrollbarAlpha < 1){
     scrollbarAlpha+=0.05;
-  }else if (1<=scrollbarAlpha) {
+  }else if (1 <= scrollbarAlpha) {
     scrollbarAlpha = 1;
   }
-  if (scrollW<5) {
-    scrollW+=0.3;
-  }else if (scrollW>=5) {
-    scrollW=5;
+  if (scrollW < 5) {
+    scrollW += 0.7;
+  }else if (scrollW >= 5) {
+    scrollW = 5;
   }
   if (scrollbarAlpha>=1&scrollW>=5) {
     bs = 21;
@@ -278,15 +314,15 @@ function rightDivGo(){
   scrollbar2.style('background-color','rgba(0,0,0,'+scrollbarAlpha+')');
 }
 function rightDivBack(){
-  if(0.2<scrollbarAlpha){
+  if(0.2 < scrollbarAlpha){
     scrollbarAlpha-=0.05;
-  }else if (scrollbarAlpha<=0.2) {
+  }else if (scrollbarAlpha <= 0.2) {
     scrollbarAlpha = 0.2;
   }
-  if (scrollW>1.5) {
-    scrollW-=0.2;
-  }else if (scrollW<=1.5) {
-    scrollW=1.5;
+  if (scrollW > 1.5) {
+    scrollW -= 0.7;
+  }else if (scrollW <= 1.5) {
+    scrollW = 1.5;
   }
   if (scrollbarAlpha<=0.2&scrollW<=1.5) {
     bs = 20;
@@ -294,56 +330,35 @@ function rightDivBack(){
   scrollbar1.style('background-color','rgba(0,0,0,'+scrollbarAlpha+')');
   scrollbar2.style('background-color','rgba(0,0,0,'+scrollbarAlpha+')');
 }
-
-
-
-
-
-function onoBackClicked(){
-  if (oSt == 1) {
-    os = 1;
-    canvas.style('display','none');
-    onoBack.style('border-color','red');
-  }
-  if (oSt == 0) {
-    os = 0;
-    canvas.style('display','block');
-    onoBack.style('border-color','lawngreen');
-  }
+function rightDivSOver(){
+  let i = rightDivSAll.indexOf(this);
+  rightDivSS[i] = 1;
+  //rightDivSBAll[i].style('border','solid '+2+'px '+'black ');
+  //this.style('width',296+'px');
+  //this.style('height',196+'px');
 }
-
-
-function onoBackGo(){
-  if (oX < oXMax) {
-    oX += 2;
-  }else if (oX >= oXMax) {
-    oX = oXMax;
-  }
-  if (oY < oYMax) {
-    oY += 1;
-  }else if (oY >= oYMax) {
-    oY = oYMax;
-  }
-  if (oX>=oXMax & oY>=oYMax) {
-    os = 21;
-    oSt = 0;
-  }
-  onoBack.position(oX,oY);
+function rightDivSOut(){
+  let i = rightDivSAll.indexOf(this);
+  rightDivSS[i] = 0;
+  //rightDivSBAll[i].style('border','solid '+rightDivSBpadding[i]+'px '+'black ');
+  //this.style('width',300+'px');
+  //this.style('height',20+'px');
 }
-function onoBackBack(){
-  if (oX > oXMin) {
-    oX -= 2;
-  }else if (oX <= oXMin) {
-    ox = oXMin;
+function rightDivSGo(i){
+  if (rightDivSBpadding[i]<2) {
+    rightDivSBpadding[i] += 0.5;
+  }else if (rightDivSBpadding[i]>=2) {
+    rightDivSBpadding[i] = 2;
+    rightDivSS[i] = 21;
   }
-  if (oY > oYMin) {
-    oY -= 1;
-  }else if (oY<= oYMin) {
-    oY = oYMin;
+  rightDivSBAll[i].style('border','solid '+rightDivSBpadding[i]+'px '+'black ');
+}
+function rightDivSBack(i){
+  if (rightDivSBpadding[i]>0) {
+    rightDivSBpadding[i] -= 0.5;
+  }else if (rightDivSBpadding[i]<=0) {
+    rightDivSBpadding[i] = 0;
+    rightDivSS[i] = 20;
   }
-  if (oX <= oXMin & oY <= oYMin) {
-    os = 20;
-    oSt = 1;
-  }
-  onoBack.position(oX,oY);
+  rightDivSBAll[i].style('border','solid '+rightDivSBpadding[i]+'px '+'black ');
 }
