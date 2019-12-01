@@ -692,6 +692,7 @@ function repositionLeftAll(){
   rightDivBig.position(rightDivBigX,rightDivBigY);
 
   rl = document.getElementById('rightDivBig').scrollTop ;
+
   if (rl>30) {
     Head.position(0,rl);
     Head.style('background-color','black');
@@ -700,8 +701,8 @@ function repositionLeftAll(){
   }else{
     Head.position(0,30);
     Head.style('background-color','transparent');
-    let fontsize = 20-rl/10;
-    if (fontsize<13) fontsize = 20-50/10;
+    let fontsize = 20-rl/6;
+    if (fontsize<15) fontsize = 20-30/6;
     Head.style('font-size',fontsize+'px');
     Head.style('color','black');
   }
