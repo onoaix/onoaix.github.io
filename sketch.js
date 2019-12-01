@@ -692,15 +692,19 @@ function repositionLeftAll(){
   rightDivBig.position(rightDivBigX,rightDivBigY);
 
   rl = document.getElementById('rightDivBig').scrollTop ;
-  //if (rl>30) {
-  //  Head.position(0,rl);
-  //  Head.style('background-color','black');
-  //  Head.style('color','white');
-  //}else{
-  //  Head.position(0,30);
-  //  Head.style('background-color','transparent');
-  //  Head.style('color','black');
-  //}
+  if (rl>30) {
+    Head.position(0,rl);
+    Head.style('background-color','black');
+    Head.style('font-size','15px');    
+    Head.style('color','white');
+  }else{
+    Head.position(0,30);
+    Head.style('background-color','transparent');
+    let fontsize = 20-rl/10;
+    if (fontsize<13) fontsize = 20-50/10;
+    Head.style('font-size',fontsize+'px');
+    Head.style('color','black');
+  }
 
   scrollY = map(rl,0,rscrollh-roffseth,scrollH,windowHeight*18/20-scrollH);
   line.position(l+rightDivBigX-lineW,t+rightDivBigY);

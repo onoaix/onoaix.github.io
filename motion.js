@@ -346,7 +346,7 @@ function rightDivSOut(){
 }
 function rightDivSGo(i){
   if (rightDivSBpadding[i]<2) {
-    rightDivSBpadding[i] += 0.5;
+    rightDivSBpadding[i] += 0.4;
   }else if (rightDivSBpadding[i]>=2) {
     rightDivSBpadding[i] = 2;
     rightDivSS[i] = 21;
@@ -355,7 +355,7 @@ function rightDivSGo(i){
 }
 function rightDivSBack(i){
   if (rightDivSBpadding[i]>0) {
-    rightDivSBpadding[i] -= 0.5;
+    rightDivSBpadding[i] -= 0.4;
   }else if (rightDivSBpadding[i]<=0) {
     rightDivSBpadding[i] = 0;
     rightDivSS[i] = 20;
