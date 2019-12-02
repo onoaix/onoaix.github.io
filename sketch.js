@@ -504,7 +504,7 @@ function display(){
         }else if (s == 1 || s == 21) {
           fill(random(230,255),random(50,135),random(0,35));
         }else{
-          fill(random(255,255),random(90,95),random(0,0));
+          fill(random(255,255),random(90,90),random(0,0));
         }
         noStroke();
         rect((i-1) * w, (j-1) * w, w*3 , w*3 );
