@@ -141,7 +141,7 @@ function setup() {
 
 
   //canvas p5.js
-  w = 10;
+  w = 12;
   canvasW = windowWidth*63/100-20;
   canvasH = windowHeight;
   canvasX = l;
