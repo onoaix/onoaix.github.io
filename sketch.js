@@ -141,7 +141,7 @@ function setup() {
 
 
   //canvas p5.js
-  w = 12;
+  w = 10;
   canvasW = windowWidth*63/100-20;
   canvasH = windowHeight;
   canvasX = l;
@@ -226,7 +226,7 @@ function setup() {
   oSt = 1;
 
   aboutOnoaix.style('transform','translate(-50%,-50%)');
-  aboutOnoaix.position(l+canvasW/2+canvasW/45,t+canvasH/2-canvasH/35);
+  aboutOnoaix.position(l+canvasW/2+canvasW/45,t+canvasH/2-canvasH/25);
   aboutOnoaix.style('width',canvasW/2+'px');
 
   for (let i = 0; i < minHh.length; i++) {
@@ -402,7 +402,7 @@ function life() {
   
         if ( (0<=i & i<=1) || (columns-2<=i & i<=columns-1) || (0<=j & j<=1) || (rows-2<=j & j<=rows-1) ) {
           board[i][j] = 0;
-        }else{
+        }else if (mouseSpeed!=0) {
           let dm = dist(i*w+w/2,j*w+w/2,mouseX,mouseY);
           if(w<=dm & dm<=2*w ){
             mouseSpeed = map(mouseSpeed,0,10,0,1);
@@ -431,7 +431,7 @@ function life() {
 
     for (let i = 0; i < columns; i++) {
       for (let j = 0; j < rows; j++) {
-        if(floor(columns/9)<=i&i<=columns-(floor(columns/9)+1)&floor(rows/9)<=j&j<=rows-(floor(rows/9)+1)) {
+        if(floor(columns/5)<=i&i<=columns-(floor(columns/5)+1)&floor(rows/4)<=j&j<=rows-(floor(rows/4)+1)) {
           if (100<=SV) SV=100;
           let f = random(9000)-(SV*SV/29);
           let k = floor(f);
@@ -504,7 +504,7 @@ function display(){
         }else if (s == 1 || s == 21) {
           fill(random(230,255),random(80,135),random(0,35),random(30,45));
         }else{
-          fill(random(200,255),random(50,255),random(0,35),random(30,45));
+          fill(random(200,255),random(90,255),random(0,35),random(30,45));
         }
         noStroke();
         rect((i-1) * w, (j-1) * w, w*3 , w*3 );
@@ -666,7 +666,7 @@ function repositionLeftAll(){
   }
 
   //reposition minH
-  aboutOnoaix.position(l+canvasW/2+canvasW/45,t+canvasH/2-canvasH/35);
+  aboutOnoaix.position(l+canvasW/2+canvasW/45,t+canvasH/2-canvasH/25);
 
   oXMin = document.getElementById('ono').offsetLeft;
   oYMin = document.getElementById('ono').offsetTop;
