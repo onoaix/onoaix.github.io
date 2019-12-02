@@ -691,25 +691,24 @@ function repositionLeftAll(){
   rightDivBigY = t+windowHeight*1/20;
   rightDivBig.position(rightDivBigX,rightDivBigY);
 
+
   rl = document.getElementById('rightDivBig').scrollTop ;
-
-  if (rl>30) {
-    Head.position(0,rl);
-    Head.style('background-color','black');
-    Head.style('font-size','15px');    
-    Head.style('color','white');
-  }else{
-    Head.position(0,30);
-    Head.style('background-color','transparent');
-    let fontsize = 20-rl/6;
-    if (fontsize<15) fontsize = 20-30/6;
-    Head.style('font-size',fontsize+'px');
-    Head.style('color','black');
-  }
-
   scrollY = map(rl,0,rscrollh-roffseth,scrollH,windowHeight*18/20-scrollH);
   line.position(l+rightDivBigX-lineW,t+rightDivBigY);
   scrollbar1.size(scrollW,scrollY);
   scrollbar2.size(scrollW,windowHeight*18/20-scrollY);
+
+  let rl_ = constrain(map(rl,0,150,0,50),0,50);
+  let fontsize = 20-constrain(map(rl,0,150,0,5),0,5);
+
+  if (rl_>=20) {
+    Head.style('background-color','black');
+    Head.style('color','white');
+  }else{
+    Head.style('background-color','transparent');
+    Head.style('color','black');
+  }
+  Head.style('font-size',fontsize+'px');
+  Head.position(rightDivBigX+30-rl_,60*n);
 
 }

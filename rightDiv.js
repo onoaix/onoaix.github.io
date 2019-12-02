@@ -84,10 +84,10 @@ function createRightDivBig(){
 
 
 	Head = createDiv('＋ RECENT PLAY EVENT &nbsp');
-	Head.parent(rightDivBig);
+	//Head.parent(rightDivBig);
 	Head.style('position','absolute');
 	Head.style('z-index','1');
-	Head.position(0,rl+30);
+	Head.position(rightDivBigX+20,60);
 	Head.style('padding','2px 0px 2px 0px');
 	Head.style('border-radius','0px');
 	Head.style('font-size',20+'px');
