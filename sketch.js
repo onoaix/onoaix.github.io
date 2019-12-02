@@ -495,16 +495,16 @@ function generate() {
 
 
 function display(){
-  background(255,255,255,20);
+  background(255,255,255);
   for (let i = 2; i < columns-2; i++) {
     for (let j = 2; j < rows-2; j++) {
       if (board[i][j] == 1){
         if (bs == 1 || bs == 21) {
-          fill(random(230,255),random(230,255),random(0,95),random(30,45));
+          fill(random(230,255),random(230,255),random(0,95));
         }else if (s == 1 || s == 21) {
-          fill(random(230,255),random(80,135),random(0,35),random(30,45));
+          fill(random(230,255),random(50,135),random(0,35));
         }else{
-          fill(random(200,255),random(90,255),random(0,35),random(30,45));
+          fill(random(255,255),random(90,95),random(0,0));
         }
         noStroke();
         rect((i-1) * w, (j-1) * w, w*3 , w*3 );
@@ -701,7 +701,7 @@ function repositionLeftAll(){
   let rl_ = constrain(map(rl,0,150,0,50),0,50);
   let fontsize = 20-constrain(map(rl,0,150,0,5),0,5);
 
-  if (rl_>=20) {
+  if (rl_>=20*n) {
     Head.style('background-color','black');
     Head.style('color','white');
   }else{
