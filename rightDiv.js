@@ -78,8 +78,8 @@ function createRightDivBig(){
 	rightDivBig.style('margin-right',20+'px');
 	rightDivBig.position(rightDivBigX,rightDivBigY);
 	rightDivBig.size(rightDivBigW,rightDivBigH);
-	rightDivBig.mouseOver(rightDivOver);
-	rightDivBig.mouseOut(rightDivOut);
+	// rightDivBig.mouseOver(rightDivOver);
+	// rightDivBig.mouseOut(rightDivOut);
 	rightDivBig.attribute('align', 'left');
 
 
@@ -98,6 +98,7 @@ function createRightDivBig(){
 	Head.style('font-size',20+'px');
 	Head.style('font-family','Microsoft YaHei');
 	Head.style('font-weight','bold');
+	//Head.mouseClicked(homePageRightClicked);
 	//Head.style('color','black');
 
 	let headSpace = createDiv('');

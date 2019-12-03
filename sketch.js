@@ -16,6 +16,16 @@
  let homePageRightX;
  let homePageRightY;
 
+ let homePageRightXv;
+ let homePageRightXa;
+
+//rightbutton
+let rightbutton;
+let rightbuttonStatus;
+
+
+
+
 //2Dbarcode
 let QQbar;
 let Wecheatbar;
@@ -75,7 +85,7 @@ let oXMax;
 let oYMax;
 let oX;
 let oY;
-//about Sketch Link
+//about Code Links
 let aboutCode;
 
 
@@ -98,6 +108,10 @@ let maxYl;
 let vxl;
 let vyl;
 let Alpha;
+
+
+
+
 
 
 function preload(){}
@@ -153,12 +167,18 @@ function setup() {
   homePageLeft.position(homePageLeftX,homePageLeftY);
 
   homePageRight = select('#homePageRight');
+  homePageRight.mouseOver(rightDivOver);
+  homePageRight.mouseOut(rightDivOut);
   homePageRightW = windowWidth*38/100 ;
   homePageRightH = windowHeight ;
   homePageRight.size(homePageRightW,homePageRightH);
   homePageRightX = l+windowWidth*62/100;
   homePageRightY = t;
   homePageRight.position(homePageRightX,homePageRightY);
+
+  homePageRightXa = 0;
+  homePageRightXv = sin(homePageRightXa)*30*n;
+
 
 
 
@@ -325,6 +345,24 @@ function setup() {
     aboutCode[i].mouseOut(unHighLightLinkOfSketch);
   }
 
+  //rightbutton
+  rightbutton = createDiv('>');
+  rightbuttonStatus = 21;
+  rightbutton.style('z-index','2');  
+  rightbutton.style('cursor','pointer');
+  rightbutton.style('background-color','black');
+  rightbutton.style('color','white');  
+  rightbutton.style('font-size','26px');  
+  rightbutton.style('font-weight','bold');  
+  rightbutton.size(30,30);
+  rightbutton.position(windowWidth-50,windowHeight/2);
+  rightbutton.mouseOver(rightDivOver);
+  rightbutton.mouseOut(rightDivOut);
+  rightbutton.mouseClicked(homePageRightClicked);
+
+
+
+
   body.show();
 
   resetSizePlan();
@@ -365,6 +403,13 @@ function draw() {
       linkSmaller(i);
     }
   }
+
+
+
+
+
+//homePageRightGo
+  homePageRightGo();
 
 //rightDivGo
   if (bs==1) {
@@ -563,6 +608,14 @@ function resetSizePlan(){
   homePageRightH = windowHeight ;
   homePageRight.size(homePageRightW,homePageRightH);
 
+  //resize rightbuttonStatus
+  if (rightbuttonStatus == 21) {
+    homePageRightX = l+windowWidth*62/100;
+  }else if (rightbuttonStatus == 20) {
+    homePageRightX = l+windowWidth;
+  }
+
+
   //resize canves
   canvasW = homePageLeftW;
   canvasH = homePageLeftH;
@@ -674,6 +727,9 @@ function resetSizePlan(){
     rscrollh = document.getElementById('rightDivBig').scrollHeight ;
     roffseth = document.getElementById('rightDivBig').offsetHeight ;
 
+
+
+
   
 }
 
@@ -681,7 +737,7 @@ function resetSizePlan(){
 function repositionLeftAll(){
 
   //reposition homePageDiv(left&right)
-  homePageRightX = l+windowWidth*62/100;
+  //homePageRightX = l+windowWidth*62/100;
   homePageRightY = t;
   homePageRight.position(homePageRightX,homePageRightY);
   homePageLeftX = l;
@@ -755,5 +811,9 @@ function repositionLeftAll(){
   }
   Head.style('font-size',fontsize+'px');
   Head.position(20*2-rl_,60*n);
+
+
+  //reposition rightbutton
+  rightbutton.position(windowWidth-50,windowHeight/2);
 
 }

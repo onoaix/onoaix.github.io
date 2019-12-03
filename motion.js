@@ -287,6 +287,66 @@ function barBackgroundOut(){
 
 
 
+
+//homePageRight
+
+function homePageRightClicked(){
+  if (rightbuttonStatus == 21) {
+    rightbuttonStatus = 0;
+    rightbutton.html('<');
+  }else if (rightbuttonStatus ==20) {
+    rightbuttonStatus = 1;
+    rightbutton.html('>');
+  }
+}
+
+function homePageRightGo(){
+  if (rightbuttonStatus == 0) {
+    if (homePageRightX < l+windowWidth) {
+      homePageRightXv = sin(homePageRightXa)*30*n;
+      homePageRightX += homePageRightXv;
+      homePageRightXa += 0.1*n;
+      if (homePageRightX >= l+windowWidth) homePageRightX = l+windowWidth;
+      if (homePageRightXa >= PI) homePageRightXa = PI;
+    }if (homePageRightX == l+windowWidth) {
+      homePageRightX = l+windowWidth;
+      rightbuttonStatus = 20;
+      homePageRightXa = 0;
+      homePageRightXv = 0;
+    }
+  }
+  if (rightbuttonStatus == 1) {
+    if (homePageRightX > l+windowWidth*62/100) {
+      homePageRightXv = sin(homePageRightXa)*30*n;
+      homePageRightX -= homePageRightXv;
+      homePageRightXa += 0.1*n;
+      if (homePageRightX <= l+windowWidth*62/100) homePageRightX = l+windowWidth*62/100;
+      if (homePageRightXa >= PI) homePageRightXa = PI;
+    }else if (homePageRightX == l+windowWidth*62/100) {
+      homePageRightX =  l+windowWidth*62/100;
+      rightbuttonStatus = 21;
+      homePageRightXa = 0;
+      homePageRightXv = 0;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //change rightDiv
 
 function rightDivOver(){
