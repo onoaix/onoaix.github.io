@@ -37,7 +37,7 @@ function logoBigger(){
     ly = maxY;
     logoY = logoYmax;
     logoX = logoXmax;
-    s=21;
+    s = 21;
   }
   logodiv.style('width',lx+'px');
   logodiv.style('height',ly+'px');
@@ -64,7 +64,7 @@ function logoSmaller(){
     ly = minY;
     logoX = logoXmin;
     logoY = logoYmin;
-    s=20;
+    s = 20;
   }
   logodiv.style('width',lx+'px');
   logodiv.style('height',ly+'px');

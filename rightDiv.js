@@ -6,6 +6,7 @@ let bs;
 let scrollY;
 let scrollH;
 let scrollW;
+let scrollWmax;
 let scrollbarAlpha;
 
 let rightDivBig;
@@ -44,9 +45,12 @@ function createScrollbar(){
   scrollbar2 = select('#scrollbar2');
   scrollH = 10;
   scrollW = 2;
+  scrollWmax = 4;
   scrollY = map(rl,0,rscrollh-roffseth,scrollH,windowHeight*18/20-scrollH);
   scrollbar1.size(scrollW,scrollY);
   scrollbar2.size(scrollW,windowHeight*18/20-scrollH-scrollY);
+  scrollbar1.style('left',scrollWmax+'px');
+  scrollbar2.style('left',scrollWmax+'px');  
   scrollbar1.style('background-color','rgba(0,0,0,'+scrollbarAlpha+')');
   scrollbar2.style('background-color','rgba(0,0,0,'+scrollbarAlpha+')');
   
@@ -93,7 +97,7 @@ function createRightDivBig(){
 	Head.style('font-size',20+'px');
 	Head.style('font-family','Microsoft YaHei');
 	Head.style('font-weight','bold');
-	Head.style('color','black');
+	//Head.style('color','black');
 
 	let headSpace = createDiv('');
 	headSpace.parent(rightDivBig);

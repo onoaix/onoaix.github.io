@@ -398,8 +398,6 @@ function life() {
     let mouseSpeed = floor((abs(mouseX-pmouseX)+abs(mouseY-pmouseY))/2);
     for (let i = 0; i < columns; i++) {
       for (let j = 0; j < rows; j++) {
-  
-  
         if ( (0<=i & i<=1) || (columns-2<=i & i<=columns-1) || (0<=j & j<=1) || (rows-2<=j & j<=rows-1) ) {
           board[i][j] = 0;
         }else if (mouseSpeed!=0) {
@@ -423,16 +421,16 @@ function life() {
       }      
     }
   }
-  if (bs!=0&bs!=20) {
+  if (bs!=0 & bs!=20) {
 
     newSP = document.getElementById('rightDivBig').scrollTop;
     let SV = abs(newSP-oldSP);
+    if (100<=SV) SV=100;
     oldSP = document.getElementById('rightDivBig').scrollTop;
 
     for (let i = 0; i < columns; i++) {
       for (let j = 0; j < rows; j++) {
-        if(floor(columns/5)<=i&i<=columns-(floor(columns/5)+1)&floor(rows/4)<=j&j<=rows-(floor(rows/4)+1)) {
-          if (100<=SV) SV=100;
+        if(floor(columns/6)<=i&i<=columns-1-(floor(columns/6))&floor(rows/5)-3<=j&j<=rows-1-(floor(rows/5))-3) {
           let f = random(9000)-(SV*SV/29);
           let k = floor(f);
           if (k <= 0 ) {
@@ -504,17 +502,18 @@ function display(){
         }else if (s == 1 || s == 21) {
           fill(random(230,255),random(50,135),random(0,35));
         }else{
-          fill(random(255,255),random(90,90),random(0,0));
+          fill(random(254,255),90,0);
         }
+        //fill(255,0,0);
         noStroke();
         rect((i-1) * w, (j-1) * w, w*3 , w*3 );
       }
     }
   }
-  // noFill();
-  // strokeWeight(1);
-  // stroke(0);
-  // rect(0,0,canvasW,canvasH);
+   //noFill();
+   //strokeWeight(1);
+   //stroke(0);
+   //rect(0,0,canvasW,canvasH);
 }
 
 
@@ -611,6 +610,7 @@ function resetSizePlan(){
 
     rightDivSW = rightDivBigW;
     rightDivSH = 190+rightDivSpadding*2;
+    //right DivS
     if (windowWidth<=1350) {
       rightDivS1W = rightDivSW;
       for (let i = 0; i<rightDivSAll.length; i++){
@@ -698,10 +698,10 @@ function repositionLeftAll(){
   scrollbar1.size(scrollW,scrollY);
   scrollbar2.size(scrollW,windowHeight*18/20-scrollY);
 
-  let rl_ = constrain(map(rl,0,150,0,50),0,50);
+  let rl_ = constrain(map(rl,0,150,0,40-scrollWmax),0,40-scrollWmax);
   let fontsize = 20-constrain(map(rl,0,150,0,5),0,5);
 
-  if (rl_>=20*n) {
+  if (rl_>=18*n) {
     Head.style('background-color','black');
     Head.style('color','white');
   }else{
@@ -709,6 +709,6 @@ function repositionLeftAll(){
     Head.style('color','black');
   }
   Head.style('font-size',fontsize+'px');
-  Head.position(rightDivBigX+30-rl_,60*n);
+  Head.position(rightDivBigX+20-rl_,60*n);
 
 }
