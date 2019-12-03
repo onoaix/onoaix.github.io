@@ -4,7 +4,17 @@
  let nw;
  let nl;
  let body;
+ let homePageLeft;
+ let homePageLeftW;
+ let homePageLeftH;
+ let homePageLeftX;
+ let homePageLeftY;
 
+ let homePageRight;
+ let homePageRightW;
+ let homePageRightH;
+ let homePageRightX;
+ let homePageRightY;
 
 //2Dbarcode
 let QQbar;
@@ -106,12 +116,6 @@ function windowResized(){
   if (nl>=1) nl=1;
   else if (nl<=3/4) nl=3/4;
 
-  //resize canves
-  canvasW = windowWidth*63/100-20;
-  canvasH = windowHeight;
-  canvas.resize(canvasW,canvasH);
-  init();
-
   //resizePlan
   resetSizePlan();
 
@@ -139,16 +143,34 @@ function setup() {
 
 //▲  Set parameter
 
+  //homePageLeft;
+  homePageLeft = select('#homePageLeft');
+  homePageLeftW = windowWidth*62/100;
+  homePageLeftH = windowHeight;
+  homePageLeft.size(homePageLeftW,homePageLeftH);
+  homePageLeftX = l;
+  homePageLeftY = t;
+  homePageLeft.position(homePageLeftX,homePageLeftY);
+
+  homePageRight = select('#homePageRight');
+  homePageRightW = windowWidth*38/100 ;
+  homePageRightH = windowHeight ;
+  homePageRight.size(homePageRightW,homePageRightH);
+  homePageRightX = l+windowWidth*62/100;
+  homePageRightY = t;
+  homePageRight.position(homePageRightX,homePageRightY);
+
+
 
   //canvas p5.js
   w = 12;
-  canvasW = windowWidth*63/100-20;
-  canvasH = windowHeight;
-  canvasX = l;
-  canvasY = t;
+  canvasW = homePageLeftW;
+  canvasH = homePageLeftH;
+  canvasX = homePageLeftW;
+  canvasY = homePageLeftY;
   canvas = createCanvas(canvasW,canvasH);
   canvas.style('z-index',-1);
-  canvas.style('display','block');
+  canvas.show();
   canvas.position(canvasX,canvasY);
   init();
 
@@ -203,7 +225,7 @@ function setup() {
   for(let i=0;i<logoLink.length;i++){
     logoLink[i].mouseOver(HighLightLinkOfLogo);
     logoLink[i].mouseOut(unHighLightLinkOfLogo);
-    logoLink[i].style('display','none');
+    logoLink[i].hide();
     logoLink[i].style('font-size',15*n+'px');
     if (i==1||i==2) logoLink[i].position(15,(220+(i+1)*25)*nl);
     else if (i==3||i==4||i==5) logoLink[i].position(15,(220+(i+2)*25)*nl);
@@ -226,8 +248,8 @@ function setup() {
   oSt = 1;
 
   aboutOnoaix.style('transform','translate(-50%,-50%)');
-  aboutOnoaix.position(l+canvasW/2+canvasW/45,t+canvasH/2-canvasH/25);
-  aboutOnoaix.style('width',canvasW/2+'px');
+  aboutOnoaix.position(homePageLeftW/2+homePageLeftW/45,t+homePageLeftH/2-homePageLeftH/25);
+  aboutOnoaix.style('width',homePageLeftW/2+'px');
 
   for (let i = 0; i < minHh.length; i++) {
     minHh[i].style('font-size',28*n+'px');
@@ -279,16 +301,16 @@ function setup() {
       leftLink[i].mouseClicked(barBackgroundOver);
     }
     icons[i].style('font-size',iconSize[i]*n+'px');
-    icons[i].style('display','none');
+    icons[i].hide();
   }
   barBackground.style('width',canvasW+'px');
   barBackground.style('height',canvasH+'px');
-  barBackground.style('display','none');
-  QQbar.style('display','none');
-  Wecheatbar.style('display','none');
+  barBackground.hide();
+  QQbar.hide();
+  Wecheatbar.hide();
   QQbar.position(l+canvasW/2,t+canvasH/2);
   Wecheatbar.position(l+canvasW/2,t+canvasH/2);
-  X.style('display','none');
+  X.hide();
   X.mouseClicked(barBackgroundOut);
   X.position(l+canvasW/2+100,t+canvasH/2-109);
 
@@ -303,7 +325,7 @@ function setup() {
     aboutCode[i].mouseOut(unHighLightLinkOfSketch);
   }
 
-  body.style('display','block');
+  body.show();
 
   resetSizePlan();
   repositionLeftAll();
@@ -532,6 +554,21 @@ function make2dArray(tempx,tempy){
 
 function resetSizePlan(){
 
+  //resize homePageDiv(left&right);
+  homePageLeftW = windowWidth*62/100;
+  homePageLeftH = windowHeight
+  homePageLeft.size(homePageLeftW,homePageLeftH);
+
+  homePageRightW = windowWidth*38/100;
+  homePageRightH = windowHeight ;
+  homePageRight.size(homePageRightW,homePageRightH);
+
+  //resize canves
+  canvasW = homePageLeftW;
+  canvasH = homePageLeftH;
+  canvas.resize(canvasW,canvasH);
+  init();
+
 ////logoDIV
     minX = 170*n+(1-n)*60;
     minY = 120*n;
@@ -565,11 +602,11 @@ function resetSizePlan(){
     logoDivS.style('font-size',13*n+'px');
     logoDivS.style('width',140*n+'px');
     logoDivS.position(20,520*nl);
-    if (windowHeight<=520)   logoDivS.style('display','none');
-    else logoDivS.style('display','block');
+    if (windowHeight<=520)   logoDivS.hide();
+    else logoDivS.show();
 
 ////minH
-    aboutOnoaix.style('width',canvasW/2+'px');
+    aboutOnoaix.style('width',homePageLeftW/2+'px');
     for (let i = 0; i < minHh.length; i++) {
       minHh[i].style('font-size',28*n+'px');
     }
@@ -603,8 +640,8 @@ function resetSizePlan(){
 
     //resize rightAll;
 
-    rightDivBigW = windowWidth*37/100-20*3 ;
-    rightDivBigH = windowHeight*18/20 ;
+    rightDivBigW = homePageRightW-20*4;
+    rightDivBigH = windowHeight*18/20;
     rightDivBig.size(rightDivBigW,rightDivBigH);
     line.size(lineW,rightDivBigH);
 
@@ -643,10 +680,18 @@ function resetSizePlan(){
 
 function repositionLeftAll(){
 
+  //reposition homePageDiv(left&right)
+  homePageRightX = l+windowWidth*62/100;
+  homePageRightY = t;
+  homePageRight.position(homePageRightX,homePageRightY);
+  homePageLeftX = l;
+  homePageLeftY = t;
+  homePageLeft.position(homePageLeftX,homePageLeftY);
+
 
   //reposition canvas
-  canvasX = l;
-  canvasY = t;
+  canvasX = homePageLeftX;
+  canvasY = homePageLeftY;
   canvas.position(canvasX,canvasY);
 
 
@@ -666,7 +711,7 @@ function repositionLeftAll(){
   }
 
   //reposition minH
-  aboutOnoaix.position(l+canvasW/2+canvasW/45,t+canvasH/2-canvasH/25);
+  aboutOnoaix.position(homePageLeftW/2+homePageLeftW/45,t+homePageLeftH/2-homePageLeftH/25);
 
   oXMin = document.getElementById('ono').offsetLeft;
   oYMin = document.getElementById('ono').offsetTop;
@@ -689,12 +734,12 @@ function repositionLeftAll(){
   //reposition rightAll
   rightDivBigX = l+windowWidth*63/100;
   rightDivBigY = t+windowHeight*1/20;
-  rightDivBig.position(rightDivBigX,rightDivBigY);
+  rightDivBig.position(lineW,rightDivBigY);
 
 
   rl = document.getElementById('rightDivBig').scrollTop ;
   scrollY = map(rl,0,rscrollh-roffseth,scrollH,windowHeight*18/20-scrollH);
-  line.position(l+rightDivBigX-lineW,t+rightDivBigY);
+  line.position(0,windowHeight*1/20);
   scrollbar1.size(scrollW,scrollY);
   scrollbar2.size(scrollW,windowHeight*18/20-scrollY);
 
@@ -709,6 +754,6 @@ function repositionLeftAll(){
     Head.style('color','black');
   }
   Head.style('font-size',fontsize+'px');
-  Head.position(rightDivBigX+20-rl_,60*n);
+  Head.position(20*2-rl_,60*n);
 
 }

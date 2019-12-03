@@ -64,6 +64,7 @@ function createRightDivBig(){
 
 
 	rightDivBig = createDiv('');
+	rightDivBig.parent(homePageRight);
   	rightDivBigX = l+windowWidth*63/100;
 	rightDivBigY = t+windowHeight*1/20;
     rightDivBigW = windowWidth*37/100-20*3 ;
@@ -88,10 +89,10 @@ function createRightDivBig(){
 
 
 	Head = createDiv('＋ RECENT PLAY EVENT &nbsp');
-	//Head.parent(rightDivBig);
+	Head.parent(homePageRight);
 	Head.style('position','absolute');
 	Head.style('z-index','1');
-	Head.position(rightDivBigX+20,60);
+	Head.position(20*2,60);
 	Head.style('padding','3px 0px 3px 0px');
 	Head.style('border-radius','0px');
 	Head.style('font-size',20+'px');

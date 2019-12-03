@@ -4,7 +4,7 @@ function Over(){
   s = 1;
   this.style('padding-bottom',30+'px');
   for (let i = 0; i < logoLink.length; i++) {
-    logoLink[i].style('display','block');
+    logoLink[i].show();
   }
   //this.style('border',2+'px'+' solid'+ ' orangered');
 }
@@ -13,7 +13,7 @@ function Out(){
   s = 0;
   this.style('padding',0+'px');
   for (let i = 0; i < logoLink.length; i++) {
-    logoLink[i].style('display','none');
+    logoLink[i].hide();
   }
   //this.style('border','none');
 }
@@ -121,12 +121,12 @@ function minSSOut(){
 function onoBackClicked(){
   if (oSt == 1) {
     os = 1;
-    canvas.style('display','none');
+    canvas.hide();
     onoBack.style('border-color','red');
   }
   if (oSt == 0) {
     os = 0;
-    canvas.style('display','block');
+    canvas.show();
     onoBack.style('border-color','lawngreen');
   }
 }
@@ -196,7 +196,7 @@ function overSS(){
   ss[i] = 1;
   this.style('z-index','2');
   this.style('padding',minXl/4+'px');
-  icons[i].style('display','block');
+  icons[i].show();
   icons[i].style('color','white');
   //this.style('border',2+'px'+' solid'+ ' orangered');
 }
@@ -206,7 +206,7 @@ function outSS(){
   ss[i] = 0;
   this.style('z-index','1');
   this.style('padding',0+'px');
-  icons[i].style('display','none');
+  icons[i].hide();
   //this.style('border','none');
 }
 
@@ -265,23 +265,22 @@ function barBackgroundOver(){
   let i = leftLink.indexOf(this);
   if (i == 0){
     barBackground.style('background-color','rgba(0,90,255,0.8)');
-    Wecheatbar.style('display','none');
-    QQbar.style('display','block');
+    Wecheatbar.hide();
+    QQbar.show();
   }
   if (i == 1){
     barBackground.style('background-color','rgba(125,255,0,0.8)');
-    QQbar.style('display','none');
-    Wecheatbar.style('display','block');
+    QQbar.hide();
+    Wecheatbar.show();
   }
-  barBackground.style('display','block');
-  X.style('display','block');
+  barBackground.show();
+  X.show();
 }
 function barBackgroundOut(){
-  barBackground.style('display','none');
-  X.style('display','none');
-  QQbar.style('display','none');
-  Wecheatbar.style('display','none');
-
+  barBackground.hide();
+  X.hide();
+  QQbar.hide();
+  Wecheatbar.hide();
 }
 
 
