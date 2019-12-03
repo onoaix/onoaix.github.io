@@ -102,7 +102,7 @@ function BackMinSS(){
 }
 function minSSOver(){
   if(AlphaSS<1){
-    AlphaSS+=1/30;
+    AlphaSS+=1/10;
   }
   if(AlphaSS>=1){
     ms = 21;
@@ -111,7 +111,7 @@ function minSSOver(){
 }
 function minSSOut(){
   if(AlphaSS>0){
-    AlphaSS-=1/30;
+    AlphaSS-=1/10;
   }
   if(AlphaSS<=0){
     ms = 20;

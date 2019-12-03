@@ -654,7 +654,7 @@ function resetSizePlan(){
         rightDivSAll[i].style('width',rightDivSW+'px');
         rightDivSAll[i].style('height','auto');
         rightDivSAll[i].id('rightDivSAll['+i+']');
-        rightDivS1All[i].size(rightDivS1W,rightDivSH);
+        rightDivS1All[i].size(rightDivS1W,rightDivSH-rightDivSpadding*2);
         rightDivS2All[i].style('width',rightDivS1W-20+'px');
         rightDivS2All[i].style('height','auto');
         rightDivS2All[i].style('margin','10px 10px 0px 10px');
