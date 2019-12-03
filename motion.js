@@ -294,9 +294,11 @@ function homePageRightClicked(){
   if (rightbuttonStatus == 21) {
     rightbuttonStatus = 0;
     rightbutton.html('<');
+    homePageRight.style('pointer-events','none');
   }else if (rightbuttonStatus ==20) {
     rightbuttonStatus = 1;
     rightbutton.html('>');
+    homePageRight.style('pointer-events','none');
   }
 }
 
@@ -311,6 +313,7 @@ function homePageRightGo(){
     }if (homePageRightX == l+windowWidth) {
       homePageRightX = l+windowWidth;
       rightbuttonStatus = 20;
+      homePageRight.style('pointer-events','auto');
       homePageRightXa = 0;
       homePageRightXv = 0;
     }
@@ -325,6 +328,7 @@ function homePageRightGo(){
     }else if (homePageRightX == l+windowWidth*62/100) {
       homePageRightX =  l+windowWidth*62/100;
       rightbuttonStatus = 21;
+      homePageRight.style('pointer-events','auto');
       homePageRightXa = 0;
       homePageRightXv = 0;
     }

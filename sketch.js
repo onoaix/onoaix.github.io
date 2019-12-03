@@ -353,7 +353,7 @@ function setup() {
   rightbutton.style('background-color','black');
   rightbutton.style('color','white');  
   rightbutton.style('font-size','26px');  
-  rightbutton.style('font-weight','bold');  
+  rightbutton.style('font-weight','normal');
   rightbutton.size(30,30);
   rightbutton.position(windowWidth-50,windowHeight/2);
   rightbutton.mouseOver(rightDivOver);
