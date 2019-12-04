@@ -93,7 +93,7 @@ function createRightDivBig(){
 	Head.style('position','absolute');
 	Head.style('z-index','1');
 	Head.position(20*2,60);
-	Head.style('padding','3px 0px 3px 0px');
+	Head.style('padding','2px 0px 2px 0px');
 	Head.style('border-radius','0px');
 	Head.style('font-size',20+'px');
 	Head.style('font-family','Microsoft YaHei');

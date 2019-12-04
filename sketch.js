@@ -799,18 +799,22 @@ function repositionLeftAll(){
   scrollbar1.size(scrollW,scrollY);
   scrollbar2.size(scrollW,windowHeight*18/20-scrollY);
 
-  let rl_ = constrain(map(rl,0,150,0,40-scrollWmax),0,40-scrollWmax);
+  let rl_ = constrain(map(rl,0,150,0,60 - rightDivBigY ),0,60 - rightDivBigY);
   let fontsize = 20-constrain(map(rl,0,150,0,5),0,5);
 
-  if (rl_>=18*n) {
+  if (fontsize<=17) {
     Head.style('background-color','black');
     Head.style('color','white');
+    Head.style('font-weight','normal');
+    //Head.style('border','solid 1px black');
   }else{
     Head.style('background-color','transparent');
+    Head.style('font-weight','bold');
     Head.style('color','black');
+    //Head.style('border','none');
   }
   Head.style('font-size',fontsize+'px');
-  Head.position(20*2-rl_,60*n);
+  Head.position(20*2,60-rl_);
 
 
   //reposition rightbutton
