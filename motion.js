@@ -453,10 +453,6 @@ function rightDivSBack(i){
   rightDivSBAll[i].style('border','solid '+rightDivSBpadding[i]+'px '+'black ');
 }
 
-function rightDivSClicked(){
-
-}
-
 
 
 function rightbuttonOver(){
@@ -476,6 +472,17 @@ function protfolioOver(){
 }
 function protfolioOut(){
   this.style('border','solid 1px silver');
+}
+
+function protfolioClicked(){
+  let i = protfolioUrl.indexOf(this);
+  if (i == 0 ) {
+    window.open('https://70e0c93d-30db-4357-aec0-0376f3cdc3cc.filesusr.com/ugd/22c7d0_fa876baa819b400291e1df8b4841a9f1.pdf');
+  }else if (i == 1) {
+    window.open('https://70e0c93d-30db-4357-aec0-0376f3cdc3cc.filesusr.com/ugd/22c7d0_6dc259eb86ab44e497ac8ff07daa0d51.pdf');
+  }else if (i == 2) {
+    window.open('https://70e0c93d-30db-4357-aec0-0376f3cdc3cc.filesusr.com/ugd/22c7d0_41a08c0873fd4b73b7eb4c8556f05668.pdf');
+  }
 }
 
 
@@ -498,15 +505,28 @@ function changeToRightDivBig(){
   }
 }
 
-function changeToProtfolio(){
-  rightbuttonStatus = 0;
-  rightbuttonBack = 1;
-  for (let j = 0; j < rightDivBigs.length; j++) {
-    pageStatus[j] = 0;
+
+function rightDivSClicked(){
+  let i = rightDivS1All.indexOf(this);
+  if (i==0) {
+    rightbuttonStatus = 0;
+    rightbuttonBack = 1;
+    for (let j = 0; j < rightDivBigs.length; j++) {
+      pageStatus[j] = 0;
+    }
+    for (let h = 0; h < logoLink.length; h++) {
+      logoLink[h].style('border','none');
+    }
+    pageStatus[2] = 1;
+    logoLink[2].style('border-bottom','solid 2px white');
+  }else if (i==1) {
+    window.open('https://github.com/onoaix/Flow-FIeld-Following','_self');
+  }else if (i==2) {
+    window.open('https://shengtanggongzhu.wixsite.com/website/single-post/2019/08/16/ZOKEI%E5%B1%95%E3%81%AE%E3%81%9F%E3%82%81%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%81%97%E3%81%9F%E3%83%9D%E3%82%B9%E3%82%BF%E3%83%BC','_self');
+  }else if (i==3) {
+    window.open('https://shengtanggongzhu.wixsite.com/website/single-post/2019/08/26/%E3%80%8CINFLUENCE%E3%80%8D','_self');
+  }else if (i==4){
+    window.open('https://shengtanggongzhu.wixsite.com/website/single-post/2016/05/03/Modern-minimalism-one-artists-journey','_self');
   }
-  for (let h = 0; h < logoLink.length; h++) {
-    logoLink[h].style('border','none');
-  }
-  pageStatus[2] = 1;
-  logoLink[2].style('border-bottom','solid 2px white');
+
 }

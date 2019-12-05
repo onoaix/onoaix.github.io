@@ -139,11 +139,16 @@ function createRightDivBig(){
 
 function RECENT_PLAY(){
 	createRightDiv('↑ PROTFOLIO','22222.png','#May 19/2019<br><br>It’s just a PROTFOLIO');
-	rightDivS1All[0].mouseClicked(changeToProtfolio);
+	//rightDivS1All[0].mouseClicked(changeToProtfolio);
 	createRightDiv('Flow-FIeld-Following','Flow_Field_Following.png','#December 1/2019<br><br>I’v tried to make the flow field following steering behavior with p5.js.');
 	createRightDiv('BE BORN','zokei_h.png','#November 26/2019<br><br>The contribution of 「ZOKEI EXHIBITION」 poster.“ZO”というのは、創造、または物を形にする前の変化の過程の意味があり、反復、そしてゼロから“一”になる概念もある。私が“うみ出す”の意味を“ZO”の概念を隠喩して、ポスターを作った。同じ形を反復に利用し、“ZO”の形を組み合わした。右横から見ると、卵とこともの成体がもうすぐ卒業する学生たちがこれから社会に踏み込み、新しい人生を始める意味もある。上下二つに分け、要素が各部分にあり、断続感を作り出す。真ん中に“ZOKEI展”の印鑑がもうすぐ卒業する学生たちのこれまでの成果を認めることを暗示する。');
 	createRightDiv('INFLUENCE DESIGN','influence_design.png','#January 28/2019<br><br>❀2019年度東京造形大学ノミネート賞受賞<br>❀CGDA Visual Communication Design Award 2019 - Silver Award 受賞<br>ビジュアルディスプレィを介してユーザーがコンテンツの操作をする時の行為が期待通りの結果に向かっているか、間違った結果に向かっているかを、その結果に到達する前に直観できるようにアフォードするUIデザイン（マイクロインタラクション）の制作研究である。');
 	createRightDiv('BOUNDLESS','boudless_h.png','#November 9/2017<br><br>❀UVインクジェット、ジェット、ジェット　ノミネート賞受賞<br>私達が常に「完璧」に達さなければならないという感情に満ちたときもありますが、しかし「不完璧」ということに向けて、その完璧を打ち破るインパクトはある「完璧」ではないでしょうか。３D技術で作られた動物形のモデルがそれぞれ絡まって、ある身体の部分が変形して、お互いに突き破ている。あるパーワで身体の中から体を切って、結んでいる様子はその感覚のインパクトを演出している。');
+
+
+	for (let i = 0; i < rightDivSAll.length; i++) {
+		rightDivSAll[i].id('rightDivSAll['+i+']');
+	}
 }
 
 function createRightDiv(rightDivS_h,rightDivS_img_scr,temp_content){
@@ -163,7 +168,6 @@ function createRightDiv(rightDivS_h,rightDivS_img_scr,temp_content){
 	//rightDivS.style('background-color','black');
 	rightDivS.mouseOver(rightDivSOver);
 	rightDivS.mouseOut(rightDivSOut);
-	rightDivS.mouseClicked(rightDivSClicked);
 
 	let rightDivSB = createDiv('');
 	rightDivSB.parent(rightDivS);
@@ -189,6 +193,7 @@ function createRightDiv(rightDivS_h,rightDivS_img_scr,temp_content){
 	rightDivS1.style('background-position','center center');
 	rightDivS1.style('background-repeat','no-repeat');
 	rightDivS1.style('background-size','cover');
+	rightDivS1.mouseClicked(rightDivSClicked);
 
 	let rightDivS2 = createDiv('');
 	rightDivS2.parent(rightDivS);

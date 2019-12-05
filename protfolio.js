@@ -2,12 +2,14 @@ let protfolioDiv;
 let protfolioImg;
 let InfluenceImg;
 let InfluenceHopeImg;
+let protfolioUrl;
 
 
 
 function createProtfolio(){
 
 	//homePageRight.style('background-color','gold');
+	protfolioUrl = [];
 
 	//createProtfolioDivBig
 	protfolioDiv = createDiv('');
@@ -42,21 +44,22 @@ function createProtfolio(){
 	protfolioImg.style('background-repeat','no-repeat');
 	protfolioImg.style('background-size','cover');
 	protfolioImg.size(270,350);
+	let protfolioImgX = 130;
+	let protfolioImgY = 150;
+	protfolioImg.position(protfolioImgX,protfolioImgY);
 
 	protfolioImg.mouseOver(protfolioOver);
 	protfolioImg.mouseOut(protfolioOut);
 
+	protfolioUrl.push(protfolioImg);
+	protfolioImg.mouseClicked(protfolioClicked);
 
-	let protfolioImgX = 130;
-	let protfolioImgY = 150;
-	protfolioImg.position(protfolioImgX,protfolioImgY);
 	//c
 	InfluenceImg = createDiv('');
 	InfluenceImg.parent(protfolioDiv);
 	InfluenceImg.style('background-image','url(PROTFOLIO_IMG/INFLUENCE_DESIGN.png');
 	InfluenceImg.style('box-sizing','border-box');
 	InfluenceImg.style('margin','10px 0px 10px 0px');
-	//InfluenceImg.style('float','left');
 	InfluenceImg.style('cursor','pointer');
 	InfluenceImg.style('border','solid 1px silver');
 	InfluenceImg.style('background-position','center center');
@@ -67,6 +70,10 @@ function createProtfolio(){
 
 	InfluenceImg.mouseOver(protfolioOver);
 	InfluenceImg.mouseOut(protfolioOut);
+
+	protfolioUrl.push(InfluenceImg);
+	InfluenceImg.mouseClicked(protfolioClicked);
+
 
 	//
 	InfluenceHopeImg = createDiv('');
@@ -85,5 +92,8 @@ function createProtfolio(){
 
 	InfluenceHopeImg.mouseOver(protfolioOver);
 	InfluenceHopeImg.mouseOut(protfolioOut);
+
+	protfolioUrl.push(InfluenceHopeImg);
+	InfluenceHopeImg.mouseClicked(protfolioClicked);
 
 }
