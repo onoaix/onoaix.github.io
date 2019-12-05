@@ -215,6 +215,7 @@ function setup() {
   //rightDivAll
   createScrollbar();
   createRightDivBig();
+  createPlayground();
   createProtfolio();
   displayRightDivBigs();
 

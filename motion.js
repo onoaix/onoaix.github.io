@@ -353,10 +353,12 @@ function homePageRightGo(){
   }
   if (rightbuttonStatus == 21){
     rightbuttonBack = 0;
+    rightbutton.html('>');
   }
   if (rightbuttonStatus == 20 &  rightbuttonBack == 1) {
-    displayRightDivBigs();
+    displayRightDivBigs(); // reflash display only when rightDiv is on the right;
     rightbuttonStatus = 1;
+    rightbutton.html('<');
   }
 }
 
@@ -505,6 +507,6 @@ function changeToProtfolio(){
   for (let h = 0; h < logoLink.length; h++) {
     logoLink[h].style('border','none');
   }
-  pageStatus[1] = 1;
-  logoLink[1].style('border-bottom','solid 2px white');
+  pageStatus[2] = 1;
+  logoLink[2].style('border-bottom','solid 2px white');
 }
