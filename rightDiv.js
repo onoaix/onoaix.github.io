@@ -11,7 +11,7 @@ let scrollWmax;
 let scrollbarAlpha;
 
 let rightDivBig;
-let rightDivStatus;
+let pageStatus;
 let rightDivTitles;
 let Head;
 let rightDivBigs;
@@ -66,7 +66,7 @@ function createScrollbar(){
 
   //scrollbar.position(0,scrollY);
   rightDivBigs = [];
-  rightDivStatus = [];
+  pageStatus = [];
   rightDivTitles = [];
   rightDivSAll = [];
   rightDivS1All = [];
@@ -89,7 +89,7 @@ function createRightDivBig(){
 
 	rightDivBig = createDiv('');
 	rightDivBigs.push(rightDivBig);
-	rightDivStatus.push(1);
+	pageStatus.push(1);
 	rightDivTitles.push('＋ RECENT PLAY EVENT &nbsp');
 	rightDivBig.parent(homePageRight);
 	rightDivBig.id('rightDivBig');
@@ -139,7 +139,7 @@ function createRightDivBig(){
 
 function RECENT_PLAY(){
 	createRightDiv('↑ PROTFOLIO','22222.png','#May 19/2019<br><br>It’s just a PROTFOLIO');
-	//rightDivS1All[0].mouseClicked(changeToRightDivBig);
+	rightDivS1All[0].mouseClicked(changeToProtfolio);
 	createRightDiv('Flow-FIeld-Following','Flow_Field_Following.png','#December 1/2019<br><br>I’v tried to make the flow field following steering behavior with p5.js.');
 	createRightDiv('BE BORN','zokei_h.png','#November 26/2019<br><br>The contribution of 「ZOKEI EXHIBITION」 poster.“ZO”というのは、創造、または物を形にする前の変化の過程の意味があり、反復、そしてゼロから“一”になる概念もある。私が“うみ出す”の意味を“ZO”の概念を隠喩して、ポスターを作った。同じ形を反復に利用し、“ZO”の形を組み合わした。右横から見ると、卵とこともの成体がもうすぐ卒業する学生たちがこれから社会に踏み込み、新しい人生を始める意味もある。上下二つに分け、要素が各部分にあり、断続感を作り出す。真ん中に“ZOKEI展”の印鑑がもうすぐ卒業する学生たちのこれまでの成果を認めることを暗示する。');
 	createRightDiv('INFLUENCE DESIGN','influence_design.png','#January 28/2019<br><br>❀2019年度東京造形大学ノミネート賞受賞<br>❀CGDA Visual Communication Design Award 2019 - Silver Award 受賞<br>ビジュアルディスプレィを介してユーザーがコンテンツの操作をする時の行為が期待通りの結果に向かっているか、間違った結果に向かっているかを、その結果に到達する前に直観できるようにアフォードするUIデザイン（マイクロインタラクション）の制作研究である。');
@@ -233,7 +233,7 @@ function createRightDiv(rightDivS_h,rightDivS_img_scr,temp_content){
 
 function displayRightDivBigs(){
 	for (let i = 0; i < rightDivBigs.length; i++) {
-		if (rightDivStatus[i]==1){
+		if (pageStatus[i]==1){
 			rightDivBigs[i].show();
 			Head.html(rightDivTitles[i]);
 		}else{

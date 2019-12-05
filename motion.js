@@ -481,17 +481,30 @@ function protfolioOut(){
 
 function changeToRightDivBig(){
   let i = logoLink.indexOf(this);
-  if (rightDivStatus[i] != 1) {
+  if (pageStatus[i] != 1) {
     logodiv.style('pointer-events','none');
     rightbuttonStatus = 0;
     rightbuttonBack = 1;
     for (let j = 0; j < rightDivBigs.length; j++) {
-      rightDivStatus[j] = 0;
+      pageStatus[j] = 0;
     }
     for (let h = 0; h < logoLink.length; h++) {
       logoLink[h].style('border','none');
     }
-    rightDivStatus[i] = 1;
+    pageStatus[i] = 1;
     logoLink[i].style('border-bottom','solid 2px white');
   }
+}
+
+function changeToProtfolio(){
+  rightbuttonStatus = 0;
+  rightbuttonBack = 1;
+  for (let j = 0; j < rightDivBigs.length; j++) {
+    pageStatus[j] = 0;
+  }
+  for (let h = 0; h < logoLink.length; h++) {
+    logoLink[h].style('border','none');
+  }
+  pageStatus[1] = 1;
+  logoLink[1].style('border-bottom','solid 2px white');
 }

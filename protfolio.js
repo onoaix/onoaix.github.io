@@ -12,7 +12,7 @@ function createProtfolio(){
 	//createProtfolioDivBig
 	protfolioDiv = createDiv('');
 	rightDivBigs.push(protfolioDiv);
-	rightDivStatus.push(0);
+	pageStatus.push(0);
 	rightDivTitles.push('＋ PROTFOLIO OVERVIEW &nbsp');
 	protfolioDiv.parent(homePageRight);
 	protfolioDiv.id('protfolioDiv');
