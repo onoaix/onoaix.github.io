@@ -12,64 +12,69 @@ function Over(){
 function Out(){
   s = 0;
   this.style('padding',0+'px');
-  for (let i = 0; i < logoLink.length; i++) {
-    logoLink[i].hide();
-  }
   //this.style('border','none');
 }
 
 function logoBigger(){
-  if(lx < maxX){
-    lx+=vx;
+  if(s==1){
+    if(lx < maxX){
+      lx+=vx;
+    }
+    if(ly < maxY){
+      ly+=vy;
+    }
+    if (logoY<logoYmax) {
+      logoY+=logoY_v;
+    }
+    if (logoX<logoXmax){
+      logoX+=logoX_v;
+    }
+    if(positionMoreX>-35-18) positionMoreX-=2;
+    if(ly>=maxY&lx>=maxX&logoY>=logoYmax&logoX>=logoXmax){
+      lx = maxX;
+      ly = maxY;
+      logoY = logoYmax;
+      logoX = logoXmax;
+      s = 21;
+    }
+    logodiv.style('width',lx+'px');
+    logodiv.style('height',ly+'px');
+    logoh1.position(logoX,logoY);
+    positionMore.position(positionMoreX,29);
   }
-  if(ly < maxY){
-    ly+=vy;
-  }
-  if (logoY<logoYmax) {
-    logoY+=logoY_v;
-  }
-  if (logoX<logoXmax){
-    logoX+=logoX_v;
-  }
-  if(positionMoreX>-35-18) positionMoreX-=2;
-  if(ly>=maxY&lx>=maxX&logoY>=logoYmax&logoX>=logoXmax){
-    lx = maxX;
-    ly = maxY;
-    logoY = logoYmax;
-    logoX = logoXmax;
-    s = 21;
-  }
-  logodiv.style('width',lx+'px');
-  logodiv.style('height',ly+'px');
-  logoh1.position(logoX,logoY);
-  positionMore.position(positionMoreX,29);
 }
 
 function logoSmaller(){
-  if(lx > minX){
-    lx-=vx;
+  if(s==0){
+    if(lx > minX){
+      lx-=vx;
+    }
+    if(ly > minY){
+      ly-=vy;
+    }
+    if (logoY>logoYmin) {
+      logoY-=logoY_v;
+    }
+    if (logoX>logoXmin){
+      logoX-=logoX_v;
+    }
+    if(positionMoreX<-35) positionMoreX+=2;
+    if(ly<=minY&lx<=minX&logoY<=logoYmin&logoX<=logoXmin){
+      lx = minX;
+      ly = minY;
+      logoX = logoXmin;
+      logoY = logoYmin;
+      s = 20;
+      logodiv.style('pointer-events','auto');
+      for (let i = 0; i < logoLink.length; i++) {
+        logoLink[i].hide();
+      }
+    }
+    logodiv.style('width',lx+'px');
+    logodiv.style('height',ly+'px');
+    logoh1.position(logoX,logoY);
+    positionMore.position(positionMoreX,29);
   }
-  if(ly > minY){
-    ly-=vy;
-  }
-  if (logoY>logoYmin) {
-    logoY-=logoY_v;
-  }
-  if (logoX>logoXmin){
-    logoX-=logoX_v;
-  }
-  if(positionMoreX<-35) positionMoreX+=2;
-  if(ly<=minY&lx<=minX&logoY<=logoYmin&logoX<=logoXmin){
-    lx = minX;
-    ly = minY;
-    logoX = logoXmin;
-    logoY = logoYmin;
-    s = 20;
-  }
-  logodiv.style('width',lx+'px');
-  logodiv.style('height',ly+'px');
-  logoh1.position(logoX,logoY);
-  positionMore.position(positionMoreX,29);
 }
 
 
@@ -101,23 +106,28 @@ function BackMinSS(){
   ms = 0;
 }
 function minSSOver(){
-  if(AlphaSS<1){
-    AlphaSS+=1/10;
+  if (ms==1) {
+    if(AlphaSS<1){
+      AlphaSS+=1/10;
+    }
+    if(AlphaSS>=1){
+      ms = 21;
+    }
+    minSS.style('background-color','rgba(255,90,0,'+AlphaSS+')');
   }
-  if(AlphaSS>=1){
-    ms = 21;
-  }
-  minSS.style('background-color','rgba(255,90,0,'+AlphaSS+')');
 }
 function minSSOut(){
-  if(AlphaSS>0){
-    AlphaSS-=1/10;
+  if (ms==0) {
+    if(AlphaSS>0){
+      AlphaSS-=1/10;
+    }
+    if(AlphaSS<=0){
+      ms = 20;
+    }
+    minSS.style('background-color','rgba(255,90,0,'+AlphaSS+')');
   }
-  if(AlphaSS<=0){
-    ms = 20;
-  }
-  minSS.style('background-color','rgba(255,90,0,'+AlphaSS+')');
 }
+
 function onoBackClicked(){
   if (oSt == 1) {
     os = 1;
@@ -131,38 +141,42 @@ function onoBackClicked(){
   }
 }
 function onoBackGo(){
-  if (oX < oXMax) {
-    oX += 2;
-  }else if (oX >= oXMax) {
-    oX = oXMax;
+  if (os==1) {
+    if (oX < oXMax) {
+      oX += 2;
+    }else if (oX >= oXMax) {
+      oX = oXMax;
+    }
+    if (oY < oYMax) {
+      oY += 1;
+    }else if (oY >= oYMax) {
+      oY = oYMax;
+    }
+    if (oX>=oXMax & oY>=oYMax) {
+      os = 21;
+      oSt = 0;
+    }
+    onoBack.position(oX,oY);
   }
-  if (oY < oYMax) {
-    oY += 1;
-  }else if (oY >= oYMax) {
-    oY = oYMax;
-  }
-  if (oX>=oXMax & oY>=oYMax) {
-    os = 21;
-    oSt = 0;
-  }
-  onoBack.position(oX,oY);
 }
 function onoBackBack(){
-  if (oX > oXMin) {
-    oX -= 2;
-  }else if (oX <= oXMin) {
-    ox = oXMin;
+  if (os==0) {
+    if (oX > oXMin) {
+      oX -= 2;
+    }else if (oX <= oXMin) {
+      ox = oXMin;
+    }
+    if (oY > oYMin) {
+      oY -= 1;
+    }else if (oY<= oYMin) {
+      oY = oYMin;
+    }
+    if (oX <= oXMin & oY <= oYMin) {
+      os = 20;
+      oSt = 1;
+    }
+    onoBack.position(oX,oY);
   }
-  if (oY > oYMin) {
-    oY -= 1;
-  }else if (oY<= oYMin) {
-    oY = oYMin;
-  }
-  if (oX <= oXMin & oY <= oYMin) {
-    os = 20;
-    oSt = 1;
-  }
-  onoBack.position(oX,oY);
 }
 function HighLightLinkOfSketch(){
   let i = aboutCode.indexOf(this);
@@ -211,55 +225,59 @@ function outSS(){
 }
 
 function linkBigger(i){
-  if (xl[i] < maxXl){
-    xl[i] += vxl;
+  if(ss[i]==1){
+    if (xl[i] < maxXl){
+      xl[i] += vxl;
+    }
+    if(yl[i] < maxYl){
+      yl[i] += vyl;
+    }
+    if (xl[i]>=maxXl){
+      xl[i] = maxXl;
+    }
+    if (yl[i]>=maxYl) {
+      yl[i] = maxYl;
+    }
+    if (Alpha[i] < 1){
+      Alpha[i] +=1/15;
+    }
+    if (Alpha[i] >= 1){
+      Alpha[i] = 1;
+    }
+    if (xl[i]>=maxXl&yl[i]>=maxYl&Alpha[i]>=1) {
+      ss[i] = 21;
+    }
+    leftLink[i].style('width',xl[i]+'px');
+    leftLink[i].style('height',yl[i]+'px');
   }
-  if(yl[i] < maxYl){
-    yl[i] += vyl;
-  }
-  if (xl[i]>=maxXl){
-    xl[i] = maxXl;
-  }
-  if (yl[i]>=maxYl) {
-    yl[i] = maxYl;
-  }
-  if (Alpha[i] < 1){
-    Alpha[i] +=1/15;
-  }
-  if (Alpha[i] >= 1){
-    Alpha[i] = 1;
-  }
-  if (xl[i]>=maxXl&yl[i]>=maxYl&Alpha[i]>=1) {
-    ss[i] = 21;
-  }
-  leftLink[i].style('width',xl[i]+'px');
-  leftLink[i].style('height',yl[i]+'px');
 }
 
 function linkSmaller(i){
-  if (xl[i] > minXl){
-    xl[i] -= vxl;
+  if(ss[i]==0){
+    if (xl[i] > minXl){
+      xl[i] -= vxl;
+    }
+    if(yl[i] > minYl){
+      yl[i] -= vyl;
+    }
+    if (xl[i]<=minXl){ 
+      xl[i] = minXl;
+    }
+    if (yl[i]<=minYl){
+      yl[i] = minYl;
+    }
+    if (Alpha[i] > 0){
+      Alpha[i] -=1/15;
+    }
+    if (Alpha[i] <= 0){
+      Alpha[i] = 0;
+    }
+    if (xl[i]<=minXl&yl[i]<=minYl&Alpha[i]<=0){
+      ss[i] = 20;
+    }
+    leftLink[i].style('width',xl[i]+'px');
+    leftLink[i].style('height',yl[i]+'px');
   }
-  if(yl[i] > minYl){
-    yl[i] -= vyl;
-  }
-  if (xl[i]<=minXl){ 
-    xl[i] = minXl;
-  }
-  if (yl[i]<=minYl){
-    yl[i] = minYl;
-  }
-  if (Alpha[i] > 0){
-    Alpha[i] -=1/15;
-  }
-  if (Alpha[i] <= 0){
-    Alpha[i] = 0;
-  }
-  if (xl[i]<=minXl&yl[i]<=minYl&Alpha[i]<=0){
-    ss[i] = 20;
-  }
-  leftLink[i].style('width',xl[i]+'px');
-  leftLink[i].style('height',yl[i]+'px');
 }
 function barBackgroundOver(){
   let i = leftLink.indexOf(this);
@@ -312,10 +330,10 @@ function homePageRightGo(){
       if (homePageRightXa >= PI) homePageRightXa = PI;
     }if (homePageRightX == l+windowWidth) {
       homePageRightX = l+windowWidth;
-      rightbuttonStatus = 20;
-      homePageRight.style('pointer-events','auto');
+      homePageRight.style('pointer-events','none');
       homePageRightXa = 0;
       homePageRightXv = 0;
+      rightbuttonStatus = 20;
     }
   }
   if (rightbuttonStatus == 1) {
@@ -327,11 +345,18 @@ function homePageRightGo(){
       if (homePageRightXa >= PI) homePageRightXa = PI;
     }else if (homePageRightX == l+windowWidth*62/100) {
       homePageRightX =  l+windowWidth*62/100;
-      rightbuttonStatus = 21;
       homePageRight.style('pointer-events','auto');
       homePageRightXa = 0;
       homePageRightXv = 0;
+      rightbuttonStatus = 21;
     }
+  }
+  if (rightbuttonStatus == 21){
+    rightbuttonBack = 0;
+  }
+  if (rightbuttonStatus == 20 &  rightbuttonBack == 1) {
+    displayRightDivBigs();
+    rightbuttonStatus = 1;
   }
 }
 
@@ -424,4 +449,49 @@ function rightDivSBack(i){
     rightDivSS[i] = 20;
   }
   rightDivSBAll[i].style('border','solid '+rightDivSBpadding[i]+'px '+'black ');
+}
+
+function rightDivSClicked(){
+
+}
+
+
+
+function rightbuttonOver(){
+  rbs = 1;
+}
+function rightbuttonOut(){
+  rbs = 0;
+}
+
+
+
+
+
+function protfolioOver(){
+  this.style('border','solid 1px black');
+  this.style('background-color','black');
+}
+function protfolioOut(){
+  this.style('border','solid 1px silver');
+}
+
+
+
+
+function changeToRightDivBig(){
+  let i = logoLink.indexOf(this);
+  if (rightDivStatus[i] != 1) {
+    logodiv.style('pointer-events','none');
+    rightbuttonStatus = 0;
+    rightbuttonBack = 1;
+    for (let j = 0; j < rightDivBigs.length; j++) {
+      rightDivStatus[j] = 0;
+    }
+    for (let h = 0; h < logoLink.length; h++) {
+      logoLink[h].style('border','none');
+    }
+    rightDivStatus[i] = 1;
+    logoLink[i].style('border-bottom','solid 2px white');
+  }
 }

@@ -1,5 +1,6 @@
 let line;
 let lineW;
+let lineH;
 let scrollbar1;
 let scrollbar2;
 let bs;
@@ -10,7 +11,10 @@ let scrollWmax;
 let scrollbarAlpha;
 
 let rightDivBig;
+let rightDivStatus;
+let rightDivTitles;
 let Head;
+let rightDivBigs;
 let rightDivSBAll;
 let rightDivSAll;
 let rightDivS1All;
@@ -38,17 +42,22 @@ function createScrollbar(){
   bs = 20;
   line = select('#line');
   lineW = 20;
+  lineH = homePageRightH*18/20;
+
   //line.style('height',t+windowHeight*18/20+'px');
-  line.size(lineW,rightDivBigH);
-  line.position(l+rightDivBigX-lineW,t+rightDivBigY);
+  line.size(lineW,lineH);
+  line.position(0,windowHeight*1/20);
   scrollbar1 = select('#scrollbar1');
   scrollbar2 = select('#scrollbar2');
   scrollH = 10;
   scrollW = 2;
   scrollWmax = 4;
-  scrollY = map(rl,0,rscrollh-roffseth,scrollH,windowHeight*18/20-scrollH);
+  rl = 0;
+  roffseth = 0;
+  rscrollh = 0;
+  scrollY = map(rl,0,rscrollh-roffseth,scrollH,lineH-scrollH);
   scrollbar1.size(scrollW,scrollY);
-  scrollbar2.size(scrollW,windowHeight*18/20-scrollH-scrollY);
+  scrollbar2.size(scrollW,lineH-scrollH-scrollY);
   scrollbar1.style('left',scrollWmax+'px');
   scrollbar2.style('left',scrollWmax+'px');  
   scrollbar1.style('background-color','rgba(0,0,0,'+scrollbarAlpha+')');
@@ -56,6 +65,20 @@ function createScrollbar(){
   
 
   //scrollbar.position(0,scrollY);
+  rightDivBigs = [];
+  rightDivStatus = [];
+  rightDivTitles = [];
+  rightDivSAll = [];
+  rightDivS1All = [];
+  rightDivS2All = [];
+  rightDivSS = [];
+  rightDivSBAll = [];
+  rightDivSBpadding = [];
+  	
+  rightDivBigX = lineW;
+  rightDivBigY = t+homePageRightH*1/20;
+  rightDivBigW = homePageRightW-lineW*4 ;
+  rightDivBigH = homePageRightH*18/20 ;
 
 }
 
@@ -63,14 +86,13 @@ function createScrollbar(){
 function createRightDivBig(){
 
 
+
 	rightDivBig = createDiv('');
+	rightDivBigs.push(rightDivBig);
+	rightDivStatus.push(1);
+	rightDivTitles.push('＋ RECENT PLAY EVENT &nbsp');
 	rightDivBig.parent(homePageRight);
-  	rightDivBigX = l+windowWidth*63/100;
-	rightDivBigY = t+windowHeight*1/20;
-    rightDivBigW = windowWidth*37/100-20*3 ;
-	rightDivBigH = windowHeight*18/20 ;
 	rightDivBig.id('rightDivBig');
-	rightDivBig.style('position','fixed');
 	rightDivBig.style('box-sizing','border-box');
 	rightDivBig.style('overflow-x','hidden');
 	rightDivBig.style('overflow-y','scroll');
@@ -78,9 +100,8 @@ function createRightDivBig(){
 	rightDivBig.style('margin-right',20+'px');
 	rightDivBig.position(rightDivBigX,rightDivBigY);
 	rightDivBig.size(rightDivBigW,rightDivBigH);
-	// rightDivBig.mouseOver(rightDivOver);
-	// rightDivBig.mouseOut(rightDivOut);
 	rightDivBig.attribute('align', 'left');
+
 
 
 	newSP = document.getElementById('rightDivBig').scrollTop;
@@ -88,7 +109,7 @@ function createRightDivBig(){
 	rl = document.getElementById('rightDivBig').scrollTop ;
 
 
-	Head = createDiv('＋ RECENT PLAY EVENT &nbsp');
+	Head = createDiv('');
 	Head.parent(homePageRight);
 	Head.style('position','absolute');
 	Head.style('z-index','1');
@@ -105,12 +126,6 @@ function createRightDivBig(){
 	headSpace.parent(rightDivBig);
 	headSpace.size(rightDivBigW,90);
 
-	rightDivSAll = [];
-	rightDivS1All = [];
-	rightDivS2All = [];
-	rightDivSS = [];
-	rightDivSBAll = [];
-	rightDivSBpadding = [];
 
 	RECENT_PLAY();
 
@@ -124,6 +139,7 @@ function createRightDivBig(){
 
 function RECENT_PLAY(){
 	createRightDiv('↑ PROTFOLIO','22222.png','#May 19/2019<br><br>It’s just a PROTFOLIO');
+	//rightDivS1All[0].mouseClicked(changeToRightDivBig);
 	createRightDiv('Flow-FIeld-Following','Flow_Field_Following.png','#December 1/2019<br><br>I’v tried to make the flow field following steering behavior with p5.js.');
 	createRightDiv('BE BORN','zokei_h.png','#November 26/2019<br><br>The contribution of 「ZOKEI EXHIBITION」 poster.“ZO”というのは、創造、または物を形にする前の変化の過程の意味があり、反復、そしてゼロから“一”になる概念もある。私が“うみ出す”の意味を“ZO”の概念を隠喩して、ポスターを作った。同じ形を反復に利用し、“ZO”の形を組み合わした。右横から見ると、卵とこともの成体がもうすぐ卒業する学生たちがこれから社会に踏み込み、新しい人生を始める意味もある。上下二つに分け、要素が各部分にあり、断続感を作り出す。真ん中に“ZOKEI展”の印鑑がもうすぐ卒業する学生たちのこれまでの成果を認めることを暗示する。');
 	createRightDiv('INFLUENCE DESIGN','influence_design.png','#January 28/2019<br><br>❀2019年度東京造形大学ノミネート賞受賞<br>❀CGDA Visual Communication Design Award 2019 - Silver Award 受賞<br>ビジュアルディスプレィを介してユーザーがコンテンツの操作をする時の行為が期待通りの結果に向かっているか、間違った結果に向かっているかを、その結果に到達する前に直観できるようにアフォードするUIデザイン（マイクロインタラクション）の制作研究である。');
@@ -144,10 +160,10 @@ function createRightDiv(rightDivS_h,rightDivS_img_scr,temp_content){
 	rightDivS.size(rightDivSW,rightDivSH);
 	rightDivS.style('padding','40px 0px 40px 0px');
 	//rightDivS.style('border-bottom','solid 1px gray');
-	//rightDivS.style('margin-left',20+'px');
 	//rightDivS.style('background-color','black');
 	rightDivS.mouseOver(rightDivSOver);
 	rightDivS.mouseOut(rightDivSOut);
+	rightDivS.mouseClicked(rightDivSClicked);
 
 	let rightDivSB = createDiv('');
 	rightDivSB.parent(rightDivS);
@@ -210,4 +226,18 @@ function createRightDiv(rightDivS_h,rightDivS_img_scr,temp_content){
 	rightDivSS.push(0);
 	rightDivSBpadding.push(0);
 
+}
+
+
+
+
+function displayRightDivBigs(){
+	for (let i = 0; i < rightDivBigs.length; i++) {
+		if (rightDivStatus[i]==1){
+			rightDivBigs[i].show();
+			Head.html(rightDivTitles[i]);
+		}else{
+			rightDivBigs[i].hide();
+		}
+	}
 }

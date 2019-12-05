@@ -19,28 +19,10 @@
  let homePageRightXv;
  let homePageRightXa;
 
-//rightbutton
 let rightbutton;
 let rightbuttonStatus;
-
-
-
-
-//2Dbarcode
-let QQbar;
-let Wecheatbar;
-
-//canvas
-let canvas;
-let canvasY;
-let canvasX;
-let canvasW;
-let canvasH;
-let w;
-let columns;
-let rows;
-let board;
-let next;
+let rbs;
+let rightbuttonBack;
 
 
 //LogoDiv
@@ -66,6 +48,22 @@ let logoX_v;
 let logoY_v;
 let positionMore;
 let positionMoreX;
+
+//2Dbarcode
+let QQbar;
+let Wecheatbar;
+
+//canvas
+let canvas;
+let canvasY;
+let canvasX;
+let canvasW;
+let canvasH;
+let w;
+let columns;
+let rows;
+let board;
+let next;
 
 
 //about Onoaix
@@ -179,6 +177,25 @@ function setup() {
   homePageRightXa = 0;
   homePageRightXv = sin(homePageRightXa)*30*n;
 
+  //rightbutton
+  rightbutton = createDiv('>');
+  rightbuttonBack = 1;
+  rightbuttonStatus = 21;
+  rbs = 0;
+  rightbutton.style('z-index','2');  
+  rightbutton.style('cursor','pointer');
+  rightbutton.style('background-color','black');
+  rightbutton.style('color','white');  
+  rightbutton.style('font-size','26px');  
+  rightbutton.style('font-weight','normal');
+  rightbutton.size(30,30);
+  rightbutton.position(windowWidth-50,windowHeight/2);
+  rightbutton.mouseOver(rightbuttonOver);
+  rightbutton.mouseOut(rightbuttonOut);
+  rightbutton.mouseClicked(homePageRightClicked);
+
+
+
 
 
 
@@ -196,8 +213,10 @@ function setup() {
 
 
   //rightDivAll
-  createRightDivBig();
   createScrollbar();
+  createRightDivBig();
+  createProtfolio();
+  displayRightDivBigs();
 
 
   // logoDIV
@@ -245,11 +264,13 @@ function setup() {
   for(let i=0;i<logoLink.length;i++){
     logoLink[i].mouseOver(HighLightLinkOfLogo);
     logoLink[i].mouseOut(unHighLightLinkOfLogo);
+    logoLink[i].mouseClicked(changeToRightDivBig);
     logoLink[i].hide();
     logoLink[i].style('font-size',15*n+'px');
-    if (i==1||i==2) logoLink[i].position(15,(220+(i+1)*25)*nl);
-    else if (i==3||i==4||i==5) logoLink[i].position(15,(220+(i+2)*25)*nl);
-    else logoLink[i].position(15,(220+i*25)*nl);
+    logoLink[0].style('border-bottom','solid 2px white');
+    if (i==1||i==2) logoLink[i].position(15,(220+(i+1)*35)*nl);
+    else if (i==3||i==4||i==5) logoLink[i].position(15,(220+(i+2)*35)*nl);
+    else logoLink[i].position(15,(220+i*35)*nl);
   }
   logoDivS.style('font-size',13*n+'px');
   logoDivS.style('width',140*n+'px');
@@ -345,21 +366,6 @@ function setup() {
     aboutCode[i].mouseOut(unHighLightLinkOfSketch);
   }
 
-  //rightbutton
-  rightbutton = createDiv('>');
-  rightbuttonStatus = 21;
-  rightbutton.style('z-index','2');  
-  rightbutton.style('cursor','pointer');
-  rightbutton.style('background-color','black');
-  rightbutton.style('color','white');  
-  rightbutton.style('font-size','26px');  
-  rightbutton.style('font-weight','normal');
-  rightbutton.size(30,30);
-  rightbutton.position(windowWidth-50,windowHeight/2);
-  rightbutton.mouseOver(rightDivOver);
-  rightbutton.mouseOut(rightDivOut);
-  rightbutton.mouseClicked(homePageRightClicked);
-
 
 
 
@@ -377,31 +383,19 @@ function draw() {
   l = document.documentElement.scrollLeft;
 
 // logoGo
-  if(s==1){
     logoBigger();
-  }else if(s==0){
     logoSmaller();
-  }
 
 // minHGo
-  if (ms==1) {
     minSSOver();
-  }else if (ms==0) {
     minSSOut();
-  }
-  if (os==1) {
     onoBackGo();
-  }else if (os==0) {
     onoBackBack();
-  }
 
 // leftLinkGo
   for (let i = 0; i < ss.length; i++) {
-    if(ss[i]==1){
       linkBigger(i);
-    }else if(ss[i]==0){
       linkSmaller(i);
-    }
   }
 
 
@@ -564,12 +558,12 @@ function display(){
   for (let i = 2; i < columns-2; i++) {
     for (let j = 2; j < rows-2; j++) {
       if (board[i][j] == 1){
-        if (bs == 1 || bs == 21) {
-          fill(random(230,255),random(230,255),random(0,95));
+        if (bs == 1 || bs == 21 || rbs == 1) {
+          fill(random(230,255),random(230,255),random(0,95)); //homepagerightOver
         }else if (s == 1 || s == 21) {
-          fill(random(230,255),random(50,135),random(0,35));
+          fill(random(230,255),random(50,135),random(0,35)); //logoDIVOver
         }else{
-          fill(random(254,255),90,0);
+          fill(random(254,255),90,0); //canvasOver
         }
         //fill(255,0,0);
         noStroke();
@@ -648,9 +642,9 @@ function resetSizePlan(){
     logoh2.style('font-size',9*n+'px');
     for(let i=0;i<logoLink.length;i++){
       logoLink[i].style('font-size',15*n+'px');
-    if (i==1||i==2) logoLink[i].position(15,(220+(i+1)*25)*nl);
-    else if (i==3||i==4||i==5) logoLink[i].position(15,(220+(i+2)*25)*nl);
-    else logoLink[i].position(15,(220+i*25)*nl);
+    if (i==1||i==2) logoLink[i].position(15,(220+(i+1)*35)*nl);
+    else if (i==3||i==4||i==5) logoLink[i].position(15,(220+(i+2)*35)*nl);
+    else logoLink[i].position(15,(220+i*35)*nl);
     }
     logoDivS.style('font-size',13*n+'px');
     logoDivS.style('width',140*n+'px');
@@ -693,8 +687,8 @@ function resetSizePlan(){
 
     //resize rightAll;
 
-    rightDivBigW = homePageRightW-20*4;
-    rightDivBigH = windowHeight*18/20;
+    rightDivBigW = homePageRightW-lineW*4;
+    rightDivBigH = homePageRightH*18/20;
     rightDivBig.size(rightDivBigW,rightDivBigH);
     line.size(lineW,rightDivBigH);
 
@@ -711,6 +705,8 @@ function resetSizePlan(){
         rightDivS2All[i].style('width',rightDivS1W-20+'px');
         rightDivS2All[i].style('height','auto');
         rightDivS2All[i].style('margin','10px 10px 0px 10px');
+      }
+      for (let i = 0; i < rightDivSBAll.length; i++) {
         rightDivSBAll[i].size(rightDivSW,rightDivSH);
         rightDivSBAll[i].size(rightDivSW,document.getElementById('rightDivSAll['+i+']').offsetHeight-rightDivSpadding*2);
       }
@@ -721,6 +717,8 @@ function resetSizePlan(){
         rightDivS1All[i].size(rightDivS1W,rightDivSH-rightDivSpadding*2);
         rightDivS2All[i].style('margin','0px 20px 0px 20px');
         rightDivS2All[i].size(rightDivSW-rightDivS1W-40-10*n,rightDivSH-rightDivSpadding*2);
+      }
+      for (let i = 0; i < rightDivSBAll.length; i++) {
         rightDivSBAll[i].size(rightDivSW,rightDivSH-rightDivSpadding*2);
       }
     }
@@ -788,9 +786,9 @@ function repositionLeftAll(){
 
 
   //reposition rightAll
-  rightDivBigX = l+windowWidth*63/100;
-  rightDivBigY = t+windowHeight*1/20;
-  rightDivBig.position(lineW,rightDivBigY);
+  rightDivBigX = lineW;
+  rightDivBigY = t+homePageRightH*1/20;
+  rightDivBig.position(rightDivBigX,rightDivBigY);
 
 
   rl = document.getElementById('rightDivBig').scrollTop ;
