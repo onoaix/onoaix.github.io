@@ -24,7 +24,7 @@ function createProtfolio(){
 	protfolioDiv.style('overflow-y','scroll');
 	protfolioDiv.style('margin-left',20+'px');
 	protfolioDiv.style('margin-right',20+'px');
-	protfolioDiv.style('background-color','rgba(120,120,120,0)');
+	//protfolioDiv.style('background-color','rgba(120,120,120,0.5)');
 	protfolioDiv.position(rightDivBigX,rightDivBigY);
 	protfolioDiv.size(rightDivBigW,rightDivBigH);
 
@@ -38,12 +38,13 @@ function createProtfolio(){
 	protfolioImg.parent(protfolioDiv);
 	protfolioImg.style('background-image','url(PROTFOLIO_IMG/PROTFOLIO.png');
 	protfolioImg.style('box-sizing','border-box');
+	protfolioImg.style('box-shadow','2px 2px 9px rgba(90,90,90,0.2)');
 	protfolioImg.style('cursor','pointer');
 	protfolioImg.style('border','solid 1px silver');
 	protfolioImg.style('background-position','center center');
 	protfolioImg.style('background-repeat','no-repeat');
 	protfolioImg.style('background-size','cover');
-	protfolioImg.size(270,350);
+	protfolioImg.size(270*n,350*n);
 	let protfolioImgX = 130;
 	let protfolioImgY = 150;
 	protfolioImg.position(protfolioImgX,protfolioImgY);
@@ -59,13 +60,14 @@ function createProtfolio(){
 	InfluenceImg.parent(protfolioDiv);
 	InfluenceImg.style('background-image','url(PROTFOLIO_IMG/INFLUENCE_DESIGN.png');
 	InfluenceImg.style('box-sizing','border-box');
+	InfluenceImg.style('box-shadow','2px 2px 9px rgba(90,90,90,0.2)');
 	InfluenceImg.style('margin','10px 0px 10px 0px');
 	InfluenceImg.style('cursor','pointer');
 	InfluenceImg.style('border','solid 1px silver');
 	InfluenceImg.style('background-position','center center');
 	InfluenceImg.style('background-repeat','no-repeat');
 	InfluenceImg.style('background-size','cover');
-	InfluenceImg.size(180,250);
+	InfluenceImg.size(180*n,250*n);
 	InfluenceImg.position(protfolioImgX-80,protfolioImgY+150);
 
 	InfluenceImg.mouseOver(protfolioOver);
@@ -80,6 +82,7 @@ function createProtfolio(){
 	InfluenceHopeImg.parent(protfolioDiv);
 	InfluenceHopeImg.style('background-image','url(PROTFOLIO_IMG/INFLUENCE_DESIGN_HOPE.png');
 	InfluenceHopeImg.style('box-sizing','border-box');
+	InfluenceHopeImg.style('box-shadow','2px 2px 9px rgba(90,90,90,0.2)');
 	InfluenceHopeImg.style('margin','10px 0px 10px 0px');
 	//InfluenceHopeImg.style('float','left');
 	InfluenceHopeImg.style('cursor','pointer');
@@ -87,7 +90,7 @@ function createProtfolio(){
 	InfluenceHopeImg.style('background-position','center center');
 	InfluenceHopeImg.style('background-repeat','no-repeat');
 	InfluenceHopeImg.style('background-size','cover');
-	InfluenceHopeImg.size(200,150);
+	InfluenceHopeImg.size(200*n,150*n);
 	InfluenceHopeImg.position(protfolioImgX+40,protfolioImgY+275);
 
 	InfluenceHopeImg.mouseOver(protfolioOver);

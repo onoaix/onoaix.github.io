@@ -49,10 +49,6 @@ let logoY_v;
 let positionMore;
 let positionMoreX;
 
-//2Dbarcode
-let QQbar;
-let Wecheatbar;
-
 //canvas
 let canvas;
 let canvasY;
@@ -90,8 +86,6 @@ let aboutCode;
 //left Link
 let icons;
 let iconSize;
-let X;
-let barBackground;
 let leftLink;
 let leftLinkPosition;
 let leftPositionX;
@@ -107,6 +101,17 @@ let vxl;
 let vyl;
 let Alpha;
 
+//barbackgtound
+let QQbar;
+let Wecheatbar;
+let X;
+let barBackground;
+let protfoliobarDiv;
+let protfolioBarDivS;
+let protfolioBarImg;
+let InlfuenceBarImg;
+let InfluenceHopeBarImg;
+let downloadProtfolio;
 
 
 
@@ -235,7 +240,7 @@ function setup() {
   minY = 120*n;
   lx = minX; 
   ly = minY;
-  maxX = minX+10;
+  maxX = minX+12;
   maxY = windowHeight;
   vx = (maxX-minX)/9;
   vy = (maxY-minY)/9;
@@ -316,12 +321,8 @@ function setup() {
   // leftLinks
   icons  = selectAll('i');
   iconSize = [27,29,31,35];
-  X = select('#X');
-  QQbar = select('#QQbar');
-  Wecheatbar = select('#Wecheatbar');
   leftLink = selectAll('.leftLink');
   leftLinkPosition = selectAll('.leftLinkPosition');
-  barBackground = select('#barBackground');
   ss = new Array(leftLink.length);
   xl = new Array(leftLink.length);
   yl = new Array(leftLink.length);
@@ -347,16 +348,49 @@ function setup() {
     icons[i].style('font-size',iconSize[i]*n+'px');
     icons[i].hide();
   }
+
+  //barbackground
+  X = select('#X');
+  QQbar = select('#QQbar');
+  Wecheatbar = select('#Wecheatbar');
+  barBackground = select('#barBackground');
+  protfoliobarDiv = selectAll('.protfoliobarDiv');
+  protfolioBarDivS = selectAll('.protfolioBarDivS');
+  protfolioBarImg = select('#protfolioBarImg');
+  InlfuenceBarImg = select('#InlfuenceBarImg');
+  InfluenceHopeBarImg = select('#InfluenceHopeBarImg');
+  downloadProtfolio = selectAll('.downloadProtfolio');
+
   barBackground.style('width',canvasW+'px');
   barBackground.style('height',canvasH+'px');
   barBackground.hide();
+
+  for (let i = 0; i < protfoliobarDiv.length; i++) {
+    protfoliobarDiv[i].size(0,0);
+    protfoliobarDiv[i].position(homePageLeftW/2,homePageLeftH*2/5);
+    //protfoliobarDiv[i].attribute('align','left');
+    protfoliobarDiv[i].hide();
+  }
+  for (let i = 0; i < protfolioBarDivS.length; i++) {
+    protfolioBarDivS[i].style('max-width',250+'px');
+  }
+  for (let i = 0; i < downloadProtfolio.length; i++) {
+    downloadProtfolio[i].mouseOver(pdfOver);
+    downloadProtfolio[i].mouseOut(pdfOut);
+  }
+
+  protfolioBarImg.size(350,450);  
+  InlfuenceBarImg.size(320,450);
+  InfluenceHopeBarImg.size(350,250);
+
   QQbar.hide();
   Wecheatbar.hide();
   QQbar.position(l+canvasW/2,t+canvasH/2);
   Wecheatbar.position(l+canvasW/2,t+canvasH/2);
   X.hide();
   X.mouseClicked(barBackgroundOut);
-  X.position(l+canvasW/2+100,t+canvasH/2-109);
+  X.position(l+homePageLeftW-15,t+0);
+
 
   // aboutCode Link
   aboutCode = selectAll('.aboutCode');
@@ -624,7 +658,7 @@ function resetSizePlan(){
     minY = 120*n;
     lx = minX;
     ly = minY;
-    maxX = minX+10;
+    maxX = minX+12;
     maxY = windowHeight;
     vx = (maxX-minX)/9;
     vy = (maxY-minY)/9;
@@ -688,6 +722,23 @@ function resetSizePlan(){
 
 
 
+
+    //resize barbackground
+    for (let i = 0; i < protfoliobarDiv.length; i++) {
+      protfoliobarDiv[i].size(650*n,300*n);
+      protfoliobarDiv[i].position(homePageLeftW/2,homePageLeftH*2/5);
+      //protfoliobarDiv[i].attribute('align','left');
+    }
+    for (let i = 0; i < protfolioBarDivS.length; i++) {
+      protfolioBarDivS[i].style('max-width',250*n+'px');
+      protfolioBarDivS[i].style('font-size',12*n+'pt');
+    }
+    protfolioBarImg.size(350*n,450*n);  
+    InlfuenceBarImg.size(320*n,450*n);
+    InfluenceHopeBarImg.size(350*n,250*n);
+
+
+
     //resize rightAll;
 
     rightDivBigW = homePageRightW-lineW*4;
@@ -737,6 +788,12 @@ function resetSizePlan(){
         roffseth = document.getElementById('rightDivBigs['+i+']').offsetHeight ;
       }
     }
+
+
+  //resize protfolio
+  protfolioImg.size(270*n,350*n);
+  InfluenceImg.size(180*n,250*n);
+  InfluenceHopeImg.size(200*n,150*n);
 
 
 }
@@ -792,7 +849,9 @@ function repositionLeftAll(){
 
   QQbar.position(l+canvasW/2,t+canvasH/2);
   Wecheatbar.position(l+canvasW/2,t+canvasH/2);
-  X.position(l+canvasW/2+100,t+canvasH/2-109);
+  X.position(l+homePageLeftW-15,t+0);
+
+
 
 
   //reposition rightAll
@@ -843,5 +902,13 @@ function repositionLeftAll(){
 
   //reposition rightbutton
   rightbutton.position(windowWidth-50,windowHeight/2);
+
+  //reposition protfolioIMG
+  let protfolioImgX = 130*n;
+  let protfolioImgY = 150*n;
+  protfolioImg.position(protfolioImgX,protfolioImgY);
+  InfluenceImg.position(protfolioImgX-80*n,protfolioImgY+150*n);
+  InfluenceHopeImg.position(protfolioImgX+40*n,protfolioImgY+275*n);
+
 
 }

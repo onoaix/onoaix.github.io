@@ -279,6 +279,8 @@ function linkSmaller(i){
     leftLink[i].style('height',yl[i]+'px');
   }
 }
+
+//bar background
 function barBackgroundOver(){
   let i = leftLink.indexOf(this);
   if (i == 0){
@@ -299,8 +301,16 @@ function barBackgroundOut(){
   X.hide();
   QQbar.hide();
   Wecheatbar.hide();
+  for (var i = 0; i < protfoliobarDiv.length; i++) {
+    protfoliobarDiv[i].hide();
+  }
 }
-
+function pdfOver(){
+  this.style('border-bottom','solid 1px black');
+}
+function pdfOut(){
+  this.style('border-bottom','solid 1px silver');
+}
 
 
 
@@ -334,10 +344,18 @@ function homePageRightGo(){
       homePageRightXv = 0;
       homePageRightX = l+windowWidth;
       rightbuttonStatus = 20;
+
       if (rightbuttonBack == 1) {
         displayRightDivBigs(); // reflash display only when rightDiv is on the right;
         for (let i = 0; i < pageStatus.length; i++) {
-          if (pageStatus[i] == 1 ){
+          if (pageStatus[i] == 1){
+            if (i ==2 ) {
+              line.hide();
+              homePageRight.style('background-color','gold');
+            }else{
+              line.show();
+              homePageRight.style('background-color','transparent');
+            }
           rscrollh = document.getElementById('rightDivBigs['+i+']').scrollHeight ;
           roffseth = document.getElementById('rightDivBigs['+i+']').offsetHeight ;
           }
@@ -345,6 +363,7 @@ function homePageRightGo(){
         rightbuttonStatus = 1;
         rightbutton.html('<');
       }
+
     }
   }
 
@@ -365,7 +384,7 @@ function homePageRightGo(){
       rightbutton.html('>');
     }
   }
-  
+
 }
 
 
@@ -471,12 +490,32 @@ function protfolioOut(){
 
 function protfolioClicked(){
   let i = protfolioUrl.indexOf(this);
+  for (let j = 0; j < protfoliobarDiv.length; j++) {
+    protfoliobarDiv[j].hide();
+  }
+  if (i == 1) {
+    X.style('color','white');
+  }else{
+    X.style('color','black');
+  }
   if (i == 0 ) {
-    window.open('https://70e0c93d-30db-4357-aec0-0376f3cdc3cc.filesusr.com/ugd/22c7d0_fa876baa819b400291e1df8b4841a9f1.pdf');
+    X.show();
+    barBackground.style('background-color','rgba(255,255,0,0.9)');
+    barBackground.show();
+    protfoliobarDiv[i].show();
+    //window.open('https://70e0c93d-30db-4357-aec0-0376f3cdc3cc.filesusr.com/ugd/22c7d0_fa876baa819b400291e1df8b4841a9f1.pdf');
   }else if (i == 1) {
-    window.open('https://70e0c93d-30db-4357-aec0-0376f3cdc3cc.filesusr.com/ugd/22c7d0_6dc259eb86ab44e497ac8ff07daa0d51.pdf');
+    X.show();
+    barBackground.style('background-color','rgba(0,15,255,0.9)');
+    barBackground.show();
+    protfoliobarDiv[i].show();
+    //window.open('https://70e0c93d-30db-4357-aec0-0376f3cdc3cc.filesusr.com/ugd/22c7d0_6dc259eb86ab44e497ac8ff07daa0d51.pdf');
   }else if (i == 2) {
-    window.open('https://70e0c93d-30db-4357-aec0-0376f3cdc3cc.filesusr.com/ugd/22c7d0_41a08c0873fd4b73b7eb4c8556f05668.pdf');
+    X.show();
+    barBackground.style('background-color','rgba(255,255,255,0.9)');
+    barBackground.show();
+    protfoliobarDiv[i].show();
+    //window.open('https://70e0c93d-30db-4357-aec0-0376f3cdc3cc.filesusr.com/ugd/22c7d0_41a08c0873fd4b73b7eb4c8556f05668.pdf');
   }
 }
 
@@ -485,6 +524,7 @@ function protfolioClicked(){
 
 function changeToRightDivBig(){
   let i = logoLink.indexOf(this);
+
   if (pageStatus[i] != 1 && (rightbuttonStatus==21 || rightbuttonStatus==20) ) {
     logodiv.style('pointer-events','none');
     rightbuttonStatus = 0;
