@@ -24,6 +24,8 @@ let rightbuttonStatus;
 let rbs;
 let rightbuttonBack;
 
+let apple;
+
 
 //LogoDiv
 let logodiv;
@@ -136,6 +138,9 @@ function windowResized(){
   //resizePlan
   resetSizePlan();
 
+  //apple 
+  apple.position(homePageRightX+homePageRightW/2,t+windowHeight/2);
+
 }
 
 
@@ -171,6 +176,7 @@ function setup() {
 
   homePageRight = select('#homePageRight');
   homePageRight.style('overflow','hidden');
+  homePageRight.style('background-color','white');
   homePageRight.mouseOver(rightDivOver);
   homePageRight.mouseOut(rightDivOut);
   homePageRightW = windowWidth*38/100 ;
@@ -404,8 +410,11 @@ function setup() {
   }
 
 
+  //apple 
+  apple = select('#apple');
+  apple.position(homePageRightX+homePageRightW/2,t+windowHeight/2);
 
-
+  //bodyshow
   body.show();
 
   resetSizePlan();

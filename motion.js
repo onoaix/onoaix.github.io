@@ -354,7 +354,7 @@ function homePageRightGo(){
               homePageRight.style('background-color','gold');
             }else{
               line.show();
-              homePageRight.style('background-color','transparent');
+              homePageRight.style('background-color','white');
             }
           rscrollh = document.getElementById('rightDivBigs['+i+']').scrollHeight ;
           roffseth = document.getElementById('rightDivBigs['+i+']').offsetHeight ;
