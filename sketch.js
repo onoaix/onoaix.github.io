@@ -139,7 +139,7 @@ function windowResized(){
   resetSizePlan();
 
   //apple 
-  apple.position(homePageRightX+homePageRightW/2,t+windowHeight/2);
+  apple.position(l+windowWidth*62/100+homePageRightW/2,t+windowHeight/2);
 
 }
 
@@ -412,7 +412,7 @@ function setup() {
 
   //apple 
   apple = select('#apple');
-  apple.position(homePageRightX+homePageRightW/2,t+windowHeight/2);
+  apple.position(l+windowWidth*62/100+homePageRightW/2,t+windowHeight/2);
 
   //bodyshow
   body.show();
