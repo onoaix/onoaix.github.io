@@ -326,52 +326,47 @@ function homePageRightGo(){
       homePageRightXv = sin(homePageRightXa)*30*n;
       homePageRightX += homePageRightXv;
       homePageRightXa += 0.1*n;
-      if (homePageRightX >= l+windowWidth) homePageRightX = l+windowWidth;
       if (homePageRightXa >= PI) homePageRightXa = PI;
-    }if (homePageRightX == l+windowWidth) {
-      homePageRightX = l+windowWidth;
+    }
+    if (homePageRightX >= l+windowWidth) {
       homePageRight.style('pointer-events','none');
       homePageRightXa = 0;
       homePageRightXv = 0;
+      homePageRightX = l+windowWidth;
       rightbuttonStatus = 20;
+      if (rightbuttonBack == 1) {
+        displayRightDivBigs(); // reflash display only when rightDiv is on the right;
+        for (let i = 0; i < pageStatus.length; i++) {
+          if (pageStatus[i] == 1 ){
+          rscrollh = document.getElementById('rightDivBigs['+i+']').scrollHeight ;
+          roffseth = document.getElementById('rightDivBigs['+i+']').offsetHeight ;
+          }
+        }
+        rightbuttonStatus = 1;
+        rightbutton.html('<');
+      }
     }
   }
+
   if (rightbuttonStatus == 1) {
     if (homePageRightX > l+windowWidth*62/100) {
       homePageRightXv = sin(homePageRightXa)*30*n;
       homePageRightX -= homePageRightXv;
       homePageRightXa += 0.1*n;
-      if (homePageRightX <= l+windowWidth*62/100) homePageRightX = l+windowWidth*62/100;
       if (homePageRightXa >= PI) homePageRightXa = PI;
-    }else if (homePageRightX == l+windowWidth*62/100) {
-      homePageRightX =  l+windowWidth*62/100;
+    }
+    if (homePageRightX <= l+windowWidth*62/100) {
       homePageRight.style('pointer-events','auto');
       homePageRightXa = 0;
       homePageRightXv = 0;
+      homePageRightX =  l+windowWidth*62/100;
       rightbuttonStatus = 21;
+      rightbuttonBack = 0;
+      rightbutton.html('>');
     }
   }
-  if (rightbuttonStatus == 21){
-    rightbuttonBack = 0;
-    rightbutton.html('>');
-  }
-  if (rightbuttonStatus == 20 &  rightbuttonBack == 1) {
-    displayRightDivBigs(); // reflash display only when rightDiv is on the right;
-    rightbuttonStatus = 1;
-    rightbutton.html('<');
-  }
+  
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -490,21 +485,26 @@ function protfolioClicked(){
 
 function changeToRightDivBig(){
   let i = logoLink.indexOf(this);
-  if (pageStatus[i] != 1) {
+  if (pageStatus[i] != 1 && (rightbuttonStatus==21 || rightbuttonStatus==20) ) {
     logodiv.style('pointer-events','none');
     rightbuttonStatus = 0;
     rightbuttonBack = 1;
     for (let j = 0; j < rightDivBigs.length; j++) {
-      pageStatus[j] = 0;
+      if (j==i) {
+        pageStatus[j] = 1;
+      }else{
+        pageStatus[j] = 0;
+      }
     }
     for (let h = 0; h < logoLink.length; h++) {
-      logoLink[h].style('border','none');
+      if (h==i) {
+        logoLink[i].style('border-bottom','solid 2px white');
+      }else{
+        logoLink[h].style('border','none');
+      }
     }
-    pageStatus[i] = 1;
-    logoLink[i].style('border-bottom','solid 2px white');
   }
 }
-
 
 function rightDivSClicked(){
   let i = rightDivS1All.indexOf(this);

@@ -165,6 +165,7 @@ function setup() {
   homePageLeft.position(homePageLeftX,homePageLeftY);
 
   homePageRight = select('#homePageRight');
+  homePageRight.style('overflow','hidden');
   homePageRight.mouseOver(rightDivOver);
   homePageRight.mouseOut(rightDivOut);
   homePageRightW = windowWidth*38/100 ;
@@ -179,7 +180,7 @@ function setup() {
 
   //rightbutton
   rightbutton = createDiv('>');
-  rightbuttonBack = 1;
+  rightbuttonBack = 0;
   rightbuttonStatus = 21;
   rbs = 0;
   rightbutton.style('z-index','2');  
@@ -217,6 +218,7 @@ function setup() {
   createRightDivBig();
   createPlayground();
   createProtfolio();
+  idRightDivBigs()
   displayRightDivBigs();
 
 
@@ -485,10 +487,10 @@ function life() {
   }
   if (bs!=0 & bs!=20) {
 
-    newSP = document.getElementById('rightDivBig').scrollTop;
+    newSP = rl;
     let SV = abs(newSP-oldSP);
     if (100<=SV) SV=100;
-    oldSP = document.getElementById('rightDivBig').scrollTop;
+    oldSP = rl;
 
     for (let i = 0; i < columns; i++) {
       for (let j = 0; j < rows; j++) {
@@ -604,9 +606,9 @@ function resetSizePlan(){
   homePageRight.size(homePageRightW,homePageRightH);
 
   //resize rightbuttonStatus
-  if (rightbuttonStatus == 21) {
+  if (rightbuttonStatus != 20 & rightbuttonStatus != 0) {
     homePageRightX = l+windowWidth*62/100;
-  }else if (rightbuttonStatus == 20) {
+  }else if (rightbuttonStatus != 21 & rightbuttonStatus != 1) {
     homePageRightX = l+windowWidth;
   }
 
@@ -643,9 +645,9 @@ function resetSizePlan(){
     logoh2.style('font-size',9*n+'px');
     for(let i=0;i<logoLink.length;i++){
       logoLink[i].style('font-size',15*n+'px');
-    if (i==1||i==2) logoLink[i].position(15,(220+(i+1)*35)*nl);
-    else if (i==3||i==4||i==5) logoLink[i].position(15,(220+(i+2)*35)*nl);
-    else logoLink[i].position(15,(220+i*35)*nl);
+      if (i==1||i==2) logoLink[i].position(15,(220+(i+1)*35)*nl);
+      else if (i==3||i==4||i==5) logoLink[i].position(15,(220+(i+2)*35)*nl);
+      else logoLink[i].position(15,(220+i*35)*nl);
     }
     logoDivS.style('font-size',13*n+'px');
     logoDivS.style('width',140*n+'px');
@@ -690,12 +692,17 @@ function resetSizePlan(){
 
     rightDivBigW = homePageRightW-lineW*4;
     rightDivBigH = homePageRightH*18/20;
-    rightDivBig.size(rightDivBigW,rightDivBigH);
+
+    for (let i = 0; i < rightDivBigs.length; i++) {
+      rightDivBigs[i].size(rightDivBigW,rightDivBigH);
+    }
+
     line.size(lineW,rightDivBigH);
 
+
+    //right DivS
     rightDivSW = rightDivBigW;
     rightDivSH = 190+rightDivSpadding*2;
-    //right DivS
     if (windowWidth<=1350) {
       rightDivS1W = rightDivSW;
       for (let i = 0; i<rightDivSAll.length; i++){
@@ -723,13 +730,15 @@ function resetSizePlan(){
         rightDivSBAll[i].size(rightDivSW,rightDivSH-rightDivSpadding*2);
       }
     }
-    rscrollh = document.getElementById('rightDivBig').scrollHeight ;
-    roffseth = document.getElementById('rightDivBig').offsetHeight ;
+
+    for (var i = 0; i < rightDivBigs.length; i++) {
+      if (pageStatus[i] == 1 ){
+        rscrollh = document.getElementById('rightDivBigs['+i+']').scrollHeight ;
+        roffseth = document.getElementById('rightDivBigs['+i+']').offsetHeight ;
+      }
+    }
 
 
-
-
-  
 }
 
 
@@ -789,31 +798,47 @@ function repositionLeftAll(){
   //reposition rightAll
   rightDivBigX = lineW;
   rightDivBigY = t+homePageRightH*1/20;
-  rightDivBig.position(rightDivBigX,rightDivBigY);
+  for (var i = 0; i < rightDivBigs.length; i++) {
+    rightDivBigs[i].position(rightDivBigX,rightDivBigY);
+  }
 
 
-  rl = document.getElementById('rightDivBig').scrollTop ;
-  scrollY = map(rl,0,rscrollh-roffseth,scrollH,windowHeight*18/20-scrollH);
+  for (let i = 0; i < rightDivSAll.length; i++) {
+    if (pageStatus[i] == 1) {
+      rl = document.getElementById('rightDivBigs['+i+']').scrollTop ;
+    }
+  }
+
+
+  if (rscrollh-roffseth ==0 ) {
+    scrollY = scrollH;
+  }else{
+    scrollY = map(rl,0,rscrollh-roffseth,scrollH,windowHeight*18/20-scrollH);
+  }
   line.position(0,windowHeight*1/20);
   scrollbar1.size(scrollW,scrollY);
   scrollbar2.size(scrollW,windowHeight*18/20-scrollY);
 
-  let rl_ = constrain(map(rl,0,150,0,60 - rightDivBigY ),0,60 - rightDivBigY);
-  let fontsize = 20-constrain(map(rl,0,150,0,5),0,5);
+  if (rightbuttonStatus != 0) {
 
-  if (fontsize<=17) {
-    Head.style('background-color','black');
-    Head.style('color','white');
-    Head.style('font-weight','normal');
-    //Head.style('border','solid 1px black');
-  }else{
-    Head.style('background-color','transparent');
-    Head.style('font-weight','bold');
-    Head.style('color','black');
-    //Head.style('border','none');
+    let rl_ = constrain(map(rl,0,150,0,60 - rightDivBigY ),0,60 - rightDivBigY);
+    let fontsize = 20-constrain(map(rl,0,150,0,5),0,5);
+
+    if (fontsize<=17) {
+      Head.style('background-color','black');
+      Head.style('color','white');
+      Head.style('font-weight','normal');
+      //Head.style('border','solid 1px black');
+    }else{
+      Head.style('background-color','transparent');
+      Head.style('font-weight','bold');
+      Head.style('color','black');
+      //Head.style('border','none');
+    }
+    Head.style('font-size',fontsize+'px');
+    Head.position(20*2,60-rl_);
+
   }
-  Head.style('font-size',fontsize+'px');
-  Head.position(20*2,60-rl_);
 
 
   //reposition rightbutton

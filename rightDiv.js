@@ -128,12 +128,7 @@ function createRightDivBig(){
 
 
 	RECENT_PLAY();
-
-
-	
-	rscrollh = document.getElementById('rightDivBig').scrollHeight ;
-	roffseth = document.getElementById('rightDivBig').offsetHeight ;
-
+ 	
 }
 
 
@@ -231,6 +226,13 @@ function createRightDiv(rightDivS_h,rightDivS_img_scr,temp_content){
 	rightDivSS.push(0);
 	rightDivSBpadding.push(0);
 
+}
+
+
+function idRightDivBigs(){
+	for (let i = 0; i < rightDivBigs.length; i++) {
+		rightDivBigs[i].id('rightDivBigs['+i+']');
+	}
 }
 
 
