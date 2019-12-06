@@ -306,7 +306,12 @@ function barBackgroundOut(){
   }
 }
 function pdfOver(){
-  this.style('border-bottom','solid 1px black');
+  let i = downloadProtfolio.indexOf(this);
+  if (i==1) {
+    this.style('border-bottom','solid 1px white');
+  }else{
+    this.style('border-bottom','solid 1px black');
+  }
 }
 function pdfOut(){
   this.style('border-bottom','solid 1px silver');
