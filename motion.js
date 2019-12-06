@@ -284,16 +284,17 @@ function linkSmaller(i){
 function barBackgroundOver(){
   let i = leftLink.indexOf(this);
   if (i == 0){
-    barBackground.style('background-color','rgba(0,90,255,0.8)');
+    barBackground.style('background-color','rgba(0,90,255,0.9)');
     Wecheatbar.hide();
     QQbar.show();
   }
   if (i == 1){
-    barBackground.style('background-color','rgba(125,255,0,0.8)');
+    barBackground.style('background-color','rgba(125,255,0,0.9)');
     QQbar.hide();
     Wecheatbar.show();
   }
   barBackground.show();
+  X.style('color','black');
   X.show();
 }
 function barBackgroundOut(){
