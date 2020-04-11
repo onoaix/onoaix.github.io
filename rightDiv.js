@@ -1,3 +1,5 @@
+
+//right
 let line;
 let lineW;
 let lineH;
@@ -36,6 +38,12 @@ let rightDivSBpadding;
 let newSP
 let oldSP
 
+//left
+let leftDivBigs;
+
+
+
+
 function createScrollbar(){
 
   scrollbarAlpha = 0.2;
@@ -66,6 +74,8 @@ function createScrollbar(){
 
   //scrollbar.position(0,scrollY);
   rightDivBigs = [];
+  leftDivBigs = [];
+  leftDivBigs.push(homeCanvas);
   pageStatus = [];
   rightDivTitles = [];
   rightDivSAll = [];
@@ -91,6 +101,7 @@ function createRightDivBig(){
 	rightDivBigs.push(rightDivBig);
 	pageStatus.push(1);
 	rightDivTitles.push('＋ RECENT PLAY EVENT &nbsp');
+	//rightDivBig.style('opacity','0.5');
 	rightDivBig.parent(homePageRight);
 	rightDivBig.id('rightDivBig');
 	rightDivBig.style('box-sizing','border-box');
@@ -126,10 +137,11 @@ function createRightDivBig(){
 	headSpace.parent(rightDivBig);
 	headSpace.size(rightDivBigW,90);
 
-
 	RECENT_PLAY();
+	idRightDivS();
  	
 }
+
 
 
 function RECENT_PLAY(){
@@ -140,18 +152,16 @@ function RECENT_PLAY(){
 	createRightDiv('INFLUENCE DESIGN','influence_design.png','#January 28/2019<br><br>❀2019年度東京造形大学ノミネート賞受賞<br>❀CGDA Visual Communication Design Award 2019 - Silver Award 受賞<br>ビジュアルディスプレィを介してユーザーがコンテンツの操作をする時の行為が期待通りの結果に向かっているか、間違った結果に向かっているかを、その結果に到達する前に直観できるようにアフォードするUIデザイン（マイクロインタラクション）の制作研究である。');
 	createRightDiv('BOUNDLESS','boudless_h.png','#November 9/2017<br><br>❀UVインクジェット、ジェット、ジェット　ノミネート賞受賞<br>私達が常に「完璧」に達さなければならないという感情に満ちたときもありますが、しかし「不完璧」ということに向けて、その完璧を打ち破るインパクトはある「完璧」ではないでしょうか。３D技術で作られた動物形のモデルがそれぞれ絡まって、ある身体の部分が変形して、お互いに突き破ている。あるパーワで身体の中から体を切って、結んでいる様子はその感覚のインパクトを演出している。');
 
-
-	for (let i = 0; i < rightDivSAll.length; i++) {
-		rightDivSAll[i].id('rightDivSAll['+i+']');
-	}
 }
+
+
 
 function createRightDiv(rightDivS_h,rightDivS_img_scr,temp_content){
 
 	let rightDivS = createDiv('');
 	rightDivSpadding = 40;
 	rightDivSW = rightDivBigW;
-	rightDivSH = 190+rightDivSpadding*2;
+	rightDivSH = 190*n+rightDivSpadding*2;
 	rightDivS.class('rightDivS');
 	rightDivS.parent(rightDivBig);
 	rightDivS.style('overflow','hidden');
@@ -220,10 +230,10 @@ function createRightDiv(rightDivS_h,rightDivS_img_scr,temp_content){
 
 
 	rightDivSAll.push(rightDivS);
-	rightDivSBAll.push(rightDivSB);
 	rightDivS1All.push(rightDivS1);
 	rightDivS2All.push(rightDivS2);
 	rightDivSS.push(0);
+	rightDivSBAll.push(rightDivSB);
 	rightDivSBpadding.push(0);
 
 }
@@ -235,16 +245,34 @@ function idRightDivBigs(){
 	}
 }
 
+function idLeftDivBigs(){
+	for (let i = 0; i < leftDivBigs.length; i++) {
+		leftDivBigs[i].id('leftDivBigs['+i+']');
+	}
+}
 
+function idRightDivS(){
+	for (let i = 0; i < rightDivSAll.length; i++) {
+        rightDivSAll[i].id('rightDivSAll['+i+']');
+	}
+}
+
+function idProtfolioLeftS(){
+	for (let i = 0; i < protfolioLeftSAll.length; i++) {
+		protfolioLeftSAll[i].id('protfolioLeftS['+i+']');
+	}
+}
 
 
 function displayRightDivBigs(){
 	for (let i = 0; i < rightDivBigs.length; i++) {
 		if (pageStatus[i]==1){
 			rightDivBigs[i].show();
+			leftDivBigs[i].show();
 			Head.html(rightDivTitles[i]);
 		}else{
 			rightDivBigs[i].hide();
+			leftDivBigs[i].hide();
 		}
 	}
 }

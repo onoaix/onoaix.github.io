@@ -19,12 +19,18 @@
  let homePageRightXv;
  let homePageRightXa;
 
+ //right
+
 let rightbutton;
 let rightbuttonStatus;
 let rbs;
 let rightbuttonBack;
 
 let apple;
+
+
+//left
+let homeCanvas;
 
 
 //LogoDiv
@@ -165,7 +171,7 @@ function setup() {
 
 //▲  Set parameter
 
-  //homePageLeft;
+  //homePageLeft&Right;
   homePageLeft = select('#homePageLeft');
   homePageLeftW = windowWidth*62/100;
   homePageLeftH = windowHeight;
@@ -173,6 +179,8 @@ function setup() {
   homePageLeftX = l;
   homePageLeftY = t;
   homePageLeft.position(homePageLeftX,homePageLeftY);
+  //homePageLeft.style('background-color','white');
+  //homePageLeft.style('z-index','-1');
 
   homePageRight = select('#homePageRight');
   homePageRight.style('overflow','hidden');
@@ -206,6 +214,8 @@ function setup() {
   rightbutton.mouseOut(rightbuttonOut);
   rightbutton.mouseClicked(homePageRightClicked);
 
+  //left
+  homeCanvas = select('#homeCanvas');
 
 
 
@@ -218,6 +228,7 @@ function setup() {
   canvasX = homePageLeftW;
   canvasY = homePageLeftY;
   canvas = createCanvas(canvasW,canvasH);
+  canvas.parent('#homeCanvas');
   canvas.style('z-index',-1);
   canvas.show();
   canvas.position(canvasX,canvasY);
@@ -227,10 +238,23 @@ function setup() {
   //rightDivAll
   createScrollbar();
   createRightDivBig();
-  createPlayground();
-  createProtfolio();
-  idRightDivBigs()
-  displayRightDivBigs();
+  createPlaygroundRight();
+  createProtfolioRight();
+    //createAboutmeRight();
+    //createIdeasharingRight();
+
+  idRightDivBigs();
+
+  //createLeftAll();
+  createPlaygroundLeft();
+  createProtfolioLeft();
+
+  idLeftDivBigs();
+
+  //displaydivs
+    displayRightDivBigs();
+
+
 
 
   // logoDIV
@@ -762,20 +786,20 @@ function resetSizePlan(){
 
     //right DivS
     rightDivSW = rightDivBigW;
-    rightDivSH = 190+rightDivSpadding*2;
-    if (windowWidth<=1350) {
+    rightDivSH = 190*n+rightDivSpadding*2;
+
+    if (windowWidth<=1920) {
       rightDivS1W = rightDivSW;
       for (let i = 0; i<rightDivSAll.length; i++){
         rightDivSAll[i].style('width',rightDivSW+'px');
         rightDivSAll[i].style('height','auto');
-        rightDivSAll[i].id('rightDivSAll['+i+']');
         rightDivS1All[i].size(rightDivS1W,rightDivSH-rightDivSpadding*2);
         rightDivS2All[i].style('width',rightDivS1W-20+'px');
         rightDivS2All[i].style('height','auto');
         rightDivS2All[i].style('margin','10px 10px 0px 10px');
       }
       for (let i = 0; i < rightDivSBAll.length; i++) {
-        rightDivSBAll[i].size(rightDivSW,rightDivSH);
+        //rightDivSBAll[i].size(rightDivSW,rightDivSH-rightDivSpadding*2);
         rightDivSBAll[i].size(rightDivSW,document.getElementById('rightDivSAll['+i+']').offsetHeight-rightDivSpadding*2);
       }
     }else{
@@ -915,9 +939,9 @@ function repositionLeftAll(){
   //reposition protfolioIMG
   let protfolioImgX = 130*n;
   let protfolioImgY = 150*n;
-  protfolioImg.position(protfolioImgX,protfolioImgY);
-  InfluenceImg.position(protfolioImgX-80*n,protfolioImgY+150*n);
-  InfluenceHopeImg.position(protfolioImgX+40*n,protfolioImgY+275*n);
+  protfolioImg.position(protfolioImgX-(1-n)*20,protfolioImgY);
+  InfluenceImg.position(protfolioImgX-80*n-(1-n)*20,protfolioImgY+150*n);
+  InfluenceHopeImg.position(protfolioImgX+40*n-(1-n)*20,protfolioImgY+275*n);
 
 
 }

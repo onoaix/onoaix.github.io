@@ -354,6 +354,14 @@ function homePageRightGo(){
       if (rightbuttonBack == 1) {
         displayRightDivBigs(); // reflash display only when rightDiv is on the right;
         for (let i = 0; i < pageStatus.length; i++) {
+          if (pageStatus[i] == 0) {
+            homePageLeft.style('background-color','transparent');
+            for (let i = 0; i < rightDivSBAll.length; i++) {
+              rightDivSBAll[i].size(rightDivSW,document.getElementById('rightDivSAll['+i+']').offsetHeight-rightDivSpadding*2);
+            }
+          }else{
+            homePageLeft.style('background-color','white');
+          }
           if (pageStatus[i] == 1){
             if (i ==2 ) {
               line.hide();
