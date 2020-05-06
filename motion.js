@@ -464,17 +464,17 @@ function rightDivSOut(){
   //this.style('height',20+'px');
 }
 function rightDivSGo(i){
-  if (rightDivSBpadding[i]<2) {
-    rightDivSBpadding[i] += 0.4;
-  }else if (rightDivSBpadding[i]>=2) {
-    rightDivSBpadding[i] = 2;
+  if (rightDivSBpadding[i]<3) {
+    rightDivSBpadding[i] += 0.5;
+  }else if (rightDivSBpadding[i]>=3) {
+    rightDivSBpadding[i] = 3;
     rightDivSS[i] = 21;
   }
   rightDivSBAll[i].style('border','solid '+rightDivSBpadding[i]+'px '+'black ');
 }
 function rightDivSBack(i){
   if (rightDivSBpadding[i]>0) {
-    rightDivSBpadding[i] -= 0.4;
+    rightDivSBpadding[i] -= 0.5;
   }else if (rightDivSBpadding[i]<=0) {
     rightDivSBpadding[i] = 0;
     rightDivSS[i] = 20;
