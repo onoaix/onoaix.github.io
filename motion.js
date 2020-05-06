@@ -181,6 +181,7 @@ function onoBackBack(){
 function HighLightLinkOfSketch(){
   let i = aboutCode.indexOf(this);
   //this.style('font-style','italic');
+  aboutCode[i].style('cursor','pointer');
   aboutCode[i].style('border-bottom-width',1.8+'px');
   aboutCode[i].style('border-bottom-style','solid');
   aboutCode[i].style('border-bottom-color','red');
@@ -574,13 +575,25 @@ function rightDivSClicked(){
     pageStatus[2] = 1;
     logoLink[2].style('border-bottom','solid 2px white');
   }else if (i==1) {
-    window.open('https://github.com/onoaix/Flow-FIeld-Following','_self');
+    window.open('#');
   }else if (i==2) {
-    window.open('https://shengtanggongzhu.wixsite.com/website/single-post/2019/08/16/ZOKEI%E5%B1%95%E3%81%AE%E3%81%9F%E3%82%81%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%81%97%E3%81%9F%E3%83%9D%E3%82%B9%E3%82%BF%E3%83%BC','_self');
+    window.open('https://github.com/onoaix/Flow-FIeld-Following','_self');
   }else if (i==3) {
-    window.open('https://shengtanggongzhu.wixsite.com/website/single-post/2019/08/26/%E3%80%8CINFLUENCE%E3%80%8D','_self');
+    window.open('https://shengtanggongzhu.wixsite.com/website/single-post/2019/08/16/ZOKEI%E5%B1%95%E3%81%AE%E3%81%9F%E3%82%81%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%81%97%E3%81%9F%E3%83%9D%E3%82%B9%E3%82%BF%E3%83%BC','_self');
   }else if (i==4){
+    window.open('https://shengtanggongzhu.wixsite.com/website/single-post/2019/08/26/%E3%80%8CINFLUENCE%E3%80%8D','_self');
+  }else if(i==5){
     window.open('https://shengtanggongzhu.wixsite.com/website/single-post/2016/05/03/Modern-minimalism-one-artists-journey','_self');
   }
 
+}
+
+
+function protfolioLeftSOver(){
+  let i = protfolioLeftSAll.indexOf(this);
+  protfolioLeftSIntroductionAll[i].show();
+}
+function protfolioLeftSOut(){
+  let i = protfolioLeftSAll.indexOf(this);
+  protfolioLeftSIntroductionAll[i].hide();
 }
