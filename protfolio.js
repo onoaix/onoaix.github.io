@@ -13,8 +13,14 @@ let LeftDivBigY;
 
 let protfolioLeftSS;
 let protfolioLeftSAll;
-let protfolioLeftSBpaddingAll;
+let protfolioLeftSBAll;
 let protfolioLeftSIntroductionAll;
+
+let protfolioLeftSBDeta;
+let protfolioRightSS;
+
+let protfolioRightSB;
+let protfolioRightBorderDeta;
 
 
 
@@ -29,8 +35,10 @@ function createProtfolioLeft(){
 
 	protfolioLeftSS = [];
 	protfolioLeftSAll = [];
-	protfolioLeftSBpaddingAll = [];
+	protfolioLeftSBAll = [];
 	protfolioLeftSIntroductionAll = [];
+
+	protfolioLeftSBDeta = [];
 
 
 	protfolioLeftDiv = createDiv('');
@@ -151,7 +159,8 @@ function createProtfolioLeftS(protfolio_h,profolio_img_scr,profolio_content){
 	//生成各数列
 	protfolioLeftSAll.push(protfolioS);
 	protfolioLeftSS.push(0);
-	protfolioLeftSBpaddingAll.push(0);
+	protfolioLeftSBAll.push(protfolioSB);
+	protfolioLeftSBDeta.push(0);
 	protfolioLeftSIntroductionAll.push(protfolioLeftSIntroduction);
 
 
@@ -171,6 +180,10 @@ function createProtfolioRight(){
 
 	//homePageRight.style('background-color','gold');
 	protfolioUrl = [];
+	protfolioRightSB = [];
+	protfolioRightBorderDeta = [];
+	protfolioRightSS = [];
+
 
 	//createProtfolioRightDivBig
 	protfolioRightDiv = createDiv('');
@@ -210,9 +223,6 @@ function createProtfolioRight(){
 	let protfolioImgY = 150;
 	protfolioImg.position(protfolioImgX-(1-n)*20,protfolioImgY);
 
-	protfolioImg.mouseOver(protfolioOver);
-	protfolioImg.mouseOut(protfolioOut);
-
 	protfolioUrl.push(protfolioImg);
 	protfolioImg.mouseClicked(protfolioClicked);
 
@@ -231,8 +241,6 @@ function createProtfolioRight(){
 	InfluenceImg.size(180*n,250*n);
 	InfluenceImg.position(protfolioImgX-80-(1-n)*20,protfolioImgY+150);
 
-	InfluenceImg.mouseOver(protfolioOver);
-	InfluenceImg.mouseOut(protfolioOut);
 
 	protfolioUrl.push(InfluenceImg);
 	InfluenceImg.mouseClicked(protfolioClicked);
@@ -254,10 +262,30 @@ function createProtfolioRight(){
 	InfluenceHopeImg.size(200*n,150*n);
 	InfluenceHopeImg.position(protfolioImgX+40-(1-n)*20,protfolioImgY+275);
 
+	protfolioUrl.push(InfluenceHopeImg);
+	InfluenceHopeImg.mouseClicked(protfolioClicked);
+
+
+	protfolioRightSB.push(protfolioImg);
+	protfolioRightSS.push(0);
+	protfolioRightBorderDeta.push(0);
+
+	protfolioRightSB.push(InfluenceImg);
+	protfolioRightSS.push(0);
+	protfolioRightBorderDeta.push(0);
+
+	protfolioRightSB.push(InfluenceHopeImg);
+	protfolioRightSS.push(0);
+	protfolioRightBorderDeta.push(0);
+
+
+	protfolioImg.mouseOver(protfolioOver);
+	protfolioImg.mouseOut(protfolioOut);
+	InfluenceImg.mouseOver(protfolioOver);
+	InfluenceImg.mouseOut(protfolioOut);
 	InfluenceHopeImg.mouseOver(protfolioOver);
 	InfluenceHopeImg.mouseOut(protfolioOut);
 
-	protfolioUrl.push(InfluenceHopeImg);
-	InfluenceHopeImg.mouseClicked(protfolioClicked);
+
 
 }

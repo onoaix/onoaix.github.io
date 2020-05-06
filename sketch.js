@@ -490,6 +490,16 @@ function draw() {
     }
   }
 
+  //ProtfolioRightGo
+  for(let i=0; i<protfolioRightSS.length; i++){
+    if(protfolioRightSS[i] == 1){
+      protfolioRightGo(i);
+    }else if(protfolioRightSS[i] == 0){
+      protfolioRightBack(i);
+    }
+  }
+
+
   //reposition
   repositionLeftAll();
 

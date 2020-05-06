@@ -496,11 +496,33 @@ function rightbuttonOut(){
 
 
 function protfolioOver(){
-  this.style('border','solid 1px black');
-  this.style('background-color','black');
+  let i = protfolioRightSB.indexOf(this);
+  protfolioRightSS[i] = 1;
 }
 function protfolioOut(){
-  this.style('border','solid 1px silver');
+  let i = protfolioRightSB.indexOf(this);
+  protfolioRightSS[i] = 0;
+}
+function protfolioRightGo(i){
+  if(protfolioRightBorderDeta[i]<2){
+    protfolioRightBorderDeta[i] += 0.4;
+  }else{
+    protfolioRightBorderDeta[i] = 2;
+    protfolioRightSS[i] = 21;
+  }
+  protfolioRightSB[i].style('border','solid '+protfolioRightBorderDeta[i]+'px '+'black');
+  //protfolioRightSB[i].style('background-color','black');
+}
+function protfolioRightBack(i){
+  if(protfolioRightBorderDeta[i]>0){
+    protfolioRightBorderDeta[i] -= 0.4;
+  }else{
+    protfolioRightBorderDeta[i] = 0;
+    protfolioRightSS[i] = 20;
+  }
+  protfolioRightSB[i].style('border','solid '+protfolioRightBorderDeta[i]+'px '+'black');
+  //protfolioRightSB[i].style('background-color','black');
+
 }
 
 function protfolioClicked(){
