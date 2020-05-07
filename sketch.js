@@ -184,6 +184,7 @@ function setup() {
 
   homePageRight = select('#homePageRight');
   homePageRight.style('overflow','hidden');
+  homePageRight.style('z-index','2');
   homePageRight.style('background-color','white');
   homePageRight.mouseOver(rightDivOver);
   homePageRight.mouseOut(rightDivOut);
@@ -496,6 +497,15 @@ function draw() {
       protfolioRightGo(i);
     }else if(protfolioRightSS[i] == 0){
       protfolioRightBack(i);
+    }
+  }
+
+  //ProtfolioLeftGo!
+  for(let i=0; i<protfolioLeftSS.length; i++){
+    if(protfolioLeftSS[i]==1){
+      protfolioLeftSGo(i);
+    }else if(protfolioLeftSS[i]==0){
+      protfolioLeftSBack(i);
     }
   }
 

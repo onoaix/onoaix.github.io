@@ -613,9 +613,46 @@ function rightDivSClicked(){
 
 function protfolioLeftSOver(){
   let i = protfolioLeftSAll.indexOf(this);
-  protfolioLeftSIntroductionAll[i].show();
+  protfolioLeftSS[i] = 1;
+  //protfolioLeftSIntroductionAll[i].show();
 }
 function protfolioLeftSOut(){
   let i = protfolioLeftSAll.indexOf(this);
-  protfolioLeftSIntroductionAll[i].hide();
+  protfolioLeftSS[i] = 0;
+  //protfolioLeftSIntroductionAll[i].show();
+}
+
+function protfolioLeftSGo(i){
+  if(protfolioLeftSPositionDeta[i]>(LeftDivBigW/2-60)*3/5){
+    protfolioLeftSPositionDeta[i] -= (LeftDivBigW/2-60)/25;
+  }else{
+    protfolioLeftSPositionDeta[i] = (LeftDivBigW/2-60)*3/5;
+  }
+  protfolioLeftSIntroductionAll[i].style('top',protfolioLeftSPositionDeta[i]+'px');
+  if(protfolioLeftSBDeta[i]<3){
+    protfolioLeftSBDeta[i] += 0.5;
+  }else{
+    protfolioLeftSBDeta[i] = 3;
+  }
+  protfolioLeftSBAll[i].style('border','solid '+protfolioLeftSBDeta[i]+'px black');
+  if(protfolioLeftSPositionDeta[i] == (LeftDivBigW/2-60)*3/5 && protfolioLeftSBDeta[i] == 3){
+    protfolioLeftSS[i] = 21;
+  }
+}
+function protfolioLeftSBack(i){
+  if(protfolioLeftSPositionDeta[i]<LeftDivBigW/2-60){
+    protfolioLeftSPositionDeta[i] += (LeftDivBigW/2-60)/25;
+  }else{
+    protfolioLeftSPositionDeta[i] = LeftDivBigW/2-60;
+  }
+  protfolioLeftSIntroductionAll[i].style('top',protfolioLeftSPositionDeta[i]+'px');
+  if(protfolioLeftSBDeta[i]>0){
+    protfolioLeftSBDeta[i] -= 0.5;
+  }else{
+    protfolioLeftSBDeta[i] = 0;
+  }
+  protfolioLeftSBAll[i].style('border','solid '+protfolioLeftSBDeta[i]+'px black');
+  if(protfolioLeftSPositionDeta[i] == LeftDivBigW/2-60 && protfolioLeftSBDeta[i] == 0){
+    protfolioLeftSS[i] = 20;
+  }
 }
