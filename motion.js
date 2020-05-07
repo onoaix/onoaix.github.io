@@ -113,7 +113,7 @@ function minSSOver(){
     if(AlphaSS>=1){
       ms = 21;
     }
-    minSS.style('background-color','rgba(255,90,0,'+AlphaSS+')');
+    minSS.style('background-color','rgba(230,230,230,'+AlphaSS+')');
   }
 }
 function minSSOut(){
@@ -124,7 +124,7 @@ function minSSOut(){
     if(AlphaSS<=0){
       ms = 20;
     }
-    minSS.style('background-color','rgba(255,90,0,'+AlphaSS+')');
+    minSS.style('background-color','rgba(230,230,230,'+AlphaSS+')');
   }
 }
 
