@@ -50,15 +50,15 @@ function createProtfolioLeft(){
 	protfolioLeftDiv.size(LeftDivBigW,LeftDivBigH);
 	//protfolioLeftDiv.style('background-color','gray');
 	protfolioLeftDiv.attribute('align', 'center');
-	protfolioLeftDiv.style('overflow','hidden auto');
+	protfolioLeftDiv.style('overflow','scroll');
 	protfolioLeftDiv.style('padding','0px 20px 0px 20px');
 	protfolioLeftDiv.position(LeftDivBigX,LeftDivBigY);
 
 	let head = createDiv('head');
 	head.parent(protfolioLeftDiv);
 	head.style('text-align','right');
-	head.style('font-size','24pt');
-	head.style('margin','90px 30px 30px 30px');
+	head.style('font-size','21pt');
+	head.style('margin','55px 30px 40px 30px');
 	head.style('font-family','Microsoft YaHei');
 	head.style('font-weight','990');
 	head.html('PROTFOLIO');
@@ -67,10 +67,10 @@ function createProtfolioLeft(){
 	createProtfolioLeftS('ZOKEI POSTER','url(PROTFOLIO_IMG/zokei_poster.jpg)','以“ZOKEI展”中的“ZO”为创作原型经行的海报设计。日语中“ZO”对应汉字中的“造”、有创造之意，也包含并强调了“造”的过程。“ZOKEI展”是一年一度的毕业展，我希望用“ZO”的概念来隐喻“出生”，并将相同的形状进行反复，迭代地运用，设计了这张海报。');
 	createProtfolioLeftS('BOUNDLESS','url(PROTFOLIO_IMG/BOUNDLESS.jpg)','“BOUNDLESS”是一组表现动物的海报作品，利用电脑的3d技术建立模型，并运用2dCG转绘而成。希望通过力的作用扭曲模型对象，从而表达建模时模型磨损和法线错误的感觉。因此动物模型呈现变形，拉伸，或相互突破的样子。');
 	createProtfolioLeftS('EGO','url(PROTFOLIO_IMG/EGO.jpg)','株式会社「天乾勿躁」から依頼して、「服装の哲学」を主題とする秋と冬の宣伝ポスターの作品である。着物というのが、機能性を持つ一方、人間の自己認識が世界への投影というものもある。服装を選ぶ一方、どのような人になるのも一生の課題になるかもしれない。');
-	createProtfolioLeftS('空作品6','url(PROTFOLIO_IMG/protfolio_waiting.jpg)','我的不知道要怎么介绍一件空白作品。');
-	createProtfolioLeftS('空作品7','url(PROTFOLIO_IMG/protfolio_waiting.jpg)','我的不知道要怎么介绍一件空白作品。');
-	createProtfolioLeftS('空作品8','url(PROTFOLIO_IMG/protfolio_waiting.jpg)','我的不知道要怎么介绍一件空白作品。');
-	createProtfolioLeftS('空作品9','url(PROTFOLIO_IMG/protfolio_waiting.jpg)','我的不知道要怎么介绍一件空白作品。');
+	createProtfolioLeftS('空作品6','url(PROTFOLIO_IMG/protfolio_waiting.jpg)','我的不知道要怎么介绍一件还没来得及上传的空白作品。');
+	createProtfolioLeftS('空作品7','url(PROTFOLIO_IMG/protfolio_waiting.jpg)','我的不知道要怎么介绍一件还没来得及上传的空白作品。');
+	createProtfolioLeftS('空作品8','url(PROTFOLIO_IMG/protfolio_waiting.jpg)','我的不知道要怎么介绍一件还没来得及上传的空白作品。');
+	createProtfolioLeftS('空作品9','url(PROTFOLIO_IMG/protfolio_waiting.jpg)','我的不知道要怎么介绍一件还没来得及上传的空白作品。');
 
 	idProtfolioLeftS();
 
