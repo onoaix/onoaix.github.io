@@ -118,7 +118,7 @@ function createProtfolioLeftS(protfolio_h,profolio_img_scr,profolio_content){
 	protfolioSB.style('pointer-events','none');
 	protfolioSB.style('box-sizing','border-box');
 	protfolioSB.size(LeftDivBigW/2-60,LeftDivBigW/2-60);
-	protfolioSB.style('border','solid 0px black');
+	protfolioSB.style('border','solid 1px silver');
 	protfolioSB.style('z-index','1');
 
 
@@ -163,7 +163,7 @@ function createProtfolioLeftS(protfolio_h,profolio_img_scr,profolio_content){
 	protfolioLeftSAll.push(protfolioS);
 	protfolioLeftSS.push(20);
 	protfolioLeftSBAll.push(protfolioSB);
-	protfolioLeftSBDeta.push(0);
+	protfolioLeftSBDeta.push(1);
 	protfolioLeftSPositionDeta.push(LeftDivBigW/2-60);
 	protfolioLeftSIntroductionAll.push(protfolioLeftSIntroduction);
 

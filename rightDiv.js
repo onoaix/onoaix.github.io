@@ -145,7 +145,7 @@ function createRightDivBig(){
 
 
 function RECENT_PLAY(){
-	createRightDiv('PROTFOLIO','22222.png','#May 19/2019<br><br>It’s just a PROTFOLIO');
+	createRightDiv('PROTFOLIO','22222.png','#May 19/2019<br><br>It mainly includes some of my works from 2017 - 2019, as well as some earlier works, including two interactive works, two animation works, two visual design works, and two painting practice works. In addition, there are two additional volumes about influence design (it is an interactive work).');
 	//rightDivS1All[0].mouseClicked(changeToProtfolio);
 	createRightDiv('INFLUENCE FONT','influence_font.png','#April 17/2020<br><br>Star with INFLUENCE FONT programing object.A motional font object with montion graphic.It is still a idea right now ,It will be gradually improced in future.');
 	createRightDiv('Flow-FIeld-Following','Flow_Field_Following.png','#December 1/2019<br><br>I’v tried to make the flow field following steering behavior with p5.js.');
@@ -235,7 +235,7 @@ function createRightDiv(rightDivS_h,rightDivS_img_scr,temp_content){
 	rightDivS2All.push(rightDivS2);
 	rightDivSS.push(0);
 	rightDivSBAll.push(rightDivSB);
-	rightDivSBpadding.push(0);
+	rightDivSBpadding.push(1);
 
 }
 

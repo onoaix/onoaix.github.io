@@ -465,21 +465,21 @@ function rightDivSOut(){
 }
 function rightDivSGo(i){
   if (rightDivSBpadding[i]<4) {
-    rightDivSBpadding[i] += 0.5;
+    rightDivSBpadding[i] += 0.4;
   }else if (rightDivSBpadding[i]>=4) {
     rightDivSBpadding[i] = 4;
     rightDivSS[i] = 21;
   }
-  rightDivSBAll[i].style('border','solid '+rightDivSBpadding[i]+'px '+'black ');
+  rightDivSBAll[i].style('border','solid '+rightDivSBpadding[i]+'px '+'black');
 }
 function rightDivSBack(i){
-  if (rightDivSBpadding[i]>0) {
-    rightDivSBpadding[i] -= 0.5;
-  }else if (rightDivSBpadding[i]<=0) {
-    rightDivSBpadding[i] = 0;
+  if (rightDivSBpadding[i]>1) {
+    rightDivSBpadding[i] -= 0.4;
+  }else if (rightDivSBpadding[i]<=1) {
+    rightDivSBpadding[i] = 1;
     rightDivSS[i] = 20;
   }
-  rightDivSBAll[i].style('border','solid '+rightDivSBpadding[i]+'px '+'black ');
+  rightDivSBAll[i].style('border','solid '+rightDivSBpadding[i]+'px '+'silver');
 }
 
 
@@ -634,7 +634,7 @@ function protfolioLeftSGo(i){
     protfolioLeftSBDeta[i] = 4;
   }
   protfolioLeftSBAll[i].style('border','solid '+protfolioLeftSBDeta[i]+'px black');
-  if(protfolioLeftSPositionDeta[i] == (LeftDivBigW/2-60)*3/5 && protfolioLeftSBDeta[i] == 3){
+  if(protfolioLeftSPositionDeta[i] == (LeftDivBigW/2-60)*3/5 && protfolioLeftSBDeta[i] == 4){
     protfolioLeftSS[i] = 21;
   }
 }
@@ -644,13 +644,13 @@ function protfolioLeftSBack(i){
     protfolioLeftSPositionDeta[i] = LeftDivBigW/2-60;
   }
   protfolioLeftSIntroductionAll[i].style('top',protfolioLeftSPositionDeta[i]+'px');
-  if(protfolioLeftSBDeta[i]>0){
+  if(protfolioLeftSBDeta[i]>1){
     protfolioLeftSBDeta[i] -= 0.4;
   }else{
-    protfolioLeftSBDeta[i] = 0;
+    protfolioLeftSBDeta[i] = 1;
   }
-  protfolioLeftSBAll[i].style('border','solid '+protfolioLeftSBDeta[i]+'px black');
-  if(protfolioLeftSPositionDeta[i] == LeftDivBigW/2-60 && protfolioLeftSBDeta[i] == 0){
+  protfolioLeftSBAll[i].style('border','solid '+protfolioLeftSBDeta[i]+'px silver');
+  if(protfolioLeftSPositionDeta[i] == LeftDivBigW/2-60 && protfolioLeftSBDeta[i] == 1){
     protfolioLeftSS[i] = 20;
   }
 }
