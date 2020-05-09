@@ -421,12 +421,12 @@ function rightDivGo(){
   }else if (1 <= scrollbarAlpha) {
     scrollbarAlpha = 1;
   }
-  if (scrollW < 4) {
+  if (scrollW < scrollWmax) {
     scrollW += 0.5;
-  }else if (scrollW >= 4) {
-    scrollW = 4;
+  }else if (scrollW >= scrollWmax) {
+    scrollW = scrollWmax;
   }
-  if (scrollbarAlpha>=1&scrollW>=4) {
+  if (scrollbarAlpha>=1&&scrollW>=scrollWmax) {
     bs = 21;
   }
   scrollbar1.style('background-color','rgba(0,0,0,'+scrollbarAlpha+')');
@@ -438,12 +438,12 @@ function rightDivBack(){
   }else if (scrollbarAlpha <= 0.2) {
     scrollbarAlpha = 0.2;
   }
-  if (scrollW > 2) {
+  if (scrollW > 1) {
     scrollW -= 0.5;
-  }else if (scrollW <= 2) {
-    scrollW = 2;
+  }else if (scrollW <= 1) {
+    scrollW = 1;
   }
-  if (scrollbarAlpha<=0.2&scrollW<=2) {
+  if (scrollbarAlpha<=0.2&scrollW<=1) {
     bs = 20;
   }
   scrollbar1.style('background-color','rgba(0,0,0,'+scrollbarAlpha+')');
@@ -464,10 +464,10 @@ function rightDivSOut(){
   //this.style('height',20+'px');
 }
 function rightDivSGo(i){
-  if (rightDivSBpadding[i]<3) {
+  if (rightDivSBpadding[i]<4) {
     rightDivSBpadding[i] += 0.5;
-  }else if (rightDivSBpadding[i]>=3) {
-    rightDivSBpadding[i] = 3;
+  }else if (rightDivSBpadding[i]>=4) {
+    rightDivSBpadding[i] = 4;
     rightDivSS[i] = 21;
   }
   rightDivSBAll[i].style('border','solid '+rightDivSBpadding[i]+'px '+'black ');
@@ -623,16 +623,15 @@ function protfolioLeftSOut(){
 }
 
 function protfolioLeftSGo(i){
-  if(protfolioLeftSPositionDeta[i]>(LeftDivBigW/2-60)*3/5){
-    protfolioLeftSPositionDeta[i] -= (LeftDivBigW/2-60)/25;
-  }else{
+  protfolioLeftSPositionDeta[i] -= (LeftDivBigW/2-60)*2/5/11;
+  if(protfolioLeftSPositionDeta[i]<=(LeftDivBigW/2-60)*3/5){
     protfolioLeftSPositionDeta[i] = (LeftDivBigW/2-60)*3/5;
   }
   protfolioLeftSIntroductionAll[i].style('top',protfolioLeftSPositionDeta[i]+'px');
-  if(protfolioLeftSBDeta[i]<3){
-    protfolioLeftSBDeta[i] += 0.5;
+  if(protfolioLeftSBDeta[i]<4){
+    protfolioLeftSBDeta[i] += 0.4;
   }else{
-    protfolioLeftSBDeta[i] = 3;
+    protfolioLeftSBDeta[i] = 4;
   }
   protfolioLeftSBAll[i].style('border','solid '+protfolioLeftSBDeta[i]+'px black');
   if(protfolioLeftSPositionDeta[i] == (LeftDivBigW/2-60)*3/5 && protfolioLeftSBDeta[i] == 3){
@@ -640,14 +639,13 @@ function protfolioLeftSGo(i){
   }
 }
 function protfolioLeftSBack(i){
-  if(protfolioLeftSPositionDeta[i]<LeftDivBigW/2-60){
-    protfolioLeftSPositionDeta[i] += (LeftDivBigW/2-60)/25;
-  }else{
+  protfolioLeftSPositionDeta[i] += (LeftDivBigW/2-60)*2/5/11;
+  if(protfolioLeftSPositionDeta[i]>=LeftDivBigW/2-60){
     protfolioLeftSPositionDeta[i] = LeftDivBigW/2-60;
   }
   protfolioLeftSIntroductionAll[i].style('top',protfolioLeftSPositionDeta[i]+'px');
   if(protfolioLeftSBDeta[i]>0){
-    protfolioLeftSBDeta[i] -= 0.5;
+    protfolioLeftSBDeta[i] -= 0.4;
   }else{
     protfolioLeftSBDeta[i] = 0;
   }

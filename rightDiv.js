@@ -58,8 +58,8 @@ function createScrollbar(){
   scrollbar1 = select('#scrollbar1');
   scrollbar2 = select('#scrollbar2');
   scrollH = 10;
-  scrollW = 2;
-  scrollWmax = 4;
+  scrollW = 1;
+  scrollWmax = 3;
   rl = 0;
   roffseth = 0;
   rscrollh = 0;
@@ -145,7 +145,7 @@ function createRightDivBig(){
 
 
 function RECENT_PLAY(){
-	createRightDiv('↑ PROTFOLIO','22222.png','#May 19/2019<br><br>It’s just a PROTFOLIO');
+	createRightDiv('PROTFOLIO','22222.png','#May 19/2019<br><br>It’s just a PROTFOLIO');
 	//rightDivS1All[0].mouseClicked(changeToProtfolio);
 	createRightDiv('INFLUENCE FONT','influence_font.png','#April 17/2020<br><br>Star with INFLUENCE FONT programing object.A motional font object with montion graphic.It is still a idea right now ,It will be gradually improced in future.');
 	createRightDiv('Flow-FIeld-Following','Flow_Field_Following.png','#December 1/2019<br><br>I’v tried to make the flow field following steering behavior with p5.js.');
@@ -207,7 +207,7 @@ function createRightDiv(rightDivS_h,rightDivS_img_scr,temp_content){
 	rightDivS2.style('float','left');
 	rightDivS2.size(rightDivSW-rightDivS1W-40-10*n,rightDivSH-rightDivSpadding*2);
 	//rightDivS2.style('border-top','solid 2px silver');
-	rightDivS2.style('margin','0px 20px 0px 20px');
+	rightDivS2.style('margin','0px 30px 0px 30px');
 	//rightDivS2.style('background-color','yellow');
 
 	let rightDivSHead = createP(rightDivS_h);
@@ -215,9 +215,9 @@ function createRightDiv(rightDivS_h,rightDivS_img_scr,temp_content){
 	rightDivSHead.style('word-wrap','break-word');
 	rightDivSHead.style('margin',0+'px');
 	//rightDivSHead.style('margin','0px 10px 10px 10px');
-	rightDivSHead.style('font-size',22+'px');
+	rightDivSHead.style('font-size',32+'px');
 	rightDivSHead.style('font-family','Microsoft YaHei');
-	rightDivSHead.style('font-weight','blod');
+	rightDivSHead.style('font-weight','bold');
 	rightDivSHead.style('text-align','left');
 
 	let rightDivSContent = createP(temp_content);

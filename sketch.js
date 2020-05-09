@@ -347,7 +347,7 @@ function setup() {
   oY = oYMin;
   onoBack.position(oX,oY);
   onoBack.style('border-top-width',6*n+'px');
-  onoBack.size(46*n,32*n);
+  onoBack.size(36*n,32*n);
 
   // leftLinks
   icons  = selectAll('i');
@@ -749,7 +749,7 @@ function resetSizePlan(){
     }
     minHS.style('font-size',17*n+'px');
     minSS.style('font-size',13*n+'px');
-    onoBack.size(46*n,32*n);
+    onoBack.size(36*n,32*n);
     onoBack.style('border-top-width',6*n+'px');
     for (let i = 0; i < aboutCode.length; i++) {
       aboutCode[i].style('font-size',13*n+'px');
