@@ -307,7 +307,7 @@ function setup() {
     logoLink[i].mouseClicked(changeToRightDivBig);
     logoLink[i].hide();
     logoLink[i].style('font-size',15*n+'px');
-    logoLink[0].style('border-bottom','solid 2px white');
+    logoLink[0].style('border-left','solid 16px orangered');
     if (i==1||i==2) logoLink[i].position(15,(220+(i+1)*35)*nl);
     else if (i==3||i==4||i==5) logoLink[i].position(15,(220+(i+2)*35)*nl);
     else logoLink[i].position(15,(220+i*35)*nl);
@@ -654,9 +654,8 @@ function display(){
         }else if (s == 1 || s == 21) {
           fill(random(230,255),random(50,135),random(0,35)); //logoDIVOver
         }else{
-          fill(230,90,0); //canvasOver
+          fill(random(235,250),90,0); //canvasOver
         }
-        //fill(255,0,0);
         noStroke();
         rect((i-1) * w, (j-1) * w, w*3 , w*3 );
       }

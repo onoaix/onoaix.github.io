@@ -575,7 +575,7 @@ function changeToRightDivBig(){
     }
     for (let h = 0; h < logoLink.length; h++) {
       if (h==i) {
-        logoLink[i].style('border-bottom','solid 2px white');
+        logoLink[i].style('border-left','solid 16px orangered');
       }else{
         logoLink[h].style('border','none');
       }
@@ -646,7 +646,7 @@ function protfolioLeftSBack(i){
     protfolioLeftSPositionDeta[i] = LeftDivBigW/2-60;
   }
   protfolioLeftSIntroductionAll[i].style('top',protfolioLeftSPositionDeta[i]+'px');
-  
+
   protfolioLeftSBDeta[i] -= 0.4;
   if(protfolioLeftSBDeta[i]<=0){
     protfolioLeftSBDeta[i] = 0;
