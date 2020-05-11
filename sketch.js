@@ -223,7 +223,7 @@ function setup() {
 
 
   //canvas p5.js
-  w = 12;
+  w = 13;
   canvasW = homePageLeftW;
   canvasH = homePageLeftH;
   canvasX = homePageLeftW;
@@ -251,9 +251,10 @@ function setup() {
   createProtfolioLeft();
 
   idLeftDivBigs();
+  idprotfolioLeftSIntroduction();
 
   //displaydivs
-    displayRightDivBigs();
+  displayRightDivBigs();
 
 
 
@@ -572,7 +573,7 @@ function life() {
       }      
     }
   }
-  if (bs!=0 & bs!=20) {
+  if (bs!=0 && bs!=20) {
 
     newSP = rl;
     let SV = abs(newSP-oldSP);
@@ -653,7 +654,7 @@ function display(){
         }else if (s == 1 || s == 21) {
           fill(random(230,255),random(50,135),random(0,35)); //logoDIVOver
         }else{
-          fill(random(254,255),90,0); //canvasOver
+          fill(230,90,0); //canvasOver
         }
         //fill(255,0,0);
         noStroke();

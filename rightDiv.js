@@ -208,6 +208,7 @@ function createRightDiv(rightDivS_h,rightDivS_img_scr,temp_content){
 	rightDivS2.size(rightDivSW-rightDivS1W-40-10*n,rightDivSH-rightDivSpadding*2);
 	//rightDivS2.style('border-top','solid 2px silver');
 	rightDivS2.style('margin','0px 30px 0px 30px');
+	rightDivS2.style('cursor','default');
 	//rightDivS2.style('background-color','yellow');
 
 	let rightDivSHead = createP(rightDivS_h);
@@ -264,6 +265,11 @@ function idProtfolioLeftS(){
 	}
 }
 
+function idprotfolioLeftSIntroduction(){
+	for (let i = 0; i < protfolioLeftSIntroductionAll.length; i++) {
+		protfolioLeftSIntroductionAll[i].id('protfolioLeftSIntroductionAll['+i+']');
+	}
+}
 
 function displayRightDivBigs(){
 	for (let i = 0; i < rightDivBigs.length; i++) {

@@ -623,34 +623,36 @@ function protfolioLeftSOut(){
 }
 
 function protfolioLeftSGo(i){
-  protfolioLeftSPositionDeta[i] -= (LeftDivBigW/2-60)*2/5/11;
-  if(protfolioLeftSPositionDeta[i]<=(LeftDivBigW/2-60)*3/5){
-    protfolioLeftSPositionDeta[i] = (LeftDivBigW/2-60)*3/5;
+  let pfsH = document.getElementById('protfolioLeftSIntroductionAll['+i+']').offsetHeight;
+  protfolioLeftSPositionDeta[i] -= pfsH/11;
+  if(protfolioLeftSPositionDeta[i]<=LeftDivBigW/2-60-pfsH){
+    protfolioLeftSPositionDeta[i] = LeftDivBigW/2-60-pfsH;
   }
   protfolioLeftSIntroductionAll[i].style('top',protfolioLeftSPositionDeta[i]+'px');
-  if(protfolioLeftSBDeta[i]<4){
-    protfolioLeftSBDeta[i] += 0.4;
-  }else{
+
+  protfolioLeftSBDeta[i] += 0.4;
+  if(protfolioLeftSBDeta[i]>=4){
     protfolioLeftSBDeta[i] = 4;
   }
   protfolioLeftSBAll[i].style('border','solid '+protfolioLeftSBDeta[i]+'px black');
-  if(protfolioLeftSPositionDeta[i] == (LeftDivBigW/2-60)*3/5 && protfolioLeftSBDeta[i] == 4){
+  if(protfolioLeftSPositionDeta[i] == LeftDivBigW/2-60-pfsH && protfolioLeftSBDeta[i] == 4){
     protfolioLeftSS[i] = 21;
   }
 }
 function protfolioLeftSBack(i){
-  protfolioLeftSPositionDeta[i] += (LeftDivBigW/2-60)*2/5/11;
+  let pfsH = document.getElementById('protfolioLeftSIntroductionAll['+i+']').offsetHeight;
+  protfolioLeftSPositionDeta[i] += pfsH/11;
   if(protfolioLeftSPositionDeta[i]>=LeftDivBigW/2-60){
     protfolioLeftSPositionDeta[i] = LeftDivBigW/2-60;
   }
   protfolioLeftSIntroductionAll[i].style('top',protfolioLeftSPositionDeta[i]+'px');
-  if(protfolioLeftSBDeta[i]>1){
-    protfolioLeftSBDeta[i] -= 0.4;
-  }else{
-    protfolioLeftSBDeta[i] = 1;
+  
+  protfolioLeftSBDeta[i] -= 0.4;
+  if(protfolioLeftSBDeta[i]<=0){
+    protfolioLeftSBDeta[i] = 0;
   }
-  protfolioLeftSBAll[i].style('border','solid '+protfolioLeftSBDeta[i]+'px silver');
-  if(protfolioLeftSPositionDeta[i] == LeftDivBigW/2-60 && protfolioLeftSBDeta[i] == 1){
+  protfolioLeftSBAll[i].style('border','solid '+protfolioLeftSBDeta[i]+'px black');
+  if(protfolioLeftSPositionDeta[i] == LeftDivBigW/2-60 && protfolioLeftSBDeta[i] == 0){
     protfolioLeftSS[i] = 20;
   }
 }
