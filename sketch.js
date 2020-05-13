@@ -448,8 +448,8 @@ function setup() {
 
 
   //resizePlan
-
-  if (windowWidth>=980) {
+    //setup 只在窗口打开时运行一次
+  if (windowWidth>=980&&windowWidth>=windowHeight) {
     apple.show();
     for(let i=0; i<protfolioLeftSAll.length; i++){
       protfolioLeftSAll[i].style('float','left');
@@ -463,7 +463,7 @@ function setup() {
       protfolioLeftSAll[i].style('margin','30px auto');
     }
   }
-
+    //
   resetSizePlan();
   repositionLeftAll();
 
@@ -706,7 +706,7 @@ function resetSizePlan(){
 
   //resize homePageDiv(left&right);
 
-    if (windowWidth>=980) {
+    if (windowWidth>=980&&windowWidth>=windowHeight) {
       homePageLeftW = windowWidth*62/100;
     }else{
       homePageLeftW = windowWidth;
@@ -835,8 +835,8 @@ function resetSizePlan(){
     rightDivSW = rightDivBigW;
     rightDivSH = 190*n+rightDivSpadding*2;
 
-  if((windowWidthP<980 && windowWidth>=980)||(windowWidthP>=980 && windowWidth<980)){
-    if (windowWidth>=980) {
+  if((windowWidthP<980 && windowWidth>=980)||(windowWidthP>=980 && windowWidth<980)||windowWidth<windowHeight){
+    if (windowWidth>=980&&windowWidth>=windowHeight) {
       rightbuttonStatus = 1;
       homePageRightGo();
       apple.show();
