@@ -338,6 +338,8 @@ function homePageRightClicked(){
 }
 
 function homePageRightGo(){
+
+  //右侧部分开始收回。。。
   if (rightbuttonStatus == 0) {
     if (homePageRightX < l+windowWidth) {
       homePageRightXv = sin(homePageRightXa)*30*n;
@@ -351,34 +353,18 @@ function homePageRightGo(){
       homePageRightXv = 0;
       homePageRightX = l+windowWidth;
       rightbuttonStatus = 20;
+      rightbutton.html('<');
 
-      if (rightbuttonBack == 1) {
-        displayRightDivBigs(); // reflash display only when rightDiv is on the right;
-        for (let i = 0; i < pageStatus.length; i++) {
-          if (pageStatus[i] == 0) {
-            homePageLeft.style('background-color','transparent');
-            for (let i = 0; i < rightDivSBAll.length; i++) {
-              rightDivSBAll[i].size(rightDivSW,document.getElementById('rightDivSAll['+i+']').offsetHeight-rightDivSpadding*2);
-            }
-          }else{
-            homePageLeft.style('background-color','white');
-          }
-          if (pageStatus[i] == 1){
-            if (i ==2 ) {
-              line.hide();
-              homePageRight.style('background-color','gold');
-            }else{
-              line.show();
-              homePageRight.style('background-color','white');
-            }
-          rscrollh = document.getElementById('rightDivBigs['+i+']').scrollHeight ;
-          roffseth = document.getElementById('rightDivBigs['+i+']').offsetHeight ;
-          }
-        }
-        rightbuttonStatus = 1;
-        rightbutton.html('<');
+      displayRightDivBigs(); // reflash display only when rightDiv is on the right;
+
+
+      //收回完成后判断是否再自动弹出
+      if (rightbuttonBack == 1 && rightbuttonStatus == 20) {
+          rightbuttonStatus = 1;
+          rightbutton.html('<');
+      }else{
+          rightbuttonStatus = 20;
       }
-
     }
   }
 
@@ -465,7 +451,7 @@ function rightDivSOut(){
 }
 function rightDivSGo(i){
   if (rightDivSBpadding[i]<4) {
-    rightDivSBpadding[i] += 0.4;
+    rightDivSBpadding[i] += 0.8;
   }else if (rightDivSBpadding[i]>=4) {
     rightDivSBpadding[i] = 4;
     rightDivSS[i] = 21;
@@ -473,13 +459,13 @@ function rightDivSGo(i){
   rightDivSBAll[i].style('border','solid '+rightDivSBpadding[i]+'px '+'black');
 }
 function rightDivSBack(i){
-  if (rightDivSBpadding[i]>1) {
-    rightDivSBpadding[i] -= 0.4;
-  }else if (rightDivSBpadding[i]<=1) {
-    rightDivSBpadding[i] = 1;
+  if (rightDivSBpadding[i]>0) {
+    rightDivSBpadding[i] -= 0.8;
+  }else if (rightDivSBpadding[i]<=0) {
+    rightDivSBpadding[i] = 0;
     rightDivSS[i] = 20;
   }
-  rightDivSBAll[i].style('border','solid '+rightDivSBpadding[i]+'px '+'silver');
+  rightDivSBAll[i].style('border','solid '+rightDivSBpadding[i]+'px '+'black');
 }
 
 
@@ -564,8 +550,15 @@ function changeToRightDivBig(){
 
   if (pageStatus[i] != 1 && (rightbuttonStatus==21 || rightbuttonStatus==20) ) {
     logodiv.style('pointer-events','none');
+
+    if((windowWidthP<980 && windowWidth<980)&&rightbuttonStatus==20){
+      rightbuttonBack = 0;
+    }else{
+      rightbuttonBack = 1;
+    }
+
     rightbuttonStatus = 0;
-    rightbuttonBack = 1;
+
     for (let j = 0; j < rightDivBigs.length; j++) {
       if (j==i) {
         pageStatus[j] = 1;
@@ -613,7 +606,7 @@ function rightDivSClicked(){
 
 function protfolioLeftSOver(){
   let i = protfolioLeftSAll.indexOf(this);
-  protfolioLeftSS[i] = 1;
+    protfolioLeftSS[i] = 1;
   //protfolioLeftSIntroductionAll[i].show();
 }
 function protfolioLeftSOut(){
@@ -623,36 +616,44 @@ function protfolioLeftSOut(){
 }
 
 function protfolioLeftSGo(i){
+  //////
   let pfsH = document.getElementById('protfolioLeftSIntroductionAll['+i+']').offsetHeight;
-  protfolioLeftSPositionDeta[i] -= pfsH/11;
-  if(protfolioLeftSPositionDeta[i]<=LeftDivBigW/2-60-pfsH){
-    protfolioLeftSPositionDeta[i] = LeftDivBigW/2-60-pfsH;
+  if(pfsH<=protfolioSW){
+    protfolioLeftSPositionDeta[i] -= pfsH/11;
+    if(protfolioLeftSPositionDeta[i]<=protfolioSW-pfsH){
+      protfolioLeftSPositionDeta[i] = protfolioSW-pfsH;
+    }
+    protfolioLeftSIntroductionAll[i].style('top',protfolioLeftSPositionDeta[i]+'px');
   }
-  protfolioLeftSIntroductionAll[i].style('top',protfolioLeftSPositionDeta[i]+'px');
-
-  protfolioLeftSBDeta[i] += 0.4;
+  //////
+  protfolioLeftSBDeta[i] += 0.8;
   if(protfolioLeftSBDeta[i]>=4){
     protfolioLeftSBDeta[i] = 4;
   }
   protfolioLeftSBAll[i].style('border','solid '+protfolioLeftSBDeta[i]+'px black');
-  if(protfolioLeftSPositionDeta[i] == LeftDivBigW/2-60-pfsH && protfolioLeftSBDeta[i] == 4){
+  protfolioLeftSImgAll[i].style('border','solid '+protfolioLeftSBDeta[i]+'px rgb(0,0,0,0)');
+  if(protfolioLeftSPositionDeta[i] == protfolioSW-pfsH && protfolioLeftSBDeta[i] == 4){
     protfolioLeftSS[i] = 21;
   }
 }
 function protfolioLeftSBack(i){
+  //////
   let pfsH = document.getElementById('protfolioLeftSIntroductionAll['+i+']').offsetHeight;
   protfolioLeftSPositionDeta[i] += pfsH/11;
-  if(protfolioLeftSPositionDeta[i]>=LeftDivBigW/2-60){
-    protfolioLeftSPositionDeta[i] = LeftDivBigW/2-60;
+  if(protfolioLeftSPositionDeta[i]>=protfolioSW){
+    protfolioLeftSPositionDeta[i] = protfolioSW;
   }
   protfolioLeftSIntroductionAll[i].style('top',protfolioLeftSPositionDeta[i]+'px');
 
-  protfolioLeftSBDeta[i] -= 0.4;
+  //////
+  protfolioLeftSBDeta[i] -= 0.8;
   if(protfolioLeftSBDeta[i]<=0){
     protfolioLeftSBDeta[i] = 0;
   }
   protfolioLeftSBAll[i].style('border','solid '+protfolioLeftSBDeta[i]+'px black');
-  if(protfolioLeftSPositionDeta[i] == LeftDivBigW/2-60 && protfolioLeftSBDeta[i] == 0){
+  protfolioLeftSImgAll[i].style('border','solid '+protfolioLeftSBDeta[i]+'px rgb(0,0,0,0)'); 
+  if(protfolioLeftSPositionDeta[i] == protfolioSW && protfolioLeftSBDeta[i] == 0){
     protfolioLeftSS[i] = 20;
+    //protfolioLeftSImgAll[i].style('border','solid 1px silver');
   }
 }

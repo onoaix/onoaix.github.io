@@ -4,6 +4,7 @@
  let nw;
  let nl;
  let body;
+ let  windowWidthP;
  let homePageLeft;
  let homePageLeftW;
  let homePageLeftH;
@@ -440,8 +441,28 @@ function setup() {
   apple = select('#apple');
   apple.position(l+windowWidth*62/100+homePageRightW/2,t+windowHeight/2);
 
+
   //bodyshow
   body.show();
+
+
+
+  //resizePlan
+
+  if (windowWidth>=980) {
+    apple.show();
+    for(let i=0; i<protfolioLeftSAll.length; i++){
+      protfolioLeftSAll[i].style('float','left');
+      protfolioLeftSAll[i].style('margin','30px');
+    }
+  }else{
+    apple.hide();
+    rightbuttonStatus = 0;
+    for(let i=0; i<protfolioLeftSAll.length; i++){
+      protfolioLeftSAll[i].style('float','none');
+      protfolioLeftSAll[i].style('margin','30px auto');
+    }
+  }
 
   resetSizePlan();
   repositionLeftAll();
@@ -684,7 +705,13 @@ function make2dArray(tempx,tempy){
 function resetSizePlan(){
 
   //resize homePageDiv(left&right);
-  homePageLeftW = windowWidth*62/100;
+
+    if (windowWidth>=980) {
+      homePageLeftW = windowWidth*62/100;
+    }else{
+      homePageLeftW = windowWidth;
+    }
+
   homePageLeftH = windowHeight
   homePageLeft.size(homePageLeftW,homePageLeftH);
 
@@ -808,8 +835,45 @@ function resetSizePlan(){
     rightDivSW = rightDivBigW;
     rightDivSH = 190*n+rightDivSpadding*2;
 
-    if (windowWidth<=1920) {
-      rightDivS1W = rightDivSW;
+  if((windowWidthP<980 && windowWidth>=980)||(windowWidthP>=980 && windowWidth<980)){
+    if (windowWidth>=980) {
+      rightbuttonStatus = 1;
+      homePageRightGo();
+      apple.show();
+
+      for(let i=0; i<protfolioLeftSAll.length; i++){
+        protfolioLeftSAll[i].style('float','left');
+        protfolioLeftSAll[i].style('margin','30px');
+      }
+
+    }else{
+      rightbuttonStatus = 0;
+      homePageRightGo();
+      apple.hide();
+
+
+      for(let i=0; i<protfolioLeftSAll.length; i++){
+        protfolioLeftSAll[i].style('float','none');
+        protfolioLeftSAll[i].style('margin','30px auto');
+      }
+
+
+      //rightDivS1W = rightDivSW*1/2;
+      //for (let i = 0; i<rightDivSAll.length; i++){
+      //  rightDivSAll[i].size(rightDivSW,rightDivSH);
+      //  rightDivS1All[i].size(rightDivS1W,rightDivSH-rightDivSpadding*2);
+      //  rightDivS2All[i].style('margin','0px 20px 0px 20px');
+      //  rightDivS2All[i].size(rightDivSW-rightDivS1W-40-10*n,rightDivSH-rightDivSpadding*2);
+      //}
+      //for (let i = 0; i < rightDivSBAll.length; i++) {
+      //  rightDivSBAll[i].size(rightDivSW,rightDivSH-rightDivSpadding*2);
+      //  rightDivSBoAll[i].size(rightDivSW,rightDivSH-rightDivSpadding*2);
+      //}
+    }
+  }
+
+  windowWidthP = windowWidth;
+  rightDivS1W = rightDivSW;
       for (let i = 0; i<rightDivSAll.length; i++){
         rightDivSAll[i].style('width',rightDivSW+'px');
         rightDivSAll[i].style('height','auto');
@@ -817,23 +881,13 @@ function resetSizePlan(){
         rightDivS2All[i].style('width',rightDivS1W-20+'px');
         rightDivS2All[i].style('height','auto');
         rightDivS2All[i].style('margin','10px 10px 0px 10px');
+        rightDivSBAll[i].size(rightDivSW,document.getElementById('rightDivSAll['+i+']').offsetHeight-rightDivSpadding*2);
+        rightDivSBoAll[i].size(rightDivSW,document.getElementById('rightDivSAll['+i+']').offsetHeight-rightDivSpadding*2);
       }
       for (let i = 0; i < rightDivSBAll.length; i++) {
         //rightDivSBAll[i].size(rightDivSW,rightDivSH-rightDivSpadding*2);
-        rightDivSBAll[i].size(rightDivSW,document.getElementById('rightDivSAll['+i+']').offsetHeight-rightDivSpadding*2);
       }
-    }else{
-      rightDivS1W = rightDivSW*1/2;
-      for (let i = 0; i<rightDivSAll.length; i++){
-        rightDivSAll[i].size(rightDivSW,rightDivSH);
-        rightDivS1All[i].size(rightDivS1W,rightDivSH-rightDivSpadding*2);
-        rightDivS2All[i].style('margin','0px 20px 0px 20px');
-        rightDivS2All[i].size(rightDivSW-rightDivS1W-40-10*n,rightDivSH-rightDivSpadding*2);
-      }
-      for (let i = 0; i < rightDivSBAll.length; i++) {
-        rightDivSBAll[i].size(rightDivSW,rightDivSH-rightDivSpadding*2);
-      }
-    }
+
 
     for (var i = 0; i < rightDivBigs.length; i++) {
       if (pageStatus[i] == 1 ){
@@ -842,11 +896,38 @@ function resetSizePlan(){
       }
     }
 
+//resize leftAll
+  LeftDivBigW = homePageLeftW;
+  LeftDivBigH = homePageLeftH;
+  protfolioSW = (LeftDivBigW-70)/2-60;
+
+  //resize leftdivBigs
+  for(let i=0; i<leftDivBigs.length; i++){
+    if(i!=0){
+      leftDivBigs[i].size(LeftDivBigW,LeftDivBigH);
+    }
+  }
 
   //resize protfolio
+  for(let i=0; i<protfolioLeftSAll.length; i++){
+    protfolioLeftSAll[i].size(protfolioSW,protfolioSW);
+    protfolioLeftSImgAll[i].size(protfolioSW,protfolioSW);
+    protfolioLeftSIntroductionAll[i].style('width',protfolioSW-2+'px');
+    protfolioLeftSPositionDeta[i] = protfolioSW;
+    protfolioLeftSIntroductionAll[i].style('top',protfolioLeftSPositionDeta[i]+'px');
+    protfolioLeftSBoAll[i].size(protfolioSW,protfolioSW);
+    protfolioLeftSBAll[i].size(protfolioSW,protfolioSW);
+  }
+
+  //resize protfolioRight
   protfolioImg.size(270*n,350*n);
   InfluenceImg.size(180*n,250*n);
   InfluenceHopeImg.size(200*n,150*n);
+
+  //resize protfolioLeftS
+      for (let i = 0; i<protfolioLeftSAll.length; i++){
+        //protfolioLeftSAll[i].style();
+      }
 
 
 }
@@ -957,11 +1038,11 @@ function repositionLeftAll(){
   rightbutton.position(windowWidth-50,windowHeight/2);
 
   //reposition protfolioIMG
-  let protfolioImgX = 130*n;
-  let protfolioImgY = 150*n;
-  protfolioImg.position(protfolioImgX-(1-n)*20,protfolioImgY);
-  InfluenceImg.position(protfolioImgX-80*n-(1-n)*20,protfolioImgY+150*n);
-  InfluenceHopeImg.position(protfolioImgX+40*n-(1-n)*20,protfolioImgY+275*n);
+  let protfolioImgX = 130*nw;
+  let protfolioImgY = 150*nl;
+  protfolioImg.position(protfolioImgX-(1-nw)*150,protfolioImgY);
+  InfluenceImg.position(protfolioImgX-80*nw-(1-nw)*150,protfolioImgY+150*nl);
+  InfluenceHopeImg.position(protfolioImgX+40*nw-(1-nw)*150,protfolioImgY+275*nl);
 
 
 }

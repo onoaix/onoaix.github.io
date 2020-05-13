@@ -10,10 +10,13 @@ let LeftDivBigW;
 let LeftDivBigH;
 let LeftDivBigX;
 let LeftDivBigY;
+let protfolioSW;
 
 let protfolioLeftSS;
 let protfolioLeftSAll;
+let protfolioLeftSBoAll;
 let protfolioLeftSBAll;
+let protfolioLeftSImgAll;
 let protfolioLeftSIntroductionAll;
 
 let protfolioLeftSBDeta;
@@ -29,14 +32,17 @@ let protfolioLeftSPositionDeta;
 
 function createProtfolioLeft(){
 
-	LeftDivBigW = homePageLeftW-lineW*4;
+	LeftDivBigW = homePageLeftW;
 	LeftDivBigH = homePageLeftH;
-	LeftDivBigX = l+lineW;
+	LeftDivBigX = l;
 	LeftDivBigY = t;
+	protfolioSW = (LeftDivBigW-70)/2-60;
 
 	protfolioLeftSS = [];
 	protfolioLeftSAll = [];
+	protfolioLeftSBoAll = [];
 	protfolioLeftSBAll = [];
+	protfolioLeftSImgAll = [];
 	protfolioLeftSIntroductionAll = [];
 
 	protfolioLeftSBDeta = [];
@@ -51,17 +57,20 @@ function createProtfolioLeft(){
 	//protfolioLeftDiv.style('background-color','gray');
 	protfolioLeftDiv.attribute('align', 'center');
 	protfolioLeftDiv.style('overflow','scroll');
-	protfolioLeftDiv.style('padding','0px 20px 0px 20px');
+	protfolioLeftDiv.style('box-sizing','border-box');
+	protfolioLeftDiv.style('padding','0px 35px 0px 35px');
 	protfolioLeftDiv.position(LeftDivBigX,LeftDivBigY);
 
-	let head = createDiv('head');
-	head.parent(protfolioLeftDiv);
-	head.style('text-align','right');
-	head.style('font-size','21pt');
-	head.style('margin','55px 30px 40px 30px');
-	head.style('font-family','Microsoft YaHei');
-	head.style('font-weight','bold');
-	head.html('PROTFOLIO');
+	let headProtfolio = createDiv('head');
+	headProtfolio.id('headProtfolio');
+	headProtfolio.parent(protfolioLeftDiv);
+	headProtfolio.style('text-align','middle');
+	headProtfolio.style('font-size','21pt');
+	headProtfolio.style('margin','55px 30px 40px 30px');
+	headProtfolio.style('font-family','Microsoft YaHei');
+	headProtfolio.style('font-weight','bold');
+	headProtfolio.html('-PROTFOLIO-');
+
 	createProtfolioLeftS('TREE','url(PROTFOLIO_IMG/OVER_LIFE.jpg)','该作品运用数字图像生成技术完成，通过模拟简单的计算机生命在屏幕中的演绎而生成的视觉图像。作品对不同的树的图片经行了数字化的图像生命演绎，其算法能够简单的识别原始图像中的树干，树枝与树叶并作不同的处理。');
 	createProtfolioLeftS('INFLUENCE FONT','url(PROTFOLIO_IMG/INFLUENCE_FONT.jpg)','INFLUENCE FONT programing object.A motional font object with montion graphic.And it was made by processing with intraction event.');
 	createProtfolioLeftS('ZOKEI POSTER','url(PROTFOLIO_IMG/zokei_poster.jpg)','以“ZOKEI展”中的“ZO”为创作原型经行的海报设计。“ZOKEI展”是一年一度的毕业展，我希望用“ZO”的概念来隐喻“出生”，并将相同的形状进行反复，迭代地运用，设计了这张海报。');
@@ -86,12 +95,12 @@ function createProtfolioLeftS(protfolio_h,profolio_img_scr,profolio_content){
 	protfolioS.style('overflow','hidden');
 	protfolioS.style('float','left');
 	protfolioS.style('box-sizing','border-box');
-	//protfolioS.style('border','solid 1px silver');	
+	//protfolioS.style('border','solid 1px silver');
 	protfolioS.style('margin','30px');
 	protfolioS.style('box-shadow','2px 2px 6px rgba(90,90,90,0.2)');
 	//protfolioS.style('width',LeftDivBigW/2-60+'px');
 	//protfolioS.style('height','auto');
-	protfolioS.size(LeftDivBigW/2-60,LeftDivBigW/2-60);
+	protfolioS.size(protfolioSW,protfolioSW);
 	protfolioS.style('cursor','pointer');
 	protfolioS.style('background-color','sliver');
 	protfolioS.mouseOver(protfolioLeftSOver);
@@ -101,10 +110,11 @@ function createProtfolioLeftS(protfolio_h,profolio_img_scr,profolio_content){
 	//protfolioSImg  每个作品展示框框中的图片div
 	let protfolioSImg = createDiv('');
 	protfolioSImg.parent(protfolioS);
-	protfolioSImg.size(LeftDivBigW/2-62,LeftDivBigW/2-62)
+	protfolioSImg.style('box-sizing','border-box');
+	protfolioSImg.size(protfolioSW,protfolioSW)
 	//protfolioSImg.style('background-image','url(RECENT_PLAY_IMG/'+rightDivS_img_scr+')');
 	protfolioSImg.style('position','absolute');
-	protfolioSImg.style('border','solid 1px silver');
+	protfolioSImg.style('border','solid 0px silver');
 	//protfolioSImg.style('float','none');
 	protfolioSImg.style('background-image',profolio_img_scr);
 	protfolioSImg.style('background-position','center center');
@@ -112,13 +122,23 @@ function createProtfolioLeftS(protfolio_h,profolio_img_scr,profolio_content){
 	protfolioSImg.style('background-size','cover');
 
 
+	//protfolioSB (border) 每个作品展示框框的描边默认
+	let protfolioSBo = createDiv('');
+	protfolioSBo.parent(protfolioS);
+	protfolioSBo.style('position','absolute');
+	protfolioSBo.style('pointer-events','none');
+	protfolioSBo.style('box-sizing','border-box');
+	protfolioSBo.size(protfolioSW,protfolioSW);
+	protfolioSBo.style('border','solid 1px silver');
+	//protfolioSBo.style('z-index','1');
+
 	//protfolioSB (border) 每个作品展示框框的描边
 	let protfolioSB = createDiv('');
 	protfolioSB.parent(protfolioS);
 	protfolioSB.style('position','absolute');
 	protfolioSB.style('pointer-events','none');
 	protfolioSB.style('box-sizing','border-box');
-	protfolioSB.size(LeftDivBigW/2-60,LeftDivBigW/2-60);
+	protfolioSB.size(protfolioSW,protfolioSW);
 	//protfolioSB.style('border','solid 1px silver');
 	protfolioSB.style('z-index','1');
 
@@ -126,18 +146,21 @@ function createProtfolioLeftS(protfolio_h,profolio_img_scr,profolio_content){
 	//protfolioLeftSIntroduction 每个作品及鼠标指上去后显示的内容简介div
 	let protfolioLeftSIntroduction = createDiv('');
 	protfolioLeftSIntroduction.parent(protfolioS);
+	protfolioLeftSIntroduction.style('box-sizing','border-box');
+	protfolioLeftSIntroduction.style('overflow','hidden');
 	protfolioLeftSIntroduction.style('position','relative');
 	protfolioLeftSIntroduction.style('pointer-events','none');
-	protfolioLeftSIntroduction.style('width',LeftDivBigW/2-62+'px');
+	protfolioLeftSIntroduction.style('width',protfolioSW-2+'px');
 	//protfolioLeftSIntroduction.size(LeftDivBigW/2-62,(LeftDivBigW/2-60)*2/5);
 	protfolioLeftSIntroduction.style('background-color','rgb(255,255,255)');
-	protfolioLeftSIntroduction.style('border','solid 1px black');
-	protfolioLeftSIntroduction.style('top',LeftDivBigW/2-60+'px');
+	protfolioLeftSIntroduction.style('border-top','solid 1px black');
+	protfolioLeftSIntroduction.style('top',protfolioSW+'px');
 	//protfolioLeftSIntroduction.hide();
 
 
 	let protfolioLeftSIntroductionHead = createDiv('');
 	protfolioLeftSIntroductionHead.parent(protfolioLeftSIntroduction);
+	//protfolioLeftSIntroductionHead.style('position','absolute');
 	protfolioLeftSIntroductionHead.style('box-sizing','border-box');
 	protfolioLeftSIntroductionHead.style('font-family','Microsoft YaHei');
 	protfolioLeftSIntroductionHead.style('font-size','32px');
@@ -150,6 +173,7 @@ function createProtfolioLeftS(protfolio_h,profolio_img_scr,profolio_content){
 
 	let protfolioLeftSIntroductionContant = createDiv('');
 	protfolioLeftSIntroductionContant.parent(protfolioLeftSIntroduction);
+	//protfolioLeftSIntroductionContant.style('position','absolute');
 	protfolioLeftSIntroductionContant.style('box-sizing','border-box');
 	protfolioLeftSIntroductionContant.style('font-family','Georgia');
 	protfolioLeftSIntroductionContant.style('font-size','16px');
@@ -164,9 +188,11 @@ function createProtfolioLeftS(protfolio_h,profolio_img_scr,profolio_content){
 	//生成各数列
 	protfolioLeftSAll.push(protfolioS);
 	protfolioLeftSS.push(20);
+	protfolioLeftSBoAll.push(protfolioSBo);
 	protfolioLeftSBAll.push(protfolioSB);
+	protfolioLeftSImgAll.push(protfolioSImg)
 	protfolioLeftSBDeta.push(0);
-	protfolioLeftSPositionDeta.push(LeftDivBigW/2-60);
+	protfolioLeftSPositionDeta.push(protfolioSW);
 	protfolioLeftSIntroductionAll.push(protfolioLeftSIntroduction);
 
 
@@ -200,8 +226,8 @@ function createProtfolioRight(){
 	protfolioRightDiv.id('protfolioRightDiv');
 	protfolioRightDiv.attribute('align', 'center');
 	protfolioRightDiv.style('box-sizing','border-box');
-	protfolioRightDiv.style('overflow-x','hidden');
-	protfolioRightDiv.style('overflow-y','scroll');
+	//protfolioRightDiv.style('overflow-x','hidden');
+	//protfolioRightDiv.style('overflow-y','scroll');
 	protfolioRightDiv.style('margin-left',20+'px');
 	protfolioRightDiv.style('margin-right',20+'px');
 	//protfolioRightDiv.style('background-color','rgba(120,120,120,0.5)');
@@ -225,9 +251,9 @@ function createProtfolioRight(){
 	protfolioImg.style('background-repeat','no-repeat');
 	protfolioImg.style('background-size','cover');
 	protfolioImg.size(270*n,350*n);
-	let protfolioImgX = 130;
-	let protfolioImgY = 150;
-	protfolioImg.position(protfolioImgX-(1-n)*20,protfolioImgY);
+	let protfolioImgX = 130*nw;
+	let protfolioImgY = 150*nl;
+	protfolioImg.position(protfolioImgX-(1-nw)*150,protfolioImgY);
 
 	protfolioUrl.push(protfolioImg);
 	protfolioImg.mouseClicked(protfolioClicked);
@@ -245,7 +271,7 @@ function createProtfolioRight(){
 	InfluenceImg.style('background-repeat','no-repeat');
 	InfluenceImg.style('background-size','cover');
 	InfluenceImg.size(180*n,250*n);
-	InfluenceImg.position(protfolioImgX-80-(1-n)*20,protfolioImgY+150);
+	InfluenceImg.position(protfolioImgX-80*nw-(1-nw)*150,protfolioImgY+150*nl);
 
 
 	protfolioUrl.push(InfluenceImg);
@@ -266,7 +292,7 @@ function createProtfolioRight(){
 	InfluenceHopeImg.style('background-repeat','no-repeat');
 	InfluenceHopeImg.style('background-size','cover');
 	InfluenceHopeImg.size(200*n,150*n);
-	InfluenceHopeImg.position(protfolioImgX+40-(1-n)*20,protfolioImgY+275);
+  	InfluenceHopeImg.position(protfolioImgX+40*nw-(1-nw)*150,protfolioImgY+275*nl);
 
 	protfolioUrl.push(InfluenceHopeImg);
 	InfluenceHopeImg.mouseClicked(protfolioClicked);
