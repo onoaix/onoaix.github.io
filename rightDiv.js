@@ -147,8 +147,9 @@ function createRightDivBig(){
 
 
 function RECENT_PLAY(){
-	createRightDiv('PROTFOLIO','22222.png','#May 19/2019<br><br>It mainly includes some of my works from 2017 - 2019, as well as some earlier works, including two interactive works, two animation works, two visual design works, and two painting practice works. In addition, there are two additional volumes about influence design (it is an interactive work).');
+	createRightDiv('PORTFOLIO','22222.png','#May 19/2019<br><br>It mainly includes some of my works from 2017 - 2019, as well as some earlier works, including two interactive works, two animation works, two visual design works, and two painting practice works. In addition, there are two additional volumes about influence design (it is an interactive work).');
 	//rightDivS1All[0].mouseClicked(changeToProtfolio);
+	createRightDiv('红瘦','HONGSHOU.png','#April 17/2020<br><br>Star with INFLUENCE FONT programing object.A motional font object with montion graphic.It is still a idea right now ,It will be gradually improced in future.');
 	createRightDiv('INFLUENCE FONT','influence_font.png','#April 17/2020<br><br>Star with INFLUENCE FONT programing object.A motional font object with montion graphic.It is still a idea right now ,It will be gradually improced in future.');
 	createRightDiv('Flow-FIeld-Following','Flow_Field_Following.png','#December 1/2019<br><br>I’v tried to make the flow field following steering behavior with p5.js.');
 	createRightDiv('BE BORN','zokei_h.png','#November 26/2019<br><br>The contribution of 「ZOKEI EXHIBITION」 poster.“ZO”というのは、創造、または物を形にする前の変化の過程の意味があり、反復、そしてゼロから“一”になる概念もある。私が“うみ出す”の意味を“ZO”の概念を隠喩して、ポスターを作った。同じ形を反復に利用し、“ZO”の形を組み合わした。右横から見ると、卵とこともの成体がもうすぐ卒業する学生たちがこれから社会に踏み込み、新しい人生を始める意味もある。上下二つに分け、要素が各部分にあり、断続感を作り出す。真ん中に“ZOKEI展”の印鑑がもうすぐ卒業する学生たちのこれまでの成果を認めることを暗示する。');

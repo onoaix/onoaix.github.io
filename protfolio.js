@@ -69,8 +69,9 @@ function createProtfolioLeft(){
 	headProtfolio.style('margin','55px 30px 40px 30px');
 	headProtfolio.style('font-family','Microsoft YaHei');
 	headProtfolio.style('font-weight','bold');
-	headProtfolio.html('-PROTFOLIO-');
+	headProtfolio.html('-PORTFOLIO-');
 
+	createProtfolioLeftS('红瘦','url(PROTFOLIO_IMG/HONG_SHOU.jpg)','以李清照的《如梦令·昨夜雨疏风骤》之词为主题创作而成。');
 	createProtfolioLeftS('TREE','url(PROTFOLIO_IMG/OVER_LIFE.jpg)','该作品运用数字图像生成技术完成，通过模拟简单的计算机生命在屏幕中的演绎而生成的视觉图像。作品对不同的树的图片经行了数字化的图像生命演绎，其算法能够简单的识别原始图像中的树干，树枝与树叶并作不同的处理。');
 	createProtfolioLeftS('INFLUENCE FONT','url(PROTFOLIO_IMG/INFLUENCE_FONT.jpg)','INFLUENCE FONT programing object.A motional font object with montion graphic.And it was made by processing with intraction event.');
 	createProtfolioLeftS('ZOKEI POSTER','url(PROTFOLIO_IMG/zokei_poster.jpg)','以“ZOKEI展”中的“ZO”为创作原型经行的海报设计。“ZOKEI展”是一年一度的毕业展，我希望用“ZO”的概念来隐喻“出生”，并将相同的形状进行反复，迭代地运用，设计了这张海报。');
@@ -122,6 +123,7 @@ function createProtfolioLeftS(protfolio_h,profolio_img_scr,profolio_content){
 	protfolioSImg.style('background-size','cover');
 
 
+
 	//protfolioSB (border) 每个作品展示框框的描边默认
 	let protfolioSBo = createDiv('');
 	protfolioSBo.parent(protfolioS);
@@ -153,7 +155,7 @@ function createProtfolioLeftS(protfolio_h,profolio_img_scr,profolio_content){
 	protfolioLeftSIntroduction.style('width',protfolioSW-2+'px');
 	//protfolioLeftSIntroduction.size(LeftDivBigW/2-62,(LeftDivBigW/2-60)*2/5);
 	protfolioLeftSIntroduction.style('background-color','rgb(255,255,255)');
-	protfolioLeftSIntroduction.style('border-top','solid 1px black');
+	protfolioLeftSIntroduction.style('border-top','solid 0px black');
 	protfolioLeftSIntroduction.style('top',protfolioSW+'px');
 	//protfolioLeftSIntroduction.hide();
 
@@ -221,7 +223,7 @@ function createProtfolioRight(){
 	protfolioRightDiv = createDiv('');
 	rightDivBigs.push(protfolioRightDiv);
 	pageStatus.push(0);
-	rightDivTitles.push('＋ PROTFOLIO OVERVIEW &nbsp');
+	rightDivTitles.push('＋ PORTFOLIO OVERVIEW &nbsp');
 	protfolioRightDiv.parent(homePageRight);
 	protfolioRightDiv.id('protfolioRightDiv');
 	protfolioRightDiv.attribute('align', 'center');
